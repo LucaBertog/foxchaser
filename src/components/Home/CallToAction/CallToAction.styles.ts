@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { between } from 'polished';
 
 const flexCenterColumn = css`
   display: flex;
@@ -8,14 +9,14 @@ const flexCenterColumn = css`
 `;
 
 export const Container = styled.div`
-  padding: 6.4rem;
+  padding: 6.4rem 2%;
   ${flexCenterColumn}
 `;
 
 export const Wrapper = styled.div`
   ${flexCenterColumn}
-  max-width: 1000px;
-  width: 100%;
+  max-width: 1400px;
+  width: 90%;
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -26,16 +27,17 @@ export const Wrapper = styled.div`
 `;
 
 export const InfoWrapper = styled.div`
-  ${flexCenterColumn}
   margin-bottom: 4.8rem;
   @media (min-width: 768px) {
     margin-bottom: 0;
+    text-align: left;
   }
+  text-align: center;
 `;
 export const Title = styled.h1`
   font-family: 'IBM Plex Sans';
   font-weight: 500;
-  font-size: 2.6rem;
+  font-size: ${between('2.6rem', '4.2rem', '37.5rem', '144rem')};
   line-height: 4.8rem;
 
   color: ${(props) => props.theme.colors?.white};
@@ -43,7 +45,7 @@ export const Title = styled.h1`
 export const Description = styled.p`
   font-family: 'IBM Plex Sans';
   font-weight: 400;
-  font-size: 1.4rem;
+  font-size: ${between('1.4rem', '1.6rem', '37.5rem', '144rem')};
   line-height: 2.4rem;
 
   color: ${(props) => props.theme.colors?.white};
