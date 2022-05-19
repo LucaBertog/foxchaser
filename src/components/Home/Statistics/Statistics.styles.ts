@@ -10,6 +10,7 @@ export const Container = styled.div`
   align-items: center;
 
   padding: 10rem 2%;
+  overflow-x: hidden;
 
   background: ${(props) => props.theme.colors?.white};
 `;
@@ -31,8 +32,8 @@ export const Title = styled.h1`
   font-family: 'IBM Plex Sans';
   font-style: normal;
   font-weight: 500;
-  font-size: 42px;
-  line-height: 48px;
+  font-size: 4.2rem;
+  line-height: 4.8rem;
 
   padding: 1.8rem 0;
 
