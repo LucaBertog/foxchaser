@@ -47,7 +47,7 @@ export const Title = styled.h4`
   margin-bottom: 0.8rem;
 `;
 export const Text = styled.p`
-  ${fonts.Captar}
+  ${fonts.Small}
   color: ${(props) => props.theme.colors?.white};
   text-align: center;
 `;

@@ -41,6 +41,10 @@ export const Title = styled.h1`
   line-height: 4.8rem;
 
   color: ${(props) => props.theme.colors?.white};
+
+  @media (min-width: 768px) {
+    margin-bottom: 0.8rem;
+  }
 `;
 export const Description = styled.p`
   font-family: 'IBM Plex Sans';

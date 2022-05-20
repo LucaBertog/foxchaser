@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 import { between } from 'polished';
 
+import * as fonts from '../../../assets/styles/Fonts';
+
 const Wrappers = css`
   display: flex;
   justify-content: space-between;
@@ -65,10 +67,7 @@ export const Title = styled.h2`
   margin-bottom: 2.1rem;
 `;
 export const Text = styled.p`
-  font-family: 'IBM Plex Sans';
-  font-weight: 400;
-  font-size: 1.4rem;
-  line-height: 2.4rem;
+  ${fonts.Paragraph}
 
   color: ${(props) => props.theme.colors?.white};
 
