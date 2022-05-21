@@ -8,3 +8,4 @@ export { default as steam } from '../svgs/bi_steam.svg';
 export { default as playstation } from '../svgs/bi_playstation.svg';
 export { default as xbox } from '../svgs/bi_xbox.svg';
 export { default as epicGames } from '../svgs/cib_epic-games.svg';
+export { default as logoDifferent } from '../svgs/LogoFoxchaser.svg';
