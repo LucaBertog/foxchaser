@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Routes as Switch } from 'react-router-dom';
-import { Home } from '../pages';
+import { Index } from '../pages';
 
 const Routes: React.FC = () => (
   <Switch>
-    <Route path='/' element={<Home />} />
+    <Route path='/' element={<Index />} />
   </Switch>
 );
 

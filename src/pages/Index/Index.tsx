@@ -9,8 +9,8 @@ import {
   CommunityNotices,
   End,
   Footer,
-} from '../../components/Home';
-import { Container, Banner, Separator } from './Home.styles';
+} from '../../components/Index';
+import { Container, Banner, Separator } from './Index.styles';
 import { COLORS } from '../../constants';
 
 const Home: React.FC = () => (
