@@ -3,7 +3,7 @@ import { between } from 'polished';
 
 import * as fonts from '../../../assets/styles/Fonts';
 
-export const Container = styled.div`
+export const Container = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;

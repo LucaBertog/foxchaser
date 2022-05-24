@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import * as fonts from '../../../assets/styles/Fonts';
 
-export const Container = styled.div`
+export const Container = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;

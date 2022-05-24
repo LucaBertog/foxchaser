@@ -8,7 +8,7 @@ const flexCenterColumn = css`
   align-items: center;
 `;
 
-export const Container = styled.div`
+export const Container = styled.section`
   padding: 6.4rem 2%;
   ${flexCenterColumn}
 `;
