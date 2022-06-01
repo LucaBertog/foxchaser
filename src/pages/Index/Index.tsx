@@ -9,7 +9,7 @@ import {
   CommunityNotices,
   End,
   Footer,
-} from '../../components/Index';
+} from '../../components/Index/index';
 import { Container, Banner, Separator } from './Index.styles';
 import { COLORS } from '../../constants';
 

@@ -22,8 +22,8 @@ const Summary: React.FC = () => (
         <Img src={monitorFoxChaser} />
         <Title>Tudo em um só lugar</Title>
         <Text>
-          Veja suas estatísticas, conte a seus amigos que você sabe atirar sem
-          pinar, saiba quando irá ter downgrade da sua arma favorita.
+          Veja suas estatísticas, conte a seus amigos, saiba quando irá ter
+          downgrade da sua arma favorita.
         </Text>
       </Resume>
       <Resume>

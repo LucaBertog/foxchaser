@@ -1,1 +1,1 @@
-export const a = 1;
+export { default as NavBar } from './NavBar/NavBar';
