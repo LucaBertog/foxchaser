@@ -14,6 +14,7 @@ import {
   Notifications,
   Chat,
   IconWrapper,
+  Plus,
 } from './NavBar.mobile.styles';
 import emptyImg from '../../assets/imgs/empty.jpg';
 
@@ -28,7 +29,9 @@ const Mobile: React.FC = () => (
         <Search />
       </IconWrapper>
     </Top>
-    <NewPost />
+    <NewPost>
+      <Plus />
+    </NewPost>
     <Bottom>
       <IconWrapper>
         <Home />

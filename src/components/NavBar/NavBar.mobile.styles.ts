@@ -6,7 +6,7 @@ import {
   Search as SearchIcon,
   GameController,
   Newspaper,
-  Person,
+  Plus as PlusIcon,
 } from 'akar-icons';
 
 export const Container = styled.div`
@@ -84,6 +84,21 @@ export const Search = styled(SearchIcon)`
 
 export const NewPost = styled.section`
   background: ${(props) => props.theme.mode.colors.button1};
+  width: 6rem;
+  height: 6rem;
+  position: absolute;
+  bottom: 5.6rem;
+  right: 0;
+  border-radius: 100% 0 0 0;
+
+  padding: 2rem 0 0 2rem;
+`;
+
+export const Plus = styled(PlusIcon)`
+  width: 3.2rem;
+  height: 3.2rem;
+
+  color: ${(props) => props.theme.mode.colors.iconLight};
 `;
 
 export const Bottom = styled.nav`
