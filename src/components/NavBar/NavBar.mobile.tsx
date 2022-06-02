@@ -5,7 +5,7 @@ import {
   Top,
   MenuAvatar,
   Logo,
-  SearchIcon,
+  Search,
   NewPost,
   Bottom,
   Home,
@@ -15,16 +15,17 @@ import {
   Chat,
   IconWrapper,
 } from './NavBar.mobile.styles';
+import emptyImg from '../../assets/imgs/empty.jpg';
 
 import { logoFoxChaser } from '../../assets/styles/Icons';
 
 const Mobile: React.FC = () => (
   <Container>
     <Top>
-      <MenuAvatar />
+      <MenuAvatar src={emptyImg} />
       <Logo src={logoFoxChaser} />
       <IconWrapper>
-        <SearchIcon />
+        <Search />
       </IconWrapper>
     </Top>
     <NewPost />
@@ -35,7 +36,7 @@ const Mobile: React.FC = () => (
       <IconWrapper>
         <News />
       </IconWrapper>
-      <IconWrapper>
+      <IconWrapper isGame>
         <Games />
       </IconWrapper>
       <IconWrapper>

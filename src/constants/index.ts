@@ -27,6 +27,7 @@ export interface Theme {
     iconLight: string;
     bgIconLight: string;
     button1: string;
+    bgIconGame: string;
   };
 }
 
@@ -43,6 +44,7 @@ export const THEMES: { [key: string]: Theme } = {
       iconLight: COLORS.white,
       bgIconLight: COLORS.blue2,
       button1: COLORS.button1,
+      bgIconGame: COLORS.blue0,
     },
   },
 };
