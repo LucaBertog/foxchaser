@@ -27,7 +27,7 @@ export const Container = styled.section`
   padding: min(13.5rem, ${between('8.8rem', '13.5rem', '76.8rem', '144rem')}) 2%
     min(19.5rem, ${between('13.9rem', '19.5rem', '76.8rem', '144rem')});
 
-  background: ${(props) => props.theme.colors?.blue4};
+  background: ${(props) => props.theme.colors.blue4};
 `;
 
 export const WrapperCommunity = styled.div`
@@ -62,14 +62,14 @@ export const Title = styled.h2`
   font-size: 2.4rem;
   line-height: 4.8rem;
 
-  color: ${(props) => props.theme.colors?.white};
+  color: ${(props) => props.theme.colors.white};
 
   margin-bottom: 2.1rem;
 `;
 export const Text = styled.p`
   ${fonts.Paragraph}
 
-  color: ${(props) => props.theme.colors?.white};
+  color: ${(props) => props.theme.colors.white};
 
   margin-bottom: 4.8rem;
 `;

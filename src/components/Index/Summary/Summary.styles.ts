@@ -41,13 +41,13 @@ export const Img = styled.img`
 `;
 export const Title = styled.h4`
   ${fonts.Title4}
-  color: ${(props) => props.theme.colors?.white};
+  color: ${(props) => props.theme.colors.white};
   text-align: center;
 
   margin-bottom: 0.8rem;
 `;
 export const Text = styled.p`
   ${fonts.Small}
-  color: ${(props) => props.theme.colors?.white};
+  color: ${(props) => props.theme.colors.white};
   text-align: center;
 `;

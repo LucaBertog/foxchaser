@@ -33,7 +33,7 @@ export const SocialMedia = styled.div`
 `;
 export const Title = styled.h4`
   ${fonts.Title4}
-  color: ${(props) => props.theme.colors?.blue4};
+  color: ${(props) => props.theme.colors.blue4};
   margin-bottom: 1.6rem;
   @media (min-width: 768px) {
     margin-bottom: 0.8rem;
@@ -65,7 +65,7 @@ export const Icon = styled.img`
 `;
 export const Link = styled(LinkOld)`
   ${fonts.Small}
-  color: ${(props) => props.theme.colors?.blue4};
+  color: ${(props) => props.theme.colors.blue4};
   text-decoration: none;
 `;
 export const Separator = styled.div`

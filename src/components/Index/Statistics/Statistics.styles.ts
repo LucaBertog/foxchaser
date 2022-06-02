@@ -12,7 +12,7 @@ export const Container = styled.section`
   padding: 10rem 2%;
   overflow-x: hidden;
 
-  background: ${(props) => props.theme.colors?.white};
+  background: ${(props) => props.theme.colors.white};
 `;
 
 export const WrapperTitle = styled.div`
@@ -26,7 +26,7 @@ export const WrapperTitle = styled.div`
 export const Line = styled.div<{ size: string }>`
   width: ${(props) => props.size};
   height: 0.1rem;
-  background: ${(props) => props.theme.colors?.orange};
+  background: ${(props) => props.theme.colors.orange};
 `;
 export const Title = styled.h1`
   font-family: 'IBM Plex Sans';
@@ -37,12 +37,12 @@ export const Title = styled.h1`
 
   padding: 1.8rem 0;
 
-  color: ${(props) => props.theme.colors?.blue4};
+  color: ${(props) => props.theme.colors.blue4};
 `;
 
 export const Description = styled.p`
   ${fonts.Paragraph}
-  color: ${(props) => props.theme.colors?.blue4};
+  color: ${(props) => props.theme.colors.blue4};
   text-align: center;
 `;
 
@@ -65,7 +65,7 @@ export const CompatiblePlatforms = styled.div`
 `;
 export const TitlePlatforms = styled.h4`
   ${fonts.Title4}
-  color: ${(props) => props.theme.colors?.blue4};
+  color: ${(props) => props.theme.colors.blue4};
   text-align: center;
 
   margin-bottom: 1.6rem;

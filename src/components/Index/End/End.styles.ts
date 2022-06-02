@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import * as fonts from '../../../assets/styles/Fonts';
 
 export const Container = styled.section`
-  background: ${(props) => props.theme.colors?.white};
+  background: ${(props) => props.theme.colors.white};
   padding: 8rem 0;
 `;
 

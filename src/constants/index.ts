@@ -15,22 +15,34 @@ export const COLORS = {
   white: '#FFFFFF',
 };
 
-export interface Themes {
+export interface Theme {
   id: string;
   name: string;
   colors: {
     body: string;
     text: string;
+    navBar: string;
+    iconDark: string;
+    bgIconDark: string;
+    iconLight: string;
+    bgIconLight: string;
+    button1: string;
   };
 }
 
-export const THEMES = {
+export const THEMES: { [key: string]: Theme } = {
   dark: {
     id: 'T_001',
     name: 'Dark',
     colors: {
       body: COLORS.blue4,
       text: COLORS.white,
+      navBar: COLORS.blue3,
+      iconDark: COLORS.blue2,
+      bgIconDark: COLORS.blue1,
+      iconLight: COLORS.white,
+      bgIconLight: COLORS.blue2,
+      button1: COLORS.button1,
     },
   },
 };

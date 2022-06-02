@@ -1,5 +1,4 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
 
 import {
   Header,
@@ -11,24 +10,21 @@ import {
   Footer,
 } from '../../components/Index/index';
 import { Container, Banner, Separator } from './Index.styles';
-import { COLORS } from '../../constants';
 
 const Home: React.FC = () => (
-  <ThemeProvider theme={{ colors: COLORS }}>
-    <Container>
-      <Banner>
-        <Header />
-        <CallToAction />
-        <Summary />
-      </Banner>
-      <Separator color='#f3f3f3' />
-      <Statistics />
-      <Separator color='#1D222E' />
-      <CommunityNotices />
-      <End />
-      <Footer />
-    </Container>
-  </ThemeProvider>
+  <Container>
+    <Banner>
+      <Header />
+      <CallToAction />
+      <Summary />
+    </Banner>
+    <Separator color='#f3f3f3' />
+    <Statistics />
+    <Separator color='#1D222E' />
+    <CommunityNotices />
+    <End />
+    <Footer />
+  </Container>
 );
 
 export default Home;

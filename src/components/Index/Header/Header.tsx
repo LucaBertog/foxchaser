@@ -1,6 +1,6 @@
 import React from 'react';
 
-import largeLogo from '../../../assets/svgs/indexPage/large-logo.svg';
+import largeLogo from '../../../assets/svgs/large-logo.svg';
 import { Container, Logo, Button, Wrapper } from './Header.styles';
 
 const Header: React.FC = () => (

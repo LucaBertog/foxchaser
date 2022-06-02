@@ -40,7 +40,7 @@ export const Title = styled.h1`
   font-size: ${between('2.6rem', '4.2rem', '37.5rem', '144rem')};
   line-height: 4.8rem;
 
-  color: ${(props) => props.theme.colors?.white};
+  color: ${(props) => props.theme.colors.white};
 
   @media (min-width: 768px) {
     margin-bottom: 0.8rem;
@@ -52,14 +52,14 @@ export const Description = styled.p`
   font-size: ${between('1.4rem', '1.6rem', '37.5rem', '144rem')};
   line-height: 2.4rem;
 
-  color: ${(props) => props.theme.colors?.white};
+  color: ${(props) => props.theme.colors.white};
 `;
 
 export const ButtonsWrapper = styled.div`
   ${flexCenterColumn}
 `;
 export const BtnCreateAccount = styled.button`
-  background: ${(props) => props.theme.colors?.button2};
+  background: ${(props) => props.theme.colors.button2};
   filter: drop-shadow(0px 0px 4px #fd9800);
 
   > span {
@@ -69,7 +69,7 @@ export const BtnCreateAccount = styled.button`
     font-size: 1.6rem;
     line-height: 2.4rem;
 
-    color: ${(props) => props.theme.colors?.white};
+    color: ${(props) => props.theme.colors.white};
   }
 
   padding: 0.5rem 2.4rem;
@@ -86,7 +86,7 @@ export const BtnNoLogin = styled.button`
   line-height: 2.4rem;
 
   background-color: transparent;
-  color: ${(props) => props.theme.colors?.white};
+  color: ${(props) => props.theme.colors.white};
 
   cursor: pointer;
 `;
