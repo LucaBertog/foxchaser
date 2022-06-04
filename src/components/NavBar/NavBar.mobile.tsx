@@ -1,23 +1,18 @@
 import React from 'react';
 
+import { Container, Top, Plus, NewPost, Bottom } from './NavBar.mobile.styles';
 import {
-  Container,
-  Top,
   MenuAvatar,
   Logo,
   Search,
-  NewPost,
-  Bottom,
   Home,
   News,
   Games,
   Notifications,
   Chat,
   IconWrapper,
-  Plus,
-} from './NavBar.mobile.styles';
+} from '../../assets/styles/IconsNavBar';
 import emptyImg from '../../assets/imgs/empty.jpg';
-
 import { logoFoxChaser } from '../../assets/styles/Icons';
 
 const Mobile: React.FC = () => (

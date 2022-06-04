@@ -28,6 +28,9 @@ export interface Theme {
     bgIconLight: string;
     button1: string;
     bgIconGame: string;
+    bgGamesWrapper: string;
+    bgIconsGames: string;
+    bgIconExit: string;
   };
 }
 
@@ -45,6 +48,9 @@ export const THEMES: { [key: string]: Theme } = {
       bgIconLight: COLORS.blue2,
       button1: COLORS.button1,
       bgIconGame: COLORS.blue0,
+      bgGamesWrapper: COLORS.blue2,
+      bgIconsGames: COLORS.blue1,
+      bgIconExit: 'rgba(71, 99, 172, 0.66)',
     },
   },
 };

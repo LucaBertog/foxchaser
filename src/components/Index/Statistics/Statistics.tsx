@@ -17,9 +17,9 @@ import csgoImg from '../../../assets/imgs/CSGO.png';
 import lolImg from '../../../assets/imgs/LeagueofLegends.png';
 import valorantImg from '../../../assets/imgs/VALORANT.png';
 import {
-  playstation,
+  playstationIndex,
   xbox,
-  steam,
+  steamIndex,
   epicGames,
 } from '../../../assets/styles/Icons';
 
@@ -41,9 +41,9 @@ const Statistics: React.FC = () => (
     <CompatiblePlatforms>
       <TitlePlatforms>Plataformas compatíveis</TitlePlatforms>
       <WrapperIcons>
-        <Icon src={playstation} />
+        <Icon src={playstationIndex} />
         <Icon src={xbox} />
-        <Icon src={steam} />
+        <Icon src={steamIndex} />
         <Icon src={epicGames} />
       </WrapperIcons>
     </CompatiblePlatforms>
