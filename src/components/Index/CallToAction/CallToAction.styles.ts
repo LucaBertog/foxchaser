@@ -62,12 +62,13 @@ export const BtnCreateAccount = styled.button`
   background: ${(props) => props.theme.colors.button2};
   filter: drop-shadow(0px 0px 4px #fd9800);
 
-  > span {
+  > a {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 300;
     font-size: 1.6rem;
     line-height: 2.4rem;
+    text-decoration: none;
 
     color: ${(props) => props.theme.colors.white};
   }
@@ -80,13 +81,16 @@ export const BtnCreateAccount = styled.button`
   margin-bottom: 0.8rem;
 `;
 export const BtnNoLogin = styled.button`
-  font-family: 'IBM Plex Sans';
-  font-weight: 400;
-  font-size: 1.4rem;
-  line-height: 2.4rem;
+  > a {
+    font-family: 'IBM Plex Sans';
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+    text-decoration: none;
+    color: ${(props) => props.theme.colors.white};
+  }
 
   background-color: transparent;
-  color: ${(props) => props.theme.colors.white};
 
   cursor: pointer;
 `;

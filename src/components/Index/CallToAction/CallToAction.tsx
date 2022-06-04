@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import {
   Container,
@@ -20,10 +21,10 @@ const CallToAction: React.FC = () => (
       </InfoWrapper>
       <ButtonsWrapper>
         <BtnCreateAccount>
-          <span>Criar uma conta</span>
+          <Link to='/register/'>Criar uma conta</Link>
         </BtnCreateAccount>
         <BtnNoLogin>
-          <span>Entrar sem login</span>
+          <Link to='/home/'>Entrar sem login</Link>
         </BtnNoLogin>
       </ButtonsWrapper>
     </Wrapper>
