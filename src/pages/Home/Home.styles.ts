@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background: ${(props) => props.theme.mode.colors.body};
+  display: flex;
 
   position: relative;
+  width: 100%;
   height: 100%;
 `;

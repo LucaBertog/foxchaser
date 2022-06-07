@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { Container } from './Home.styles';
-import { NavBar } from '../../components';
+import { StatisticSummary } from '../../components';
 
 const Home: React.FC = () => (
   <Container>
-    <NavBar />
+    <StatisticSummary />
   </Container>
 );
 
