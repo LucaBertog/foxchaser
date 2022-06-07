@@ -18,3 +18,4 @@ export { default as rocketLeague } from '../svgs/rocket-league.svg';
 export { default as valorant } from '../svgs/valorant.svg';
 export { default as playstation } from '../svgs/playstation.svg';
 export { default as steam } from '../svgs/steam.svg';
+export { default as chartExample } from '../svgs/statistic/Chart.svg';

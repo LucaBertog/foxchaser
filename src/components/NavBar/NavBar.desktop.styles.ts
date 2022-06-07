@@ -18,7 +18,7 @@ export const Container = styled.nav`
   ${alignCenterFlex}
   justify-content: space-between;
 
-  background-color: ${(props) => props.theme.mode.colors.navBar};
+  background-color: ${(props) => props.theme.mode.colors.container};
 
   width: 7.8rem;
   height: 100%;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { chartExample } from '../../assets/styles/Icons';
 
 import {
   Container,
@@ -13,7 +14,7 @@ const StatisticSummary: React.FC = () => (
     <GameRank />
     <GameStatistic>
       <Title>Rankeada 3v3</Title>
-      <Graphics />
+      <Graphics src={chartExample} />
     </GameStatistic>
   </Container>
 );

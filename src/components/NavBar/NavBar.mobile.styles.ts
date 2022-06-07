@@ -8,5 +8,5 @@ export const Container = styled.nav`
   padding: 0.8rem 2.4rem;
 
   width: 100%;
-  background: ${(props) => props.theme.mode.colors.navBar};
+  background: ${(props) => props.theme.mode.colors.container};
 `;

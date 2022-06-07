@@ -21,7 +21,7 @@ export interface Theme {
   colors: {
     body: string;
     text: string;
-    navBar: string;
+    container: string;
     iconDark: string;
     bgIconDark: string;
     iconLight: string;
@@ -41,7 +41,7 @@ export const THEMES: { [key: string]: Theme } = {
     colors: {
       body: COLORS.blue4,
       text: COLORS.white,
-      navBar: COLORS.blue3,
+      container: COLORS.blue3,
       iconDark: COLORS.blue2,
       bgIconDark: COLORS.blue1,
       iconLight: COLORS.white,
