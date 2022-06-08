@@ -1,11 +1,14 @@
 import React from 'react';
 
-import { Container } from './Home.styles';
-import { StatisticSummary } from '../../components';
+import { Container, Main } from './Home.styles';
+import { StatisticSummary, TopNews } from '../../components';
 
 const Home: React.FC = () => (
   <Container>
-    <StatisticSummary />
+    <Main>
+      <StatisticSummary />
+      <TopNews />
+    </Main>
   </Container>
 );
 

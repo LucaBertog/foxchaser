@@ -9,3 +9,13 @@ export const Container = styled.div`
 
   padding: 3rem 1.6rem;
 `;
+
+export const Main = styled.div`
+  width: 100%;
+  @media (min-width: 1000px) {
+    width: 60%;
+  }
+
+  display: flex;
+  flex-direction: column;
+`;
