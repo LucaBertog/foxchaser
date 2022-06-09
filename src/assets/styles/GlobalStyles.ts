@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
   * {
@@ -36,4 +36,15 @@ export default createGlobalStyle`
     width: 100%;
     height: 100%;
   }
+`;
+
+export const Container = styled.section`
+  padding: 5.6rem 0;
+  @media (min-width: 768px) {
+    padding: 0 0 0 7.8rem;
+  }
+
+  width: 100%;
+  height: 100%;
+  background: ${(props) => props.theme.mode.colors.body};
 `;

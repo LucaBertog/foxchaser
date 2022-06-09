@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes as Switch } from 'react-router-dom';
 import { NavBar } from '../components';
 import { Home, Index } from '../pages';
-import { GlobalContainer } from '../assets/styles/GlobalContainer';
+import { Container } from '../assets/styles/GlobalStyles';
 
 const Routes: React.FC = () => (
   <Switch>
@@ -10,10 +10,12 @@ const Routes: React.FC = () => (
     <Route
       path='/home'
       element={
-        <GlobalContainer>
+        <>
           <NavBar />
-          <Home />
-        </GlobalContainer>
+          <Container>
+            <Home />
+          </Container>
+        </>
       }
     />
   </Switch>

@@ -13,8 +13,6 @@ const TopNews: React.FC = () => (
     <Separator />
     <OtherTopNews />
     <Separator />
-    <OtherTopNews />
-    <Separator />
   </Container>
 );
 

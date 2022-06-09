@@ -13,8 +13,8 @@ const NavBar: React.FC = () => {
 
   return windowWidth < 768 ? (
     <>
-      <Mobile />
       <Header />
+      <Mobile />
     </>
   ) : (
     <Desktop />

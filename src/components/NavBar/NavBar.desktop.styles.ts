@@ -15,6 +15,9 @@ const alignCenterFlex = css`
 `;
 
 export const Container = styled.nav`
+  position: fixed;
+  left: 0;
+
   ${alignCenterFlex}
   justify-content: space-between;
 
