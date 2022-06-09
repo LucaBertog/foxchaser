@@ -9,11 +9,12 @@ export const Img = styled.div<{ url: string }>`
   height: 10vh;
   margin-right: 0.8rem;
 
-  background: linear-gradient(360deg, #060911 0%, rgba(6, 9, 17, 0) 67%),
+  background: ${(props) => props.theme.mode.colors.imageGradient},
     url(${(props) => props.url});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+
   border: 1px solid ${(props) => props.theme.mode.colors.container};
   border-radius: 1.6rem;
 `;

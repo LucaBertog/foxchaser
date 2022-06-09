@@ -17,7 +17,7 @@ export const ImgWrapper = styled.div`
 export const Img = styled.div<{ url: string }>`
   width: 100%;
   height: 20vh;
-  background: linear-gradient(360deg, #060911 0%, rgba(6, 9, 17, 0) 67%),
+  background: ${(props) => props.theme.mode.colors.imageGradient},
     url(${(props) => props.url});
   background-repeat: no-repeat;
   background-position: center;

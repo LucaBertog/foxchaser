@@ -31,6 +31,7 @@ export interface Theme {
     bgGamesWrapper: string;
     bgIconsGames: string;
     bgIconExit: string;
+    imageGradient: string;
   };
 }
 
@@ -51,6 +52,8 @@ export const THEMES: { [key: string]: Theme } = {
       bgGamesWrapper: COLORS.blue2,
       bgIconsGames: COLORS.blue1,
       bgIconExit: 'rgba(71, 99, 172, 0.66)',
+      imageGradient:
+        'linear-gradient(360deg, #060911 0%, rgba(6, 9, 17, 0) 67%)',
     },
   },
 };
