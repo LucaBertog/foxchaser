@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, Img } from './OtherTopNews.styles';
+import { Container, Img, SaveNews } from './OtherTopNews.styles';
 import {
   ContentWrapper,
   Info,
@@ -27,6 +27,7 @@ const OtherTopNews: React.FC = () => (
         VALORANT Masters: NiP estreia com vitória em cima da Fnatic
       </Title>
     </ContentWrapper>
+    <SaveNews />
   </Container>
 );
 

@@ -44,4 +44,6 @@ export const SaveNews = styled(Ribbon)`
   position: absolute;
   top: 0.8rem;
   right: 0.8rem;
+
+  cursor: pointer;
 `;

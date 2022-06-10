@@ -10,13 +10,15 @@ export const ContentWrapper = styled.div`
   overflow-x: scroll;
 
   @media (min-width: 768px) {
-    width: 85%;
+    width: 80%;
     position: absolute;
-    bottom: 2.4rem;
-    left: 2.4rem;
+
+    bottom: 1.6rem;
+    left: 1.6rem;
   }
 `;
 export const Info = styled.div`
+  width: 85%;
   display: flex;
   align-items: center;
   overflow-x: scroll;

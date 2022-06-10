@@ -1,3 +1,4 @@
+import { Ribbon } from 'akar-icons';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -33,4 +34,20 @@ export const Img = styled.div<{ url: string }>`
 
   border: 1px solid ${(props) => props.theme.mode.colors.container};
   border-radius: 1.6rem;
+`;
+
+export const SaveNews = styled(Ribbon)`
+  width: 2.4rem;
+  height: 2.4rem;
+  color: ${(props) => props.theme.mode.colors.iconLight};
+
+  position: absolute;
+  top: 0;
+  right: 0.8rem;
+
+  @media (min-width: 768px) {
+    top: 0.8rem;
+  }
+
+  cursor: pointer;
 `;
