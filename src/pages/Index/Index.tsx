@@ -9,11 +9,19 @@ import {
   End,
   Footer,
 } from '../../components/Index/index';
-import { Container, Banner, Separator } from './Index.styles';
+import { Container, Banner, Separator, BakgroundVideo } from './Index.styles';
+import videoWebm from '../../assets/videos/banner.webm';
+import videoMp4 from '../../assets/videos/banner.mp4';
+import thumbnail from '../../assets/imgs/thumbnail.jpg';
 
 const Home: React.FC = () => (
   <Container>
     <Banner>
+      <BakgroundVideo autoPlay loop poster={thumbnail}>
+        <source src={videoWebm} type='video/webm' />
+        <source src={videoMp4} type='video/mp4' />
+        Your browser does not support the video tag.
+      </BakgroundVideo>
       <Header />
       <CallToAction />
       <Summary />
