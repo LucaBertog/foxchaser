@@ -28,6 +28,7 @@ export const GameRank = styled.div`
     width: 50%;
     margin-right: 2.4rem;
   }
+  margin-bottom: 1.6rem;
 `;
 export const GameStatistic = styled.div`
   display: flex;
