@@ -3,10 +3,18 @@ import styled from 'styled-components';
 import { Ribbon } from 'akar-icons';
 
 export const Container = styled.div`
+  width: 100%;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  position: relative;
+
+  @media (min-width: 768px) {
+    margin-right: 1.6rem;
+  }
 `;
 
 export const ImgWrapper = styled.div`
@@ -16,6 +24,10 @@ export const ImgWrapper = styled.div`
 export const Img = styled.div<{ url: string }>`
   width: 100%;
   height: 20vh;
+  @media (min-width: 768px) {
+    min-height: 27rem;
+  }
+
   background: ${(props) => props.theme.mode.colors.imageGradient},
     url(${(props) => props.url});
   background-repeat: no-repeat;

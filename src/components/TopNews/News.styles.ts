@@ -8,10 +8,18 @@ export const ContentWrapper = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   overflow-x: scroll;
+
+  @media (min-width: 768px) {
+    width: 85%;
+    position: absolute;
+    bottom: 2.4rem;
+    left: 2.4rem;
+  }
 `;
 export const Info = styled.div`
   display: flex;
   align-items: center;
+  overflow-x: scroll;
 `;
 export const Logo = styled.img`
   width: 1.4rem;
@@ -42,7 +50,6 @@ export const NewsDate = styled.p`
 export const Title = styled.h4<{ isOther?: boolean }>`
   ${(props) => (props.isOther ? fonts.N2 : fonts.N)}
   color: ${(props) => props.theme.mode.colors.text};
-  white-space: pre-wrap;
   overflow-x: scroll;
   height: 50%;
 `;

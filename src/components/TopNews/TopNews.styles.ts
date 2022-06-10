@@ -5,6 +5,10 @@ export const Container = styled.section`
 
   display: flex;
   flex-direction: column;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 
 export const Separator = styled.div`
@@ -18,4 +22,15 @@ export const Separator = styled.div`
   margin: 1.6rem 0;
 
   background: ${(props) => props.theme.mode.colors.container};
+`;
+
+export const WrapperOtherNews = styled.div`
+  @media (min-width: 768px) {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 `;
