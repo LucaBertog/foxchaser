@@ -10,6 +10,7 @@ export const Container = styled.section`
   align-items: center;
   @media (min-width: 768px) {
     flex-direction: row;
+    margin-bottom: 4.8rem;
   }
 `;
 
@@ -24,11 +25,11 @@ const containerCSS = css`
 
 export const GameRank = styled.div`
   ${containerCSS}
+  margin-bottom: 1.6rem;
   @media (min-width: 768px) {
     width: 50%;
-    margin-right: 2.4rem;
+    margin: 0 2.4rem 0 0;
   }
-  margin-bottom: 1.6rem;
 `;
 export const GameStatistic = styled.div`
   display: flex;
