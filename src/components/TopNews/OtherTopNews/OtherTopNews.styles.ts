@@ -7,6 +7,7 @@ export const Container = styled.div`
 export const Img = styled.div<{ url: string }>`
   width: 40%;
   height: 10vh;
+  min-height: 5rem;
   margin-right: 0.8rem;
 
   background: ${(props) => props.theme.mode.colors.imageGradient},

@@ -11,7 +11,6 @@ export const Container = styled.div`
 
 export const ImgWrapper = styled.div`
   width: 100%;
-  height: 100%;
   position: relative;
 `;
 export const Img = styled.div<{ url: string }>`

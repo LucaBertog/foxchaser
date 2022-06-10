@@ -8,6 +8,9 @@ export default createGlobalStyle`
     outline: 0;
     border: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    ::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   html {
