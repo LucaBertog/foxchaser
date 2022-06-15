@@ -50,7 +50,7 @@ export const NewsDate = styled.p`
 `;
 
 export const Title = styled.h4<{ isOther?: boolean }>`
-  ${(props) => (props.isOther ? fonts.N2 : fonts.N)}
+  ${(props) => (props.isOther ? fonts.CaptarN : fonts.SmallN)}
   color: ${(props) => props.theme.mode.colors.text};
   overflow-x: scroll;
   height: 50%;

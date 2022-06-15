@@ -49,21 +49,21 @@ export const Captar = css`
   line-height: 1.6rem;
 `;
 
-export const N = css`
+export const SmallN = css`
   font-family: 'Roboto';
   font-weight: 500;
   font-size: 1.4rem;
-  line-height: 2.4rem;
+  line-height: 2rem;
 `;
 
-export const N2 = css`
+export const CaptarN = css`
   font-family: 'Roboto';
   font-weight: 500;
   font-size: 1.2rem;
   line-height: 1.6rem;
 `;
 
-export const NO = css`
+export const ParagraphN = css`
   font-family: 'Roboto';
   font-weight: 500;
   font-size: 1.6rem;

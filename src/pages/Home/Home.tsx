@@ -1,13 +1,14 @@
 import React from 'react';
 
 import { Container, Main } from './Home.styles';
-import { StatisticSummary, TopNews } from '../../components';
+import { OfferCards, StatisticSummary, TopNews } from '../../components';
 
 const Home: React.FC = () => (
   <Container>
     <Main>
       <StatisticSummary />
       <TopNews />
+      <OfferCards />
     </Main>
   </Container>
 );
