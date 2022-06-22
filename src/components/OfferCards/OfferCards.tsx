@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Glide from '@glidejs/glide';
 
-import { Container } from './OfferCards.styles';
+import { Container, ArrowLeft, ArrowRight } from './OfferCards.styles';
 import OfferCard from './OfferCard/OfferCard';
 import { steam } from '../../assets/styles/Icons';
 
@@ -25,6 +25,15 @@ const OfferCards: React.FC = () => {
 
   return (
     <Container className='glide'>
+      <div className='glide__arrows' data-glide-el='controls'>
+        <button
+          type='button'
+          className='glide__arrow glide__arrow--left'
+          data-glide-dir='<'
+        >
+          <ArrowLeft />
+        </button>
+      </div>
       <div className='glide__track' data-glide-el='track'>
         <ul className='glide__slides'>
           <OfferCard
@@ -82,6 +91,15 @@ const OfferCards: React.FC = () => {
             price='R$ 100'
           />
         </ul>
+      </div>
+      <div className='glide__arrows' data-glide-el='controls'>
+        <button
+          type='button'
+          className='glide__arrow glide__arrow--right'
+          data-glide-dir='>'
+        >
+          <ArrowRight />
+        </button>
       </div>
     </Container>
   );
