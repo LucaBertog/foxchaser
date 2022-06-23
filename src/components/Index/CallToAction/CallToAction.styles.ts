@@ -62,7 +62,7 @@ export const BtnCreateAccount = styled.button`
   background: ${(props) => props.theme.colors.button2};
   filter: drop-shadow(0px 0px 4px #fd9800);
 
-  > a {
+  > span {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 300;
@@ -81,7 +81,7 @@ export const BtnCreateAccount = styled.button`
   margin-bottom: 0.8rem;
 `;
 export const BtnNoLogin = styled.button`
-  > a {
+  > span {
     font-family: 'IBM Plex Sans';
     font-weight: 400;
     font-size: 1.4rem;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes as Switch } from 'react-router-dom';
 import { NavBar } from '../components';
-import { Home, Index } from '../pages';
+import { Home, Index, Login, Register } from '../pages';
 import { Container } from '../assets/styles/GlobalStyles';
 
 const Routes: React.FC = () => (
@@ -18,6 +18,8 @@ const Routes: React.FC = () => (
         </>
       }
     />
+    <Route path='/login' element={<Login />} />
+    <Route path='/register' element={<Register />} />
   </Switch>
 );
 

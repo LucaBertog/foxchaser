@@ -20,12 +20,16 @@ const CallToAction: React.FC = () => (
         <Description>O que você precisa, você encontra aqui.</Description>
       </InfoWrapper>
       <ButtonsWrapper>
-        <BtnCreateAccount>
-          <Link to='/register/'>Criar uma conta</Link>
-        </BtnCreateAccount>
-        <BtnNoLogin>
-          <Link to='/home/'>Entrar sem login</Link>
-        </BtnNoLogin>
+        <Link to='/register'>
+          <BtnCreateAccount>
+            <span>Criar uma conta</span>
+          </BtnCreateAccount>
+        </Link>
+        <Link to='/home'>
+          <BtnNoLogin>
+            <span>Entrar sem login</span>
+          </BtnNoLogin>
+        </Link>
       </ButtonsWrapper>
     </Wrapper>
   </Container>
