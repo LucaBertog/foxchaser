@@ -47,6 +47,7 @@ export const Container = styled.section`
     padding: 0 0 0 7.8rem;
   }
 
+  display: flex;
   width: 100%;
   min-height: 100%;
   background: ${(props) => props.theme.mode.colors.body};

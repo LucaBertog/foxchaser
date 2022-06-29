@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes as Switch } from 'react-router-dom';
-import { NavBar } from '../components';
+import { NavBar, Sidebar } from '../components';
 import { Home, Index, Login, Register } from '../pages';
 import { Container } from '../assets/styles/GlobalStyles';
 
@@ -14,6 +14,7 @@ const Routes: React.FC = () => (
           <NavBar />
           <Container>
             <Home />
+            <Sidebar />
           </Container>
         </>
       }

@@ -2,19 +2,19 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-
-  position: relative;
   width: 100%;
+  @media (min-width: 1280px) {
+    width: 70%;
+  }
+  position: relative;
+
   height: 100%;
 
-  padding: 3rem 1.6rem;
+  padding: 2.4rem 1.6rem;
 `;
 
 export const Main = styled.div`
   width: 100%;
-  @media (min-width: 1000px) {
-    width: 60%;
-  }
 
   display: flex;
   flex-direction: column;
