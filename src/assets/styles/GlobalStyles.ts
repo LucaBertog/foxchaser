@@ -47,6 +47,10 @@ export const Container = styled.section`
     padding: 0 0 0 7.8rem;
   }
 
+  @media (min-width: 1100px) {
+    padding: 2.4rem min(9.4rem, 5%) 0 calc(7.8rem + min(9.4rem, 5%));
+  }
+
   display: flex;
   width: 100%;
   min-height: 100%;

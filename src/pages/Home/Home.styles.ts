@@ -3,8 +3,9 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   width: 100%;
-  @media (min-width: 1280px) {
+  @media (min-width: 1100px) {
     width: 70%;
+    padding: 0 5.6rem 0 0;
   }
   position: relative;
 

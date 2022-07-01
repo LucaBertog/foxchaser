@@ -81,7 +81,7 @@ export const Discount = styled.p<{ accentColor: string }>`
   color: ${(props) => props.theme.mode.colors.text};
   background-color: ${(props) => props.accentColor};
 
-  padding: 0.2rem 0.3rem;
+  padding: 0.2rem 0.5rem;
   border-radius: 2.4rem;
 `;
 export const Price = styled.p`

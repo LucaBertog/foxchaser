@@ -8,6 +8,8 @@ const iconCSS = css`
 `;
 
 export const Container = styled.section`
+  position: relative;
+
   margin-top: 4.8rem;
 
   display: flex;
@@ -32,11 +34,30 @@ export const Container = styled.section`
     align-items: center;
 
     height: 100%;
-    background: ${(props) => props.theme.mode.colors.body};
 
     .glide__arrow {
-      background: none;
+      cursor: pointer;
       height: 100%;
+    }
+
+    .glide__arrow--left {
+      background: linear-gradient(
+        270deg,
+        rgba(0, 0, 0, 0.4) 0%,
+        ${(props) => props.theme.mode.colors.body} 100%
+      );
+      position: absolute;
+      left: 0;
+    }
+
+    .glide__arrow--right {
+      background: linear-gradient(
+        270deg,
+        ${(props) => props.theme.mode.colors.body} 0%,
+        rgba(0, 0, 0, 0.4) 100%
+      );
+      position: absolute;
+      right: 0;
     }
   }
 

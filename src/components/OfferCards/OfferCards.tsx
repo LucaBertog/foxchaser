@@ -13,6 +13,15 @@ const OfferCards: React.FC = () => {
         768: {
           perView: 3,
         },
+        1100: {
+          perView: 5,
+        },
+        1400: {
+          perView: 4,
+        },
+        100000: {
+          perView: 5,
+        },
       },
       gap: 16,
       bound: true,
@@ -46,7 +55,7 @@ const OfferCards: React.FC = () => {
             price='R$ 100'
           />{' '}
           <OfferCard
-            accentColor='#1BC200'
+            accentColor='#121212'
             gameImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_kBqbIYZaZEfstssFiKSNtQPetyj8rUYI9ONYRuIaBlpe9v4JoR2-Ova6QHIZuGFDORI&usqp=CAU'
             bgColor='#000'
             logoEnt={steam}
@@ -55,7 +64,7 @@ const OfferCards: React.FC = () => {
             price='R$ 100'
           />{' '}
           <OfferCard
-            accentColor='#1BC200'
+            accentColor='#121212'
             gameImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_kBqbIYZaZEfstssFiKSNtQPetyj8rUYI9ONYRuIaBlpe9v4JoR2-Ova6QHIZuGFDORI&usqp=CAU'
             bgColor='#000'
             logoEnt={steam}
@@ -64,7 +73,7 @@ const OfferCards: React.FC = () => {
             price='R$ 100'
           />{' '}
           <OfferCard
-            accentColor='#1BC200'
+            accentColor='#121212'
             gameImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_kBqbIYZaZEfstssFiKSNtQPetyj8rUYI9ONYRuIaBlpe9v4JoR2-Ova6QHIZuGFDORI&usqp=CAU'
             bgColor='#000'
             logoEnt={steam}
@@ -73,7 +82,7 @@ const OfferCards: React.FC = () => {
             price='R$ 100'
           />{' '}
           <OfferCard
-            accentColor='#1BC200'
+            accentColor='#121212'
             gameImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_kBqbIYZaZEfstssFiKSNtQPetyj8rUYI9ONYRuIaBlpe9v4JoR2-Ova6QHIZuGFDORI&usqp=CAU'
             bgColor='#000'
             logoEnt={steam}
@@ -82,7 +91,7 @@ const OfferCards: React.FC = () => {
             price='R$ 100'
           />{' '}
           <OfferCard
-            accentColor='#1BC200'
+            accentColor='#121212'
             gameImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_kBqbIYZaZEfstssFiKSNtQPetyj8rUYI9ONYRuIaBlpe9v4JoR2-Ova6QHIZuGFDORI&usqp=CAU'
             bgColor='#000'
             logoEnt={steam}
