@@ -15,6 +15,10 @@ export const Wrapper = styled.div`
   align-items: center;
   max-width: 1400px;
   width: 100%;
+
+  & > a {
+    text-decoration: none;
+  }
 `;
 
 export const Logo = styled.img`
