@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 
+import * as fonts from '../../assets/styles/Fonts';
 import backgroundImg from '../../assets/imgs/backgroundAuth.png';
 
 export const Container = styled.div`
@@ -57,11 +58,7 @@ export const WrapperNav = styled.div<{ isPageLogin: boolean | undefined }>`
   & > div > a {
     text-decoration: none;
 
-    font-family: 'IBM Plex Sans';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 2rem;
-    line-height: 4.8rem;
+    ${fonts.H3_1}
 
     color: #060911;
   }

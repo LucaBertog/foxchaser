@@ -76,3 +76,17 @@ export const ButtonFont = css`
   font-size: 1.6rem;
   line-height: 2.4rem;
 `;
+
+export const H3_1 = css`
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 4.8rem;
+`;
+
+export const H3N = css`
+  font-family: 'Alliance No.1';
+  font-weight: 600;
+  font-size: 2.6rem;
+  line-height: 4.8rem;
+`;
