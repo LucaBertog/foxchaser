@@ -14,24 +14,15 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
 
-    > input:not([type='submit']) {
+    input:not([type='submit']) {
       width: 100%;
 
       background: none;
       ${fonts.H3_1}
       height: 5rem;
-
-      border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-
-      &::placeholder {
-        ${fonts.H3_1}
-        font-weight: 400;
-      }
-
-      margin-bottom: 3.2rem;
     }
 
-    > input[type='submit'] {
+    input[type='submit'] {
       width: 100%;
       height: 5.6rem;
       padding: 0.4rem 0;
@@ -52,12 +43,58 @@ export const Container = styled.div`
 
 export const Title = styled.h1`
   ${fonts.H3N}
+  color: ${(props) => props.theme.colors.blue4};
 
   margin-bottom: 3.2rem;
+`;
+
+export const WrapperInput = styled.div`
+  position: relative;
+  width: 100%;
+
+  margin-bottom: 3.2rem;
+
+  > label {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    ${fonts.H3_1}
+    font-weight: 400;
+    color: #757575;
+
+    transition: all 0.3s ease;
+  }
+
+  /* ${(props) =>
+    `transform: translateY(-3rem);
+    font-size: 1.5rem;
+    color: #707;`} */
+
+  > input:focus ~ label {
+    transform: translateY(-3rem);
+    font-size: 1.5rem;
+    color: ${(props) => props.theme.colors.blue4};
+  }
+
+  > input:focus + div {
+    background: ${(props) => props.theme.colors.blue4};
+  }
 `;
 
 export const HiddenInput = styled.input`
   width: 0 !important;
   height: 0 !important;
   margin: 0 !important;
+`;
+
+export const UnderLine = styled.div`
+  position: absolute;
+  bottom: 0;
+
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.5);
+
+  transition: all 0.3s ease;
 `;
