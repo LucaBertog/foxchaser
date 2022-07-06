@@ -8,6 +8,16 @@ const animationCSS = css`
   color: ${(props) => props.theme.colors.blue4};
 `;
 
+const errorCSS = css`
+  > div {
+    background: #ff0000;
+  }
+
+  > label {
+    color: #ff0000;
+  }
+`;
+
 export const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -54,7 +64,7 @@ export const Title = styled.h1`
   margin-bottom: 3.2rem;
 `;
 
-export const WrapperInput = styled.div<{ isEmpty: string }>`
+export const WrapperInput = styled.div<{ inputValue: string; error: any }>`
   position: relative;
   width: 100%;
 
@@ -63,7 +73,7 @@ export const WrapperInput = styled.div<{ isEmpty: string }>`
   > label {
     position: absolute;
     left: 0;
-    bottom: 0;
+    top: 0;
 
     ${fonts.H3_1}
     font-weight: 400;
@@ -72,7 +82,7 @@ export const WrapperInput = styled.div<{ isEmpty: string }>`
     transition: all 0.3s ease;
   }
 
-  ${(props) => props.isEmpty && `> input ~ label { ${animationCSS} }`}
+  ${(props) => props.inputValue && `> input ~ label { ${animationCSS} }`}
 
   > input:focus ~ label {
     ${animationCSS}
@@ -81,6 +91,14 @@ export const WrapperInput = styled.div<{ isEmpty: string }>`
   > input:focus + div {
     background: ${(props) => props.theme.colors.blue4};
   }
+
+  > p {
+    ${fonts.Captar}
+    color: #ff0000;
+    margin-top: 0.8rem;
+  }
+
+  ${(props) => props.error && errorCSS}
 `;
 
 export const HiddenInput = styled.input`
@@ -90,9 +108,6 @@ export const HiddenInput = styled.input`
 `;
 
 export const UnderLine = styled.div`
-  position: absolute;
-  bottom: 0;
-
   width: 100%;
   height: 1px;
   background: rgba(0, 0, 0, 0.5);

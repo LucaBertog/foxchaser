@@ -1,25 +1,24 @@
-/* eslint-disable no-return-assign */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-import {
-  Container,
-  Title,
-  HiddenInput,
-  UnderLine,
-  WrapperInput,
-} from '../AuthForm.styles';
+import { Container, Title, UnderLine, WrapperInput } from '../AuthForm.styles';
 import { AuthContainer } from '../../../components';
 
 const schema = yup
   .object()
   .shape({
-    email: yup.string().email('Email errado').required(),
-    password: yup.string().min(4, 'Minimo de 4 caracteres').required(),
+    email: yup
+      .string()
+      .email('E-mail inválido')
+      .required('E-mail é obrigatório'),
+    password: yup
+      .string()
+      .min(4, 'Mínimo de 4 caracteres')
+      .required('Senha é obrigatória'),
   })
   .required();
 
@@ -38,28 +37,23 @@ const Login: React.FC = () => {
   const emailError = errors.email as any;
   const passwordError = errors.password as any;
 
-  console.log(watch('email'), errors);
-
   return (
     <AuthContainer isPageLogin>
       <Container>
         <Title>Iniciar sessão</Title>
 
-        <form onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
-          <HiddenInput {...register('userName_')} />
-          <HiddenInput type='password' />
-
-          <WrapperInput isEmpty={watch('email')}>
-            <p>{emailError?.message}</p>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <WrapperInput inputValue={watch('email')} error={emailError}>
             <input {...register('email')} id='email' />
             <UnderLine />
             <label htmlFor='email'>E-mail</label>
+            <p>{emailError?.message}</p>
           </WrapperInput>
-          <WrapperInput isEmpty={watch('password')}>
-            <p>{passwordError?.message}</p>
+          <WrapperInput inputValue={watch('password')} error={passwordError}>
             <input type='password' {...register('password')} id='password' />
             <UnderLine />
             <label htmlFor='password'>Senha</label>
+            <p>{passwordError?.message}</p>
           </WrapperInput>
 
           <input type='submit' value='Fazer login' />
