@@ -16,7 +16,8 @@ import {
 import { AuthContainer } from '../../../components';
 
 const schema = yup
-  .object({
+  .object()
+  .shape({
     email: yup.string().email('Email errado').required(),
     password: yup.string().min(4, 'Minimo de 4 caracteres').required(),
   })
@@ -37,7 +38,7 @@ const Login: React.FC = () => {
   const emailError = errors.email as any;
   const passwordError = errors.password as any;
 
-  console.log(watch('email'), emailError);
+  console.log(watch('email'), errors);
 
   return (
     <AuthContainer isPageLogin>
@@ -48,13 +49,13 @@ const Login: React.FC = () => {
           <HiddenInput {...register('userName_')} />
           <HiddenInput type='password' />
 
-          <WrapperInput>
+          <WrapperInput isEmpty={watch('email')}>
             <p>{emailError?.message}</p>
             <input {...register('email')} id='email' />
             <UnderLine />
             <label htmlFor='email'>E-mail</label>
           </WrapperInput>
-          <WrapperInput>
+          <WrapperInput isEmpty={watch('password')}>
             <p>{passwordError?.message}</p>
             <input type='password' {...register('password')} id='password' />
             <UnderLine />

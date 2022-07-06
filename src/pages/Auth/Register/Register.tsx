@@ -26,6 +26,7 @@ const Register: React.FC = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -46,19 +47,19 @@ const Register: React.FC = () => {
           <HiddenInput {...register('userName_')} />
           <HiddenInput type='password' />
 
-          <WrapperInput>
+          <WrapperInput isEmpty={watch('userName')}>
             <p>{userNameError?.message}</p>
             <input {...register('userName')} id='userName' />
             <UnderLine />
             <label htmlFor='userName'>Nome de usuário</label>
           </WrapperInput>
-          <WrapperInput>
+          <WrapperInput isEmpty={watch('email')}>
             <p>{emailError?.message}</p>
             <input {...register('email')} id='email' />
             <UnderLine />
             <label htmlFor='email'>E-mail</label>
           </WrapperInput>
-          <WrapperInput>
+          <WrapperInput isEmpty={watch('password')}>
             <p>{passwordError?.message}</p>
             <input type='password' {...register('password')} id='password' />
             <UnderLine />

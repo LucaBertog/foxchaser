@@ -1,6 +1,12 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import * as fonts from '../../assets/styles/Fonts';
+
+const animationCSS = css`
+  transform: translateY(-3rem);
+  font-size: 1.5rem;
+  color: ${(props) => props.theme.colors.blue4};
+`;
 
 export const Container = styled.div`
   width: 100%;
@@ -48,7 +54,7 @@ export const Title = styled.h1`
   margin-bottom: 3.2rem;
 `;
 
-export const WrapperInput = styled.div`
+export const WrapperInput = styled.div<{ isEmpty: string }>`
   position: relative;
   width: 100%;
 
@@ -66,15 +72,10 @@ export const WrapperInput = styled.div`
     transition: all 0.3s ease;
   }
 
-  /* ${(props) =>
-    `transform: translateY(-3rem);
-    font-size: 1.5rem;
-    color: #707;`} */
+  ${(props) => props.isEmpty && `> input ~ label { ${animationCSS} }`}
 
   > input:focus ~ label {
-    transform: translateY(-3rem);
-    font-size: 1.5rem;
-    color: ${(props) => props.theme.colors.blue4};
+    ${animationCSS}
   }
 
   > input:focus + div {
