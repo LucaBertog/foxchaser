@@ -1,4 +1,5 @@
 import React from 'react';
+import Reveal from 'react-reveal/Reveal';
 
 import {
   Container,
@@ -25,28 +26,32 @@ import {
 
 const Statistics: React.FC = () => (
   <Container>
-    <WrapperTitle>
-      <Line size='5.8rem' />
-      <Title>Estatísticas</Title>
-      <Line size='1.6rem' />
-    </WrapperTitle>
-    <Description>
-      Detalhados e variados, de todos os seus jogos favoritos
-    </Description>
-    <Carousel>
-      <Img src={csgoImg} />
-      <Img src={lolImg} />
-      <Img src={valorantImg} />
-    </Carousel>
-    <CompatiblePlatforms>
-      <TitlePlatforms>Plataformas compatíveis</TitlePlatforms>
-      <WrapperIcons>
-        <Icon src={playstationIndex} />
-        <Icon src={xbox} />
-        <Icon src={steamIndex} />
-        <Icon src={epicGames} />
-      </WrapperIcons>
-    </CompatiblePlatforms>
+    <Reveal>
+      <WrapperTitle>
+        <Line size='5.8rem' />
+        <Title>Estatísticas</Title>
+        <Line size='1.6rem' />
+      </WrapperTitle>
+
+      <Description>
+        Detalhados e variados, de todos os seus jogos favoritos
+      </Description>
+
+      <Carousel>
+        <Img src={csgoImg} />
+        <Img src={lolImg} />
+        <Img src={valorantImg} />
+      </Carousel>
+      <CompatiblePlatforms>
+        <TitlePlatforms>Plataformas compatíveis</TitlePlatforms>
+        <WrapperIcons>
+          <Icon src={playstationIndex} />
+          <Icon src={xbox} />
+          <Icon src={steamIndex} />
+          <Icon src={epicGames} />
+        </WrapperIcons>
+      </CompatiblePlatforms>
+    </Reveal>
   </Container>
 );
 

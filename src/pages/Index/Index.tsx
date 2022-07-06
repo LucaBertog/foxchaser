@@ -27,6 +27,7 @@ const Home: React.FC = () => (
       <Summary />
     </Banner>
     <Separator color='#f3f3f3' />
+    <div id='trigger1' />
     <Statistics />
     <Separator color='#1D222E' />
     <CommunityNotices />
