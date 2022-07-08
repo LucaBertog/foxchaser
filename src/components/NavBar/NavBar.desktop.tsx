@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
   Container,
@@ -39,72 +39,82 @@ import {
   valorant,
   rocketLeague,
 } from '../../assets/styles/Icons';
+import { SearchBar } from '../../components';
 
-const Desktop: React.FC = () => (
-  <Container>
-    <Wrapper>
-      <LogoWrapper>
-        <Logo src={logoFoxChaser} />
-      </LogoWrapper>
-      <HeaderWrapper>
-        <AvatarWrapper>
-          <ExitWrapper>
-            <Exit />
-          </ExitWrapper>
-          <Avatar src={emptyImg} />
-        </AvatarWrapper>
-        <IconWrapper>
-          <Home />
+const Desktop: React.FC = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    window.addEventListener('resize', () => setWindowWidth(window.innerWidth));
+  }, []);
+
+  return (
+    <Container>
+      <Wrapper>
+        <LogoWrapper>
+          <Logo src={logoFoxChaser} />
+        </LogoWrapper>
+        <HeaderWrapper>
+          <AvatarWrapper>
+            <ExitWrapper>
+              <Exit />
+            </ExitWrapper>
+            <Avatar src={emptyImg} />
+          </AvatarWrapper>
+          <IconWrapper>
+            <Home />
+          </IconWrapper>
+          {windowWidth > 768 && windowWidth < 1100 && <SearchBar isMobile />}
+          <IconWrapper>
+            <Notifications />
+          </IconWrapper>
+        </HeaderWrapper>
+        <GamesWrapper>
+          <IconWrapper isGame>
+            <Games />
+          </IconWrapper>
+          <Separator isInsideGames />
+          <IconWrapper isGames>
+            <Playstation url={playstation} />
+          </IconWrapper>
+          <IconWrapper isGames>
+            <Steam url={steam} />
+          </IconWrapper>
+          <Separator isSmall isInsideGames />
+          <IconWrapper isGames>
+            <Csgo url={csgo} />
+          </IconWrapper>
+          <IconWrapper isGames>
+            <Valorant url={valorant} />
+          </IconWrapper>
+          <IconWrapper isGames>
+            <RocketLeague url={rocketLeague} />
+          </IconWrapper>
+        </GamesWrapper>
+        <FooterWrapper>
+          <Separator />
+          <IconWrapper>
+            <News />
+          </IconWrapper>
+          <IconWrapper>
+            <Chat />
+          </IconWrapper>
+          <IconWrapper>
+            <Bookmark />
+          </IconWrapper>
+          <Separator />
+        </FooterWrapper>
+      </Wrapper>
+      <Wrapper>
+        <IconWrapper isSmall>
+          <Support />
         </IconWrapper>
-        <IconWrapper>
-          <Notifications />
+        <IconWrapper isSmall>
+          <Settings />
         </IconWrapper>
-      </HeaderWrapper>
-      <GamesWrapper>
-        <IconWrapper isGame>
-          <Games />
-        </IconWrapper>
-        <Separator isInsideGames />
-        <IconWrapper isGames>
-          <Playstation url={playstation} />
-        </IconWrapper>
-        <IconWrapper isGames>
-          <Steam url={steam} />
-        </IconWrapper>
-        <Separator isSmall isInsideGames />
-        <IconWrapper isGames>
-          <Csgo url={csgo} />
-        </IconWrapper>
-        <IconWrapper isGames>
-          <Valorant url={valorant} />
-        </IconWrapper>
-        <IconWrapper isGames>
-          <RocketLeague url={rocketLeague} />
-        </IconWrapper>
-      </GamesWrapper>
-      <FooterWrapper>
-        <Separator />
-        <IconWrapper>
-          <News />
-        </IconWrapper>
-        <IconWrapper>
-          <Chat />
-        </IconWrapper>
-        <IconWrapper>
-          <Bookmark />
-        </IconWrapper>
-        <Separator />
-      </FooterWrapper>
-    </Wrapper>
-    <Wrapper>
-      <IconWrapper isSmall>
-        <Support />
-      </IconWrapper>
-      <IconWrapper isSmall>
-        <Settings />
-      </IconWrapper>
-    </Wrapper>
-  </Container>
-);
+      </Wrapper>
+    </Container>
+  );
+};
 
 export default Desktop;

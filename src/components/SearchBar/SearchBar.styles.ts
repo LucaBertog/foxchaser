@@ -1,9 +1,30 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Cross, Search as SearchIcon } from 'akar-icons';
 import * as fonts from '../../assets/styles/Fonts';
 
-export const Container = styled.div`
+const mobileCSS = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0;
+
+  > button {
+    justify-content: center;
+    align-items: center;
+  }
+
+  > button > span {
+    display: none;
+  }
+
+  > button > svg {
+    margin: 0;
+  }
+`;
+
+export const Container = styled.div<{ isMobile: true | undefined }>`
   width: 100%;
   height: 5.2rem;
   background: ${(props) => props.theme.mode.colors.container};
@@ -31,6 +52,8 @@ export const Container = styled.div`
     bottom: 0;
     background-color: rebeccapurple;
   }
+
+  ${(props) => props.isMobile && mobileCSS}
 `;
 
 export const Wrapper = styled.button`

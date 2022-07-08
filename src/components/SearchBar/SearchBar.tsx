@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/no-unstable-nested-components */
 import React, { useState } from 'react';
@@ -17,7 +18,7 @@ import {
 
 Modal.setAppElement('#root');
 
-const SearchBar: React.FC = () => {
+const SearchBar: React.FC<{ isMobile?: true | undefined }> = ({ isMobile }) => {
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
 
   const openModal = () => {
@@ -29,7 +30,7 @@ const SearchBar: React.FC = () => {
   };
 
   return (
-    <Container>
+    <Container isMobile={isMobile}>
       <Wrapper onClick={openModal}>
         <Search />
         <span>Pesquisar</span>
