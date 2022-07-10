@@ -32,6 +32,7 @@ const Login: React.FC = () => {
     resolver: yupResolver(schema),
   });
 
+  // eslint-disable-next-line no-console
   const onSubmit = (data: any) => console.log(data, errors);
 
   const emailError = errors.email as any;

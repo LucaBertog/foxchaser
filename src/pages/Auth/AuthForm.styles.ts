@@ -30,6 +30,13 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
 
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus {
+      box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0) inset;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+
     input:not([type='submit']) {
       width: 100%;
 
