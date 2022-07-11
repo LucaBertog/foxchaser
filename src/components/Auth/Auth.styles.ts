@@ -28,18 +28,6 @@ export const Modal = styled.div`
   border-radius: 1.6rem;
 `;
 
-export const Navigation = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  width: 100%;
-  padding: 2.4rem 3.2rem;
-
-  border-radius: 1.6rem;
-
-  background: ${(props) => props.theme.colors.white};
-`;
 export const Logo = styled.img`
   width: 4.6rem;
   height: 4.6rem;

@@ -49,7 +49,7 @@ const Register: React.FC = () => {
   const passwordError = errors.password as any;
 
   return (
-    <AuthContainer>
+    <AuthContainer isPageLogin={false}>
       <Container>
         <Title>Comece sua experiência</Title>
 

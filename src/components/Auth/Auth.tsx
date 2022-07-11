@@ -1,41 +1,32 @@
+/* eslint-disable react/no-children-prop */
 /* eslint-disable no-undef */
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 
-import {
-  Container,
-  Modal,
-  Navigation,
-  Logo,
-  WrapperNav,
-  Content,
-  WrapperLink,
-} from './Auth.styles';
-import { logoFoxChaser } from '../../assets/styles/Icons';
+import { Container, Modal } from './Auth.styles';
+import Desktop from './Nav/Nav.desktop';
+import Mobile from './Nav/Nav.mobile';
 
-// eslint-disable-next-line react/require-default-props
-const Auth: React.FC<{ children: JSX.Element; isPageLogin?: boolean }> = ({
+const Auth: React.FC<{ children: JSX.Element; isPageLogin: boolean }> = ({
   children,
   isPageLogin,
-}) => (
-  <Container>
-    <Modal>
-      <Navigation>
-        <Link to='/'>
-          <Logo src={logoFoxChaser} />
-        </Link>
-        <WrapperNav isPageLogin={isPageLogin}>
-          <WrapperLink>
-            <Link to='/register'>Registrar</Link>
-          </WrapperLink>
-          <WrapperLink>
-            <Link to='/login'>Login</Link>
-          </WrapperLink>
-        </WrapperNav>
-      </Navigation>
-      <Content>{children}</Content>
-    </Modal>
-  </Container>
-);
+}) => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    window.addEventListener('resize', () => setWindowWidth(window.innerWidth));
+  }, []);
+
+  return (
+    <Container>
+      <Modal>
+        {windowWidth < 768 ? (
+          <Mobile isPageLogin={isPageLogin} children={children} />
+        ) : (
+          <Desktop isPageLogin={isPageLogin} children={children} />
+        )}
+      </Modal>
+    </Container>
+  );
+};
 
 export default Auth;
