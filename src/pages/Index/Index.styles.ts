@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import thumbnail from '../../assets/imgs/thumbnail.jpg';
+import thumbnail from '../../assets/imgs/thumbnail.png';
 
 export const Container = styled.div``;
 

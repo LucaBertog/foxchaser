@@ -19,7 +19,7 @@ const Auth: React.FC<{ children: JSX.Element; isPageLogin: boolean }> = ({
   return (
     <Container>
       <Modal>
-        {windowWidth < 768 ? (
+        {windowWidth < 1100 ? (
           <Mobile isPageLogin={isPageLogin} children={children} />
         ) : (
           <Desktop isPageLogin={isPageLogin} children={children} />

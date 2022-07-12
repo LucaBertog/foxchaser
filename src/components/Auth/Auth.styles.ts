@@ -18,6 +18,10 @@ export const Container = styled.div`
 
 export const Modal = styled.div`
   width: 95%;
+  max-width: 1400px;
+  @media (min-width: 1300px) {
+    width: 85%;
+  }
 
   display: flex;
   flex-direction: column;
