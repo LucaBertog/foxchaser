@@ -1,15 +1,17 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { Container, Title, UnderLine, WrapperInput } from '../AuthForm.styles';
 import { AuthContainer, LogoLoader } from '../../../components';
 import { useLoginMutation } from '../../../services/api/auth.api';
+import { addToken, selectToken } from '../../../store/Auth/reducer';
 
 const schema = yup
   .object()
@@ -26,6 +28,9 @@ const schema = yup
   .required();
 
 const Login: React.FC = () => {
+  const location: any = useLocation();
+  const dispatch = useDispatch();
+  const token = useSelector(selectToken);
   const navigate = useNavigate();
   const {
     register,
@@ -37,6 +42,7 @@ const Login: React.FC = () => {
   });
   const [loginUser] = useLoginMutation();
   const [isLoading, setIsLoading] = useState(false);
+  const prevPath = location?.state ? location.state.prevPath : '/';
 
   const onSubmit = async ({ email, password }: any) => {
     try {
@@ -45,9 +51,9 @@ const Login: React.FC = () => {
         email,
         password,
       }).unwrap();
-      console.log(response);
-      toast.success('Logado com sucesso');
+      dispatch(addToken(response.access_token));
       setIsLoading(false);
+      toast.success('Logado com sucesso');
       return navigate('/home/');
     } catch (error: any) {
       setIsLoading(false);
@@ -57,6 +63,12 @@ const Login: React.FC = () => {
       return toast.error('Erro desconhecido');
     }
   };
+
+  useEffect(() => {
+    if (token) {
+      navigate(prevPath);
+    }
+  }, [token, navigate, prevPath]);
 
   const emailError = errors.email as any;
   const passwordError = errors.password as any;

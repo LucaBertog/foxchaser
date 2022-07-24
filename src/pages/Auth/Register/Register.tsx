@@ -1,12 +1,13 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
 import {
   Container,
   Title,
@@ -16,6 +17,7 @@ import {
 } from '../AuthForm.styles';
 import { AuthContainer, LogoLoader } from '../../../components';
 import { useRegisterMutation } from '../../../services/api/auth.api';
+import { selectToken } from '../../../store/Auth/reducer';
 
 const schema = yup
   .object({
@@ -36,6 +38,8 @@ const schema = yup
   .required();
 
 const Register: React.FC = () => {
+  const location: any = useLocation();
+  const token = useSelector(selectToken);
   const navigate = useNavigate();
   const {
     register,
@@ -47,6 +51,7 @@ const Register: React.FC = () => {
   });
   const [registerUser] = useRegisterMutation();
   const [isLoading, setIsLoading] = useState(false);
+  const prevPath = location?.state ? location.state.prevPath : '/';
 
   const onSubmit = async ({ username, email, password }: any) => {
     try {
@@ -67,6 +72,12 @@ const Register: React.FC = () => {
       return toast.error('Erro desconhecido');
     }
   };
+
+  useEffect(() => {
+    if (token) {
+      navigate(prevPath);
+    }
+  }, [token, navigate, prevPath]);
 
   const usernameError = errors.username as any;
   const emailError = errors.email as any;
