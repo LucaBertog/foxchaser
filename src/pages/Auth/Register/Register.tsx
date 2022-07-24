@@ -14,9 +14,8 @@ import {
   UnderLine,
   WrapperInput,
 } from '../AuthForm.styles';
-import { AuthContainer } from '../../../components';
+import { AuthContainer, LogoLoader } from '../../../components';
 import { useRegisterMutation } from '../../../services/api/auth.api';
-import { LogoLoader } from '../../../components/LogoLoader/LogoLoader';
 
 const schema = yup
   .object({
@@ -62,8 +61,6 @@ const Register: React.FC = () => {
       return navigate('/login/');
     } catch (error: any) {
       setIsLoading(false);
-      // eslint-disable-next-line no-console
-      console.log(error);
       if (error.data.errors) {
         return error.data.errors.forEach((err: string) => toast.error(err));
       }
