@@ -52,19 +52,22 @@ const Register: React.FC = () => {
   const onSubmit = async ({ username, email, password }: any) => {
     try {
       setIsLoading(true);
-      const response = await registerUser({
+      await registerUser({
         username,
         email,
         password,
       }).unwrap();
-      toast.success(response.message);
+      toast.success('Conta criada');
       setIsLoading(false);
-      navigate('/login/');
+      return navigate('/login/');
     } catch (error: any) {
       setIsLoading(false);
       // eslint-disable-next-line no-console
-      console.log(error.data);
-      // toast.error(error);
+      console.log(error);
+      if (error.data.errors) {
+        return error.data.errors.forEach((err: string) => toast.error(err));
+      }
+      return toast.error('Erro desconhecido');
     }
   };
 

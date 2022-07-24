@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const baseUrl = 'https://foxchaser-api.onrender.com/auth';
+// const baseUrl = 'https://foxchaser-api.onrender.com/auth';
+const baseUrl = 'http://localhost:8080/auth';
 
 interface User {
   username: string;
