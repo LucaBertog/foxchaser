@@ -50,7 +50,11 @@ export const Container = styled.section`
   }
 
   @media (min-width: 1100px) {
-    padding: 2.4rem min(9.4rem, 5%) 0 calc(7.8rem + min(9.4rem, 5%));
+    padding: 2.4rem 4.8rem 0 calc(7.8rem + 4.8rem);
+  }
+
+  @media (min-width: 1400px) {
+    padding: 2.4rem 10% 0 calc(7.8rem + 10%);
   }
 
   display: flex;
