@@ -1,5 +1,8 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
 
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import {
   Container,
   LogoWrapper,
@@ -40,8 +43,14 @@ import {
   rocketLeague,
 } from '../../assets/styles/Icons';
 import { SearchBar } from '../../components';
+import { selectToken } from '../../store/Auth/reducer';
+import { DecodedUser } from '../../interfaces/decodedUser.interface';
+import { decodeJWT } from '../../services/decode/decodeJwt';
 
 const Desktop: React.FC = () => {
+  const token = useSelector(selectToken);
+  const currentUser = decodeJWT<DecodedUser>(token);
+
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -51,16 +60,20 @@ const Desktop: React.FC = () => {
   return (
     <Container>
       <Wrapper>
-        <LogoWrapper>
-          <Logo src={logoFoxChaser} />
-        </LogoWrapper>
+        <Link to='/home/'>
+          <LogoWrapper>
+            <Logo src={logoFoxChaser} />
+          </LogoWrapper>
+        </Link>
         <HeaderWrapper>
-          <AvatarWrapper>
-            <ExitWrapper>
-              <Exit />
-            </ExitWrapper>
-            <Avatar src={emptyImg} />
-          </AvatarWrapper>
+          <Link to={`/profile/${currentUser._id}`}>
+            <AvatarWrapper>
+              <ExitWrapper>
+                <Exit />
+              </ExitWrapper>
+              <Avatar src={emptyImg} />
+            </AvatarWrapper>
+          </Link>
           <IconWrapper>
             <Home />
           </IconWrapper>
