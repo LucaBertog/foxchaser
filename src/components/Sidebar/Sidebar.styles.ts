@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import StickyBox from 'react-sticky-box';
 
-export const Container = styled(StickyBox)`
+export const Container = styled.div`
   display: none;
   width: 30%;
 
