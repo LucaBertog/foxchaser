@@ -107,7 +107,8 @@ export const Content = styled.div`
 
 export const Image = styled.div<{ url: string }>`
   width: 100%;
-  height: 50rem;
+  height: 60vw;
+  max-height: 40rem;
 
   background-size: contain;
   background-repeat: no-repeat;
