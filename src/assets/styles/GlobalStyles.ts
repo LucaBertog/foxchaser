@@ -62,3 +62,16 @@ export const Container = styled.section`
   min-height: 100%;
   background: ${(props) => props.theme.mode.colors.body};
 `;
+
+export const PostsWrapper = styled.div`
+  width: 100%;
+
+  background: ${(props) => props.theme.mode.colors.container};
+  border-radius: 1.6rem 1.6rem 0 0;
+`;
+
+export const PostSeparator = styled.div`
+  width: 100%;
+  min-height: 0.1px;
+  background: ${(props) => props.theme.mode.colors.separator};
+`;

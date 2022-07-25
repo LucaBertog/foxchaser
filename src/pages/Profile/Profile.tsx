@@ -2,6 +2,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { PostSeparator, PostsWrapper } from '../../assets/styles/GlobalStyles';
 import { Post, ProfileInfo } from '../../components';
 import { ProfileContext } from '../../contexts/Profile.context';
 import { DecodedUser } from '../../interfaces/decodedUser.interface';
@@ -34,11 +35,18 @@ const Profile: React.FC = () => {
     <ProfileContext.Provider value={profileContext}>
       <Container>
         <ProfileInfo />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        <PostsWrapper>
+          <Post />
+          <PostSeparator />
+          <Post />
+          <PostSeparator />
+          <Post />
+          <PostSeparator />
+          <Post />
+          <PostSeparator />
+          <Post />
+          <PostSeparator />
+        </PostsWrapper>
       </Container>
     </ProfileContext.Provider>
   );

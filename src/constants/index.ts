@@ -35,6 +35,7 @@ export interface Theme {
     imageGradient: string;
     borderImg: string;
     weakText: string;
+    separator: string;
   };
 }
 
@@ -46,6 +47,7 @@ export const THEMES: { [key: string]: Theme } = {
       body: COLORS.blue4,
       text: COLORS.white,
       weakText: COLORS.gray,
+      separator: COLORS.blueDivision,
       container: COLORS.blue3,
       iconDark: COLORS.blue2,
       bgIconDark: COLORS.blue1,

@@ -18,9 +18,6 @@ const iconCSS = css`
 
 export const Container = styled.div`
   width: 100%;
-
-  background: ${(props) => props.theme.mode.colors.container};
-  border-radius: 1.6rem;
 `;
 
 export const PostHeader = styled.div`
