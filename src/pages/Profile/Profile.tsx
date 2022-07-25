@@ -2,7 +2,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { ProfileInfo } from '../../components';
+import { Post, ProfileInfo } from '../../components';
 import { ProfileContext } from '../../contexts/Profile.context';
 import { DecodedUser } from '../../interfaces/decodedUser.interface';
 import { decodeJWT } from '../../services/decode/decodeJwt';
@@ -34,6 +34,11 @@ const Profile: React.FC = () => {
     <ProfileContext.Provider value={profileContext}>
       <Container>
         <ProfileInfo />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
       </Container>
     </ProfileContext.Provider>
   );

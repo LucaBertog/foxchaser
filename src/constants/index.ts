@@ -13,6 +13,7 @@ export const COLORS = {
   bluen1: '#606B88',
   orange: '#FF7A00',
   white: '#FFFFFF',
+  gray: '#DEDEDE',
 };
 
 export interface Theme {
@@ -33,6 +34,7 @@ export interface Theme {
     bgIconExit: string;
     imageGradient: string;
     borderImg: string;
+    weakText: string;
   };
 }
 
@@ -43,6 +45,7 @@ export const THEMES: { [key: string]: Theme } = {
     colors: {
       body: COLORS.blue4,
       text: COLORS.white,
+      weakText: COLORS.gray,
       container: COLORS.blue3,
       iconDark: COLORS.blue2,
       bgIconDark: COLORS.blue1,
