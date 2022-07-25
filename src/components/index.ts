@@ -7,3 +7,4 @@ export { default as AuthContainer } from './Auth/Auth';
 export { default as Sidebar } from './Sidebar/Sidebar';
 export { default as SearchBar } from './SearchBar/SearchBar';
 export { default as LogoLoader } from './LogoLoader/LogoLoader';
+export { default as ProfileInfo } from './Profile/ProfileInfo/ProfileInfo';
