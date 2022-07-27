@@ -1,8 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
 
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Container,
   LogoWrapper,
@@ -43,19 +43,32 @@ import {
   rocketLeague,
 } from '../../assets/styles/Icons';
 import { SearchBar } from '../../components';
-import { selectToken } from '../../store/Auth/reducer';
+import { removeToken, selectToken } from '../../store/Auth/reducer';
 import { DecodedUser } from '../../interfaces/decodedUser.interface';
 import { decodeJWT } from '../../services/decode/decodeJwt';
 
 const Desktop: React.FC = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const token = useSelector(selectToken);
-  const currentUser = decodeJWT<DecodedUser>(token);
+  const [currentUser, setCurrentUser] = useState<DecodedUser>();
+
+  useEffect(() => {
+    if (!token) return navigate('/', { replace: true });
+    const user = decodeJWT<DecodedUser>(token);
+    return setCurrentUser(user);
+  }, [token]);
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     window.addEventListener('resize', () => setWindowWidth(window.innerWidth));
   }, []);
+
+  const handleExitClick = () => {
+    dispatch(removeToken());
+    navigate('/');
+  };
 
   return (
     <Container>
@@ -66,9 +79,9 @@ const Desktop: React.FC = () => {
           </LogoWrapper>
         </Link>
         <HeaderWrapper>
-          <Link to={`/profile/${currentUser._id}`}>
+          <Link to={`/profile/${currentUser?._id}`}>
             <AvatarWrapper>
-              <ExitWrapper>
+              <ExitWrapper onClick={handleExitClick}>
                 <Exit />
               </ExitWrapper>
               <Avatar src={emptyImg} />

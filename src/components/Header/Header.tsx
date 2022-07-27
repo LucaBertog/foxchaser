@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { Container } from './Header.styles';
@@ -13,12 +13,19 @@ import { DecodedUser } from '../../interfaces/decodedUser.interface';
 import { decodeJWT } from '../../services/decode/decodeJwt';
 
 const Header: React.FC = () => {
+  const navigate = useNavigate();
   const token = useSelector(selectToken);
-  const currentUser = decodeJWT<DecodedUser>(token);
+  const [currentUser, setCurrentUser] = useState<DecodedUser>();
+
+  useEffect(() => {
+    if (!token) return navigate('/', { replace: true });
+    const user = decodeJWT<DecodedUser>(token);
+    return setCurrentUser(user);
+  }, [token]);
 
   return (
     <Container>
-      <Link to={`/profile/${currentUser._id}`}>
+      <Link to={`/profile/${currentUser?._id}`}>
         <MenuAvatar src={emptyImg} />
       </Link>
       <Link to='/home/'>

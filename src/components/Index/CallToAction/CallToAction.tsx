@@ -8,7 +8,7 @@ import {
   Description,
   ButtonsWrapper,
   BtnCreateAccount,
-  BtnNoLogin,
+  // BtnNoLogin,
   Wrapper,
 } from './CallToAction.styles';
 
@@ -25,11 +25,11 @@ const CallToAction: React.FC = () => (
             <span>Criar uma conta</span>
           </BtnCreateAccount>
         </Link>
-        <Link to='/home'>
+        {/* <Link to='/home'>
           <BtnNoLogin>
             <span>Entrar sem login</span>
           </BtnNoLogin>
-        </Link>
+        </Link> */}
       </ButtonsWrapper>
     </Wrapper>
   </Container>

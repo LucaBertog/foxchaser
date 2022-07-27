@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { PostSeparator, PostsWrapper } from '../../assets/styles/GlobalStyles';
 import { LogoLoader, Post, ProfileInfo } from '../../components';
 import { ProfileContext } from '../../contexts/Profile.context';
@@ -13,16 +13,20 @@ import { selectToken } from '../../store/Auth/reducer';
 import { Container } from './Profile.styles';
 
 const Profile: React.FC = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const token = useSelector(selectToken);
-  const currentUser = decodeJWT<DecodedUser>(token);
+
   const [isCurrentUser, setIsCurrentUser] = useState(false);
   const { data: userProfile, isLoading } = useGetProfileQuery(id || '');
 
   useEffect(() => {
+    if (!token) return navigate('/', { replace: true });
+    const currentUser = decodeJWT<DecodedUser>(token);
+
     if (id === currentUser._id) return setIsCurrentUser(true);
     return setIsCurrentUser(false);
-  }, [id, currentUser]);
+  }, [id, token]);
 
   // useEffect(() => {
   //   if (error) navigate('500');
