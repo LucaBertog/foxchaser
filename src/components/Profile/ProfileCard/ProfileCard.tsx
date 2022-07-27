@@ -12,12 +12,13 @@ import emptyImg from '../../../assets/imgs/empty.jpg';
 import { ProfileContext } from '../../../contexts/Profile.context';
 
 const CardProfile: React.FC = () => {
-  const { username, isCurrentUser } = useContext(ProfileContext);
+  const { profilePicture, username, isCurrentUser } =
+    useContext(ProfileContext);
 
   return (
     <Container>
       <Wrapper>
-        <ProfilePic src={emptyImg} />
+        <ProfilePic src={profilePicture.split(' ')[0] || emptyImg} />
         <Username>{username}</Username>
         <Emblems />
         {isCurrentUser ? <EditProfile>Editar perfil</EditProfile> : 'Oi'}

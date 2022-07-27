@@ -3,9 +3,10 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { PostSeparator, PostsWrapper } from '../../assets/styles/GlobalStyles';
-import { Post, ProfileInfo } from '../../components';
+import { LogoLoader, Post, ProfileInfo } from '../../components';
 import { ProfileContext } from '../../contexts/Profile.context';
 import { DecodedUser } from '../../interfaces/decodedUser.interface';
+import { useGetProfileQuery } from '../../services/api/profile.api';
 import { decodeJWT } from '../../services/decode/decodeJwt';
 import { selectToken } from '../../store/Auth/reducer';
 
@@ -15,39 +16,53 @@ const Profile: React.FC = () => {
   const { id } = useParams();
   const token = useSelector(selectToken);
   const currentUser = decodeJWT<DecodedUser>(token);
-  const { username } = currentUser;
   const [isCurrentUser, setIsCurrentUser] = useState(false);
+  const { data: userProfile, isLoading } = useGetProfileQuery(id || '');
 
   useEffect(() => {
     if (id === currentUser._id) return setIsCurrentUser(true);
     return setIsCurrentUser(false);
   }, [id, currentUser]);
 
+  // useEffect(() => {
+  //   if (error) navigate('500');
+  // }, [error]);
+
   const profileContext = useMemo(
     () => ({
-      username,
+      name: userProfile?.name || '',
+      username: userProfile?.username || '',
+      description: userProfile?.description || '',
+      profilePicture: userProfile?.profilePicture || '',
+      coverPicture: userProfile?.coverPicture || '',
       isCurrentUser,
     }),
-    [username, isCurrentUser]
+    [userProfile, isCurrentUser]
   );
 
   return (
     <ProfileContext.Provider value={profileContext}>
-      <Container>
-        <ProfileInfo />
-        <PostsWrapper>
-          <Post />
-          <PostSeparator />
-          <Post />
-          <PostSeparator />
-          <Post />
-          <PostSeparator />
-          <Post />
-          <PostSeparator />
-          <Post />
-          <PostSeparator />
-        </PostsWrapper>
-      </Container>
+      {isLoading ? (
+        <Container>
+          <LogoLoader />
+        </Container>
+      ) : (
+        <Container>
+          <ProfileInfo />
+          <PostsWrapper>
+            <Post />
+            <PostSeparator />
+            <Post />
+            <PostSeparator />
+            <Post />
+            <PostSeparator />
+            <Post />
+            <PostSeparator />
+            <Post />
+            <PostSeparator />
+          </PostsWrapper>
+        </Container>
+      )}
     </ProfileContext.Provider>
   );
 };
