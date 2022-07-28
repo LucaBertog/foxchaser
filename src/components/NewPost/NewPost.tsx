@@ -1,5 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import ModalNewPost from './ModalNewPost/ModalNewPost';
 
 import {
   Container,
@@ -13,7 +14,16 @@ import {
 } from './NewPost.styles';
 
 const NewPost: React.FC = () => {
+  const [isNewPostModalOpen, setIsNewPostModalOpen] = useState(false);
   const menuEl = useRef<any>();
+
+  const openNewPostModal = () => {
+    setIsNewPostModalOpen(true);
+  };
+
+  const closeNewPostModal = () => {
+    setIsNewPostModalOpen(false);
+  };
 
   return (
     <Container>
@@ -21,7 +31,7 @@ const NewPost: React.FC = () => {
         <Toggle onClick={() => menuEl.current.classList.toggle('active')}>
           <Plus />
         </Toggle>
-        <Li rotate={0}>
+        <Li rotate={0} onClick={openNewPostModal}>
           <Link to='#1'>
             <ImageIcon />
           </Link>
@@ -37,6 +47,10 @@ const NewPost: React.FC = () => {
           </Link>
         </Li>
       </Menu>
+      <ModalNewPost
+        isOpen={isNewPostModalOpen}
+        onRequestClose={closeNewPostModal}
+      />
     </Container>
   );
 };
