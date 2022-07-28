@@ -7,6 +7,7 @@ import * as yup from 'yup';
 import { toast } from 'react-toastify';
 import { Container, Img } from './ImagePost.styles';
 import LogoLoader from '../../../LogoLoader/LogoLoader';
+import { useCreatePostMutation } from '../../../../services/api/post.api';
 
 const schema = yup
   .object()
@@ -25,6 +26,7 @@ const ImagePost: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
     resolver: yupResolver(schema),
   });
   const [imgUrl, setImgUrl] = useState('');
+  const [createPost, { isLoading: isCreating }] = useCreatePostMutation();
 
   const resetImages = () => {
     URL.revokeObjectURL(imgUrl);
@@ -37,16 +39,16 @@ const ImagePost: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
     }
   }, [isOpen]);
 
-  const onSubmit = (e: any) => {
+  const onSubmit = async (e: any) => {
     const data: {
       img: FileList;
     } = e;
-    console.log(data);
+
     try {
       const formData = new FormData();
       if (data?.img[0]) formData.append('img', data?.img[0]);
 
-      // await editProfile(formData).unwrap();
+      // await createPost(formData).unwrap();
       return toast.success('Post criado');
       // return navigate(0);
     } catch (error) {
@@ -55,7 +57,6 @@ const ImagePost: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
   };
 
   const handleChangeImg = (e: any) => {
-    console.log('oi');
     const file = e.target.files[0];
     const url = URL.createObjectURL(file);
     setImgUrl(url);
@@ -63,19 +64,22 @@ const ImagePost: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
 
   return (
     <Container>
-      {/* {isUpdating ? <LogoLoader /> : } */}
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input
-          type='file'
-          {...register('img')}
-          id='img'
-          onChange={handleChangeImg}
-        />
-        <Img htmlFor='img' url={imgUrl}>
-          <div />
-        </Img>
-        <input type='submit' value='enviar' />
-      </form>
+      {isCreating ? (
+        <LogoLoader />
+      ) : (
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <input
+            type='file'
+            {...register('img')}
+            id='img'
+            onChange={handleChangeImg}
+          />
+          <Img htmlFor='img' url={imgUrl}>
+            <div />
+          </Img>
+          <input type='submit' value='enviar' />
+        </form>
+      )}
     </Container>
   );
 };
