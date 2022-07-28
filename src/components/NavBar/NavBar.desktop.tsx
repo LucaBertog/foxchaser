@@ -46,12 +46,14 @@ import { SearchBar } from '../../components';
 import { removeToken, selectToken } from '../../store/Auth/reducer';
 import { DecodedUser } from '../../interfaces/decodedUser.interface';
 import { decodeJWT } from '../../services/decode/decodeJwt';
+import { useGetProfileQuery } from '../../services/api/profile.api';
 
 const Desktop: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const token = useSelector(selectToken);
   const [currentUser, setCurrentUser] = useState<DecodedUser>();
+  const { data: userProfile } = useGetProfileQuery(currentUser?._id || '');
 
   useEffect(() => {
     if (!token) return navigate('/', { replace: true });
@@ -84,7 +86,9 @@ const Desktop: React.FC = () => {
               <ExitWrapper onClick={handleExitClick}>
                 <Exit />
               </ExitWrapper>
-              <Avatar src={emptyImg} />
+              <Avatar
+                src={userProfile?.profilePicture.split(' ')[0] || emptyImg}
+              />
             </AvatarWrapper>
           </Link>
           <IconWrapper>
