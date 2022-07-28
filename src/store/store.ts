@@ -25,10 +25,12 @@ const reducer = {
 
 const store = configureStore({
   reducer,
-  middleware: (getDefaultMiddleware: any) =>
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
-    }),
+    })
+      .concat(authApi.middleware)
+      .concat(profileApi.middleware),
 });
 const persistor = persistStore(store);
 
