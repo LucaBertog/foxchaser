@@ -50,6 +50,7 @@ const EditProfile: React.FC<{
   const {
     register,
     handleSubmit,
+    reset,
     // formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -64,6 +65,7 @@ const EditProfile: React.FC<{
     URL.revokeObjectURL(coverPictureUrl);
     setProfilePictureUrl('');
     setCoverPictureUrl('');
+    reset();
   };
 
   useEffect(() => {
