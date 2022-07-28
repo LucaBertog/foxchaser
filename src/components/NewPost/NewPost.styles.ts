@@ -44,7 +44,7 @@ export const Toggle = styled.div`
   justify-content: center;
   align-items: center;
 
-  z-index: 5;
+  z-index: 2;
   border-radius: 50%;
   cursor: pointer;
   transition: transform 1.25s;

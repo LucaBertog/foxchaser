@@ -36,11 +36,19 @@ export const ProfilePic = styled.img`
   border-radius: 100%;
 `;
 
-export const Username = styled.p`
+export const Name = styled.p`
   position: relative;
   top: -3rem;
   ${fonts.ParagraphN}
   color: ${(props) => props.theme.mode.colors.text};
+`;
+
+export const Username = styled.p`
+  position: relative;
+  top: -3rem;
+  ${fonts.CaptarN}
+  color: ${(props) => props.theme.mode.colors.text};
+  opacity: 0.8;
 `;
 
 export const Emblems = styled.div`
@@ -49,7 +57,7 @@ export const Emblems = styled.div`
   justify-content: center;
 `;
 
-export const EditProfile = styled.button`
+export const EditProfileButton = styled.button`
   ${fonts.Captar}
   color: ${(props) => props.theme.mode.colors.text};
 
