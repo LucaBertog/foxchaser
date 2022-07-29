@@ -77,7 +77,6 @@ const EditProfile: React.FC<{
     handleSubmit,
     reset,
     formState: { errors },
-    watch,
   } = useForm({
     resolver: yupResolver(schema),
   });
