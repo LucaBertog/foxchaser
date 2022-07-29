@@ -63,6 +63,7 @@ const Profile: React.FC = () => {
                       <Post
                         userId={timeline[post].userId}
                         image={timeline[post].image.split(' ')[0]}
+                        postDate={timeline[post].createdAt}
                       />
                       <PostSeparator />
                     </div>

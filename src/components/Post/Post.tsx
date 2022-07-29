@@ -1,4 +1,6 @@
 import React from 'react';
+import * as moment from 'moment';
+import 'moment/locale/pt-br';
 
 import {
   Container,
@@ -29,9 +31,12 @@ import {
 } from './Post.styles';
 import { useGetUserByIdQuery } from '../../services/api/user.api';
 
-const Post: React.FC<{ userId: string; image: string }> = ({
+moment().locale('pt-br');
+
+const Post: React.FC<{ userId: string; image: string; postDate: string }> = ({
   userId,
   image,
+  postDate,
 }) => {
   const { data: user } = useGetUserByIdQuery(userId);
 
@@ -48,7 +53,13 @@ const Post: React.FC<{ userId: string; image: string }> = ({
               <PostCategory>COD Mobile</PostCategory>
               <PostType color='#006889'>Imagem</PostType>
             </Wrapper>
-            <PostingTime>Ontem às 07:08</PostingTime>
+            <PostingTime>
+              {moment(postDate)
+                .locale('pt-br')
+                .zone('-03')
+                .startOf('hour')
+                .fromNow()}
+            </PostingTime>
           </UserInfo>
         </LeftWrapper>
         <RightWrapper>
