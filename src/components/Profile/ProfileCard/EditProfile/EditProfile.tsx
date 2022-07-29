@@ -26,13 +26,38 @@ import {
 import { useEditProfileMutation } from '../../../../services/api/profile.api';
 import LogoLoader from '../../../LogoLoader/LogoLoader';
 import emptyImg from '../../../../assets/imgs/empty.jpg';
+import { FILE_SIZE, SUPPORTED_FORMATS } from '../../../../constants';
 
 Modal.setAppElement('#root');
 const schema = yup
   .object()
   .shape({
-    profilePicture: yup.mixed(),
-    coverPicture: yup.mixed(),
+    profilePicture: yup
+      .mixed()
+      .test(
+        'fileSize',
+        'O arquivo é grande demais',
+        (value: FileList) => value.length === 0 || value[0].size <= FILE_SIZE
+      )
+      .test(
+        'fileType',
+        'Arquivo não suportado',
+        (value: FileList) =>
+          value.length === 0 || SUPPORTED_FORMATS.includes(value[0].type)
+      ),
+    coverPicture: yup
+      .mixed()
+      .test(
+        'fileSize',
+        'O arquivo é grande demais',
+        (value: FileList) => value.length === 0 || value[0].size <= FILE_SIZE
+      )
+      .test(
+        'fileType',
+        'Arquivo não suportado',
+        (value: FileList) =>
+          value.length === 0 || SUPPORTED_FORMATS.includes(value[0].type)
+      ),
     name: yup
       .string()
       .transform((value) => (value === '' ? undefined : value))
@@ -51,7 +76,8 @@ const EditProfile: React.FC<{
     register,
     handleSubmit,
     reset,
-    // formState: { errors },
+    formState: { errors },
+    watch,
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -120,6 +146,10 @@ const EditProfile: React.FC<{
     }
   };
 
+  const profilePictureError = errors.profilePicture as any;
+  const coverPictureError = errors.coverPicture as any;
+  const nameError = errors.name as any;
+
   return (
     <Modal
       isOpen={isOpen}
@@ -154,6 +184,7 @@ const EditProfile: React.FC<{
             </ProfilePicture>
             <CameraIcon />
           </ImageWrapper>
+          <p>{profilePictureError?.message}</p>
           <FinishButtonsWrapper>
             <CancelButton onClick={handleClickCancel}>Cancelar</CancelButton>
             <SaveButton type='submit' value='Salvar' />
@@ -175,8 +206,10 @@ const EditProfile: React.FC<{
               </CoverPicture>
               <CameraIcon />
             </ImageWrapper>
+            <p>{coverPictureError?.message}</p>
             <Title>Nome</Title>
             <NameInput {...register('name')} id='name' placeholder={name} />
+            <p>{nameError?.message}</p>
           </RestWrapper>
         </form>
       )}

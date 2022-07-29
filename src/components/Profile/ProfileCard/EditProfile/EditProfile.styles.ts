@@ -22,6 +22,11 @@ export const ModalStyle = styled.div`
   border-radius: 1.6rem;
 
   padding: 3.2rem 5.6rem;
+
+  p {
+    font-size: 1.6rem;
+    color: red;
+  }
 `;
 
 export const ImageWrapper = styled.div<{ isProfilePicture: boolean }>`

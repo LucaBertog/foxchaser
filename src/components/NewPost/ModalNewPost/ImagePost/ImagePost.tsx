@@ -9,9 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { Container, Img } from './ImagePost.styles';
 import LogoLoader from '../../../LogoLoader/LogoLoader';
 import { useCreatePostMutation } from '../../../../services/api/post.api';
-
-const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
-const FILE_SIZE = 25000000;
+import { FILE_SIZE, SUPPORTED_FORMATS } from '../../../../constants';
 
 const schema = yup
   .object()
