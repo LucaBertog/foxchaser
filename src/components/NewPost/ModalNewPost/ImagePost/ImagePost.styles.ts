@@ -1,6 +1,16 @@
 import styled from 'styled-components';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  > form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  p {
+    font-size: 1.6rem;
+    color: red;
+  }
+`;
 
 export const Img = styled.label<{ url: string }>`
   > div {

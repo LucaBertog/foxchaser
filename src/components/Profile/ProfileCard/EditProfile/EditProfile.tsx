@@ -103,15 +103,21 @@ const EditProfile: React.FC<{
   };
 
   const handleChangeProfilePicture = (e: any) => {
-    const file = e.target.files[0];
-    const url = URL.createObjectURL(file);
-    setProfilePictureUrl(url);
+    if (e.target.files[0]) {
+      URL.revokeObjectURL(profilePictureUrl);
+      const file = e.target.files[0];
+      const url = URL.createObjectURL(file);
+      setProfilePictureUrl(url);
+    }
   };
 
   const handleChangeCoverPicture = (e: any) => {
-    const file = e.target.files[0];
-    const url = URL.createObjectURL(file);
-    setCoverPictureUrl(url);
+    if (e.target.files[0]) {
+      URL.revokeObjectURL(coverPictureUrl);
+      const file = e.target.files[0];
+      const url = URL.createObjectURL(file);
+      setCoverPictureUrl(url);
+    }
   };
 
   return (

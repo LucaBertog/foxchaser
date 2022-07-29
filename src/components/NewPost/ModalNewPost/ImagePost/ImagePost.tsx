@@ -5,23 +5,47 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import { Container, Img } from './ImagePost.styles';
 import LogoLoader from '../../../LogoLoader/LogoLoader';
 import { useCreatePostMutation } from '../../../../services/api/post.api';
 
+const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
+const FILE_SIZE = 25000000;
+
 const schema = yup
   .object()
   .shape({
-    img: yup.mixed(),
+    title: yup.string().max(200).required('Titulo é obrigatório'),
+    image: yup
+      .mixed()
+      .test(
+        'isRequired',
+        'Imagem é obrigatória',
+        (value: FileList) => value.length !== 0
+      )
+      .test(
+        'fileSize',
+        'O arquivo é grande demais',
+        (value: FileList) => value[0] && value[0].size <= FILE_SIZE
+      )
+      .test(
+        'fileType',
+        'Arquivo não suportado',
+        (value: FileList) =>
+          value[0] && SUPPORTED_FORMATS.includes(value[0].type)
+      )
+      .required(),
   })
   .required();
 
 const ImagePost: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     reset,
-    // formState: { errors },
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -41,26 +65,34 @@ const ImagePost: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
 
   const onSubmit = async (e: any) => {
     const data: {
-      img: FileList;
+      title: string;
+      image: FileList;
     } = e;
 
     try {
       const formData = new FormData();
-      if (data?.img[0]) formData.append('img', data?.img[0]);
+      formData.append('title', data.title);
+      formData.append('image', data?.image[0]);
 
-      // await createPost(formData).unwrap();
-      return toast.success('Post criado');
-      // return navigate(0);
+      await createPost(formData).unwrap();
+      toast.success('Post criado');
+      return navigate(0);
     } catch (error) {
       return toast.error('Erro desconhecido');
     }
   };
 
   const handleChangeImg = (e: any) => {
-    const file = e.target.files[0];
-    const url = URL.createObjectURL(file);
-    setImgUrl(url);
+    if (e.target.files[0]) {
+      URL.revokeObjectURL(imgUrl);
+      const file = e.target.files[0];
+      const url = URL.createObjectURL(file);
+      setImgUrl(url);
+    }
   };
+
+  const titleError = errors.title as any;
+  const imageError = errors.image as any;
 
   return (
     <Container>
@@ -68,15 +100,18 @@ const ImagePost: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
         <LogoLoader />
       ) : (
         <form onSubmit={handleSubmit(onSubmit)}>
+          <p>{titleError?.message}</p>
+          <input {...register('title')} id='title' />
           <input
             type='file'
-            {...register('img')}
-            id='img'
+            {...register('image')}
+            id='image'
             onChange={handleChangeImg}
           />
-          <Img htmlFor='img' url={imgUrl}>
+          <Img htmlFor='image' url={imgUrl}>
             <div />
           </Img>
+          <p>{imageError?.message}</p>
           <input type='submit' value='enviar' />
         </form>
       )}
