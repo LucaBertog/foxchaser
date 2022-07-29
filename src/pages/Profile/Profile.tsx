@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -6,6 +7,7 @@ import { PostSeparator, PostsWrapper } from '../../assets/styles/GlobalStyles';
 import { LogoLoader, Post, ProfileInfo } from '../../components';
 import { ProfileContext } from '../../contexts/Profile.context';
 import { DecodedUser } from '../../interfaces/decodedUser.interface';
+import { useGetTimelineQuery } from '../../services/api/post.api';
 import { useGetProfileQuery } from '../../services/api/profile.api';
 import { decodeJWT } from '../../services/decode/decodeJwt';
 import { selectToken } from '../../store/Auth/reducer';
@@ -19,6 +21,7 @@ const Profile: React.FC = () => {
 
   const [isCurrentUser, setIsCurrentUser] = useState(false);
   const { data: userProfile, isLoading } = useGetProfileQuery(id || '');
+  const { data: timeline, isFetching } = useGetTimelineQuery('');
 
   useEffect(() => {
     if (!token) return navigate('/', { replace: true });
@@ -27,10 +30,6 @@ const Profile: React.FC = () => {
     if (id === currentUser._id) return setIsCurrentUser(true);
     return setIsCurrentUser(false);
   }, [id, token]);
-
-  // useEffect(() => {
-  //   if (error) navigate('500');
-  // }, [error]);
 
   const profileContext = useMemo(
     () => ({
@@ -54,16 +53,24 @@ const Profile: React.FC = () => {
         <Container>
           <ProfileInfo />
           <PostsWrapper>
-            <Post />
-            <PostSeparator />
-            <Post />
-            <PostSeparator />
-            <Post />
-            <PostSeparator />
-            <Post />
-            <PostSeparator />
-            <Post />
-            <PostSeparator />
+            {isFetching ? (
+              <LogoLoader />
+            ) : (
+              Object.keys(timeline).map((post: string) => {
+                if (post !== 'statusCode') {
+                  return (
+                    <div key={timeline[post]._id}>
+                      <Post
+                        userId={timeline[post].userId}
+                        image={timeline[post].image.split(' ')[0]}
+                      />
+                      <PostSeparator />
+                    </div>
+                  );
+                }
+                return '';
+              })
+            )}
           </PostsWrapper>
         </Container>
       )}
