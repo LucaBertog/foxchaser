@@ -26,14 +26,26 @@ export const postApi = createApi({
         body: post,
       }),
     }),
-
     getTimeline: builder.query<{ statusCode: string; posts: Post[] }, any>({
       query: () => ({
         url: '',
         method: 'GET',
       }),
     }),
+    getPostsByUserId: builder.query<
+      { statusCode: string; posts: Post[] },
+      string
+    >({
+      query: (id) => ({
+        url: `/user/${id}`,
+        method: 'GET',
+      }),
+    }),
   }),
 });
 
-export const { useGetTimelineQuery, useCreatePostMutation } = postApi;
+export const {
+  useGetTimelineQuery,
+  useCreatePostMutation,
+  useGetPostsByUserIdQuery,
+} = postApi;

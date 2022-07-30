@@ -8,7 +8,7 @@ import { LogoLoader, Post, ProfileInfo } from '../../components';
 import { ProfileContext } from '../../contexts/Profile.context';
 import { DecodedUser } from '../../interfaces/decodedUser.interface';
 import { Post as PostInterface } from '../../interfaces/post.interface';
-import { useGetTimelineQuery } from '../../services/api/post.api';
+import { useGetPostsByUserIdQuery } from '../../services/api/post.api';
 import { useGetProfileQuery } from '../../services/api/profile.api';
 import { decodeJWT } from '../../services/decode/decodeJwt';
 import { selectToken } from '../../store/Auth/reducer';
@@ -22,7 +22,7 @@ const Profile: React.FC = () => {
 
   const [isCurrentUser, setIsCurrentUser] = useState(false);
   const { data: userProfile, isLoading } = useGetProfileQuery(id || '');
-  const { data: timeline, isFetching } = useGetTimelineQuery('');
+  const { data: posts, isFetching } = useGetPostsByUserIdQuery(id || '');
 
   useEffect(() => {
     if (!token) return navigate('/', { replace: true });
@@ -57,7 +57,7 @@ const Profile: React.FC = () => {
             {isFetching ? (
               <LogoLoader />
             ) : (
-              timeline?.posts.map((post: PostInterface) => (
+              posts?.posts.map((post: PostInterface) => (
                 <div key={post._id}>
                   <Post
                     userId={post.userId}
