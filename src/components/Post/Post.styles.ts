@@ -110,9 +110,9 @@ export const Content = styled.div`
 `;
 
 export const Image = styled.img`
-  max-width: 100%;
-  min-width: 500px;
-  width: 100vh;
+  width: 100%;
+  max-height: 80rem;
+  object-fit: cover;
 
   border-radius: 1.6rem;
 `;
