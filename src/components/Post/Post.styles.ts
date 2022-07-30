@@ -38,7 +38,7 @@ export const UserImage = styled.img`
   height: 4.8rem;
   border-radius: 100%;
 
-  border: 2px solid ${(props) => props.theme.mode.colors.iconLight};
+  border: 1px solid ${(props) => props.theme.mode.colors.iconLight};
 
   margin-right: 0.8rem;
 `;
@@ -102,20 +102,18 @@ export const MoreOptions = styled(MoreHorizontalFill)`
 
 export const Content = styled.div`
   width: 100%;
-  max-height: 50rem;
+  padding: 0 0.8rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
-export const Image = styled.div<{ url: string }>`
-  width: 100%;
-  height: 60vw;
-  max-height: 40rem;
+export const Image = styled.img`
+  max-width: 100%;
+  min-width: 500px;
+  width: 100vh;
 
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-image: url(${(props) => props.url});
-
-  border: 1px solid ${(props) => props.theme.mode.colors.borderImg};
   border-radius: 1.6rem;
 `;
 

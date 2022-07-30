@@ -63,7 +63,7 @@ const Post: React.FC<{ userId: string; image: string; postDate: string }> = ({
         </RightWrapper>
       </PostHeader>
       <Content>
-        <Image url={image} />
+        <Image src={image} />
       </Content>
       <PostFooter>
         <LeftWrapper>
