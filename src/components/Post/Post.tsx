@@ -1,5 +1,8 @@
-import React from 'react';
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/no-unstable-nested-components */
+import React, { useState } from 'react';
 import moment from 'moment';
+import Modal from 'react-modal';
 // import 'moment/locale/pt-br';
 
 import {
@@ -28,6 +31,8 @@ import {
   LikeIcon,
   CommentIcon,
   ShareIcon,
+  Overlay,
+  ModalStyle,
 } from './Post.styles';
 import { useGetUserByIdQuery } from '../../services/api/user.api';
 
@@ -39,6 +44,7 @@ const Post: React.FC<{ userId: string; image: string; postDate: string }> = ({
   postDate,
 }) => {
   const { data: user } = useGetUserByIdQuery(userId);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <Container>
@@ -63,7 +69,23 @@ const Post: React.FC<{ userId: string; image: string; postDate: string }> = ({
         </RightWrapper>
       </PostHeader>
       <Content>
-        <Image src={image} />
+        <Image src={image} onClick={() => setIsModalOpen(true)} />
+        {isModalOpen && (
+          <Modal
+            isOpen={isModalOpen}
+            onRequestClose={() => setIsModalOpen(false)}
+            overlayClassName='_'
+            overlayElement={(props, contentElement) => (
+              <Overlay {...props}>{contentElement}</Overlay>
+            )}
+            className='_'
+            contentElement={(props, children) => (
+              <ModalStyle {...props}>{children}</ModalStyle>
+            )}
+          >
+            <img src={image} alt='salve' />
+          </Modal>
+        )}
       </Content>
       <PostFooter>
         <LeftWrapper>
