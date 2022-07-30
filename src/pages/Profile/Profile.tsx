@@ -7,6 +7,7 @@ import { PostSeparator, PostsWrapper } from '../../assets/styles/GlobalStyles';
 import { LogoLoader, Post, ProfileInfo } from '../../components';
 import { ProfileContext } from '../../contexts/Profile.context';
 import { DecodedUser } from '../../interfaces/decodedUser.interface';
+import { Post as PostInterface } from '../../interfaces/post.interface';
 import { useGetTimelineQuery } from '../../services/api/post.api';
 import { useGetProfileQuery } from '../../services/api/profile.api';
 import { decodeJWT } from '../../services/decode/decodeJwt';
@@ -56,21 +57,16 @@ const Profile: React.FC = () => {
             {isFetching ? (
               <LogoLoader />
             ) : (
-              Object.keys(timeline).map((post: string) => {
-                if (post !== 'statusCode') {
-                  return (
-                    <div key={timeline[post]._id}>
-                      <Post
-                        userId={timeline[post].userId}
-                        image={timeline[post].image.split(' ')[0]}
-                        postDate={timeline[post].createdAt}
-                      />
-                      <PostSeparator />
-                    </div>
-                  );
-                }
-                return '';
-              })
+              timeline?.posts.map((post: PostInterface) => (
+                <div key={post._id}>
+                  <Post
+                    userId={post.userId}
+                    image={post.image.split(' ')[0]}
+                    postDate={post.createdAt}
+                  />
+                  <PostSeparator />
+                </div>
+              ))
             )}
           </PostsWrapper>
         </Container>

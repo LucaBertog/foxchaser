@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import 'moment/locale/pt-br';
+// import 'moment/locale/pt-br';
 
 import {
   Container,
@@ -31,7 +31,7 @@ import {
 } from './Post.styles';
 import { useGetUserByIdQuery } from '../../services/api/user.api';
 
-// moment().locale('pt-br');
+// moment.locale('pt-br');
 
 const Post: React.FC<{ userId: string; image: string; postDate: string }> = ({
   userId,
@@ -54,11 +54,7 @@ const Post: React.FC<{ userId: string; image: string; postDate: string }> = ({
               <PostType color='#006889'>Imagem</PostType>
             </Wrapper>
             <PostingTime>
-              {moment(postDate)
-                .locale('pt-br')
-                .zone('-03')
-                .startOf('hour')
-                .fromNow()}
+              {moment(postDate).locale('pt-br').calendar()}
             </PostingTime>
           </UserInfo>
         </LeftWrapper>

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-// import { Post } from '../../interfaces/post.interface';
+import { Post } from '../../interfaces/post.interface';
 import { State } from '../../interfaces/state.interface';
 
 const baseUrl = `${import.meta.env.VITE_BACKEND_URL}/posts`;
@@ -27,7 +27,7 @@ export const postApi = createApi({
       }),
     }),
 
-    getTimeline: builder.query({
+    getTimeline: builder.query<{ statusCode: string; posts: Post[] }, any>({
       query: () => ({
         url: '',
         method: 'GET',
