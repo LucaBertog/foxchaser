@@ -16,5 +16,4 @@ export const Container = styled.div`
 export const Title = styled.h2`
   ${fonts.Title2}
   color: ${(props) => props.theme.mode.colors.text};
-  margin-bottom: 1.6rem;
 `;

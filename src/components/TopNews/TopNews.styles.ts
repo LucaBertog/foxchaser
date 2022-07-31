@@ -8,7 +8,10 @@ export const Container = styled.section`
 
   @media (min-width: 768px) {
     flex-direction: row;
+    height: 27rem;
   }
+
+  margin: 4.8rem 0;
 `;
 
 export const Separator = styled.div`
