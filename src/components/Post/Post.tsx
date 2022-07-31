@@ -68,22 +68,20 @@ const Post: React.FC<{ userId: string; image: string; postDate: string }> = ({
       </PostHeader>
       <Content>
         <Image src={image} onClick={() => setIsModalOpen(true)} />
-        {isModalOpen && (
-          <Modal
-            isOpen={isModalOpen}
-            onRequestClose={() => setIsModalOpen(false)}
-            overlayClassName='_'
-            overlayElement={(props, contentElement) => (
-              <Overlay {...props}>{contentElement}</Overlay>
-            )}
-            className='_'
-            contentElement={(props, children) => (
-              <ModalStyle {...props}>{children}</ModalStyle>
-            )}
-          >
-            <img src={image} alt='salve' />
-          </Modal>
-        )}
+        <Modal
+          isOpen={isModalOpen}
+          onRequestClose={() => setIsModalOpen(false)}
+          overlayClassName='_'
+          overlayElement={(props, contentElement) => (
+            <Overlay {...props}>{contentElement}</Overlay>
+          )}
+          className='_'
+          contentElement={(props, children) => (
+            <ModalStyle {...props}>{children}</ModalStyle>
+          )}
+        >
+          <img src={image} alt='salve' />
+        </Modal>
       </Content>
       <PostFooter>
         <LeftWrapper>
