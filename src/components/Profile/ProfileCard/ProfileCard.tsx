@@ -12,11 +12,12 @@ import {
 import emptyImg from '../../../assets/imgs/empty.jpg';
 import { ProfileContext } from '../../../contexts/Profile.context';
 import EditProfile from './EditProfile/EditProfile';
+import { UserContext } from '../../../contexts/User.context';
 
 const CardProfile: React.FC = () => {
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
-  const { profilePicture, name, username, isCurrentUser } =
-    useContext(ProfileContext);
+  const { id, profilePicture, name, username } = useContext(ProfileContext);
+  const { id: currentUserId } = useContext(UserContext);
 
   const openEditProfileModal = () => {
     setIsEditProfileModalOpen(true);
@@ -33,7 +34,7 @@ const CardProfile: React.FC = () => {
         <Name>{name}</Name>
         <Username>@{username}</Username>
         <Emblems />
-        {isCurrentUser ? (
+        {id === currentUserId ? (
           <EditProfileButton onClick={openEditProfileModal}>
             Editar perfil
           </EditProfileButton>

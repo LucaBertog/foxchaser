@@ -1,12 +1,15 @@
 import { createContext } from 'react';
 
-export const ProfileContext = createContext<{
+export const UserContext = createContext<{
   id: string;
   name: string;
   username: string;
   description: string;
   profilePicture: string;
   coverPicture: string;
+  followers: string[];
+  followings: string[];
+  emblems: string[];
 }>({
   id: '',
   name: '',
@@ -14,4 +17,7 @@ export const ProfileContext = createContext<{
   description: '',
   profilePicture: '',
   coverPicture: '',
+  followers: [],
+  followings: [],
+  emblems: [],
 });

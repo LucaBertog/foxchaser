@@ -8,7 +8,6 @@ import * as yup from 'yup';
 
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import { ProfileContext } from '../../../../contexts/Profile.context';
 import {
   Overlay,
   ModalStyle,
@@ -27,6 +26,7 @@ import { useEditProfileMutation } from '../../../../services/api/profile.api';
 import LogoLoader from '../../../LogoLoader/LogoLoader';
 import emptyImg from '../../../../assets/imgs/empty.jpg';
 import { FILE_SIZE, SUPPORTED_FORMATS } from '../../../../constants';
+import { ProfileContext } from '../../../../contexts/Profile.context';
 
 Modal.setAppElement('#root');
 const schema = yup

@@ -1,27 +1,58 @@
+/* eslint-disable no-underscore-dangle */
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import { Provider } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
-import { PersistGate } from 'redux-persist/integration/react';
+
+import { useEffect, useMemo, useState } from 'react';
 import GlobalStyles from './assets/styles/GlobalStyles';
 import Routes from './routes/Routes';
 import { THEMES, COLORS } from './constants';
-import { persistor, store } from './store/store';
+
+import { UserContext } from './contexts/User.context';
+import { selectToken } from './store/Auth/reducer';
+import { DecodedUser } from './interfaces/decodedUser.interface';
+import { useGetUserByIdQuery } from './services/api/user.api';
+import { decodeJWT } from './services/decode/decodeJwt';
 
 function App() {
+  const token = useSelector(selectToken);
+  const [currentUser, setCurrentUser] = useState<DecodedUser>();
+  const { data: user } = useGetUserByIdQuery(currentUser?._id || '');
+
+  useEffect(() => {
+    if (token) {
+      const _user = decodeJWT<DecodedUser>(token);
+      setCurrentUser(_user);
+    }
+  }, [token]);
+
+  const userContext = useMemo(
+    () => ({
+      id: user?.user.id || '',
+      name: user?.user.name || '',
+      username: user?.user.username || '',
+      description: user?.user.description || '',
+      profilePicture: user?.user.profilePicture || '',
+      coverPicture: user?.user.coverPicture || '',
+      followers: user?.user.followers || [],
+      followings: user?.user.followings || [],
+      emblems: user?.user.emblems || [],
+    }),
+    [user]
+  );
+
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <ThemeProvider theme={{ mode: THEMES.dark, colors: COLORS }}>
-          <BrowserRouter>
-            <Routes />
-            <GlobalStyles />
-            <ToastContainer />
-          </BrowserRouter>
-        </ThemeProvider>
-      </PersistGate>
-    </Provider>
+    <ThemeProvider theme={{ mode: THEMES.dark, colors: COLORS }}>
+      <BrowserRouter>
+        <UserContext.Provider value={userContext}>
+          <Routes />
+        </UserContext.Provider>
+        <GlobalStyles />
+        <ToastContainer />
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

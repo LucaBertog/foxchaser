@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { State } from '../../interfaces/state.interface';
-import { UserProfile } from '../../interfaces/userProfile.interface';
 
 const baseUrl = `${import.meta.env.VITE_BACKEND_URL}/profile`;
 
@@ -26,13 +25,7 @@ export const profileApi = createApi({
         body: profile,
       }),
     }),
-    getProfile: builder.query<UserProfile, string>({
-      query: (id) => ({
-        url: id,
-        method: 'GET',
-      }),
-    }),
   }),
 });
 
-export const { useGetProfileQuery, useEditProfileMutation } = profileApi;
+export const { useEditProfileMutation } = profileApi;

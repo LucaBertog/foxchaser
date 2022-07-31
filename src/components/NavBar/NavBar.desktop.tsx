@@ -1,8 +1,8 @@
 /* eslint-disable no-underscore-dangle */
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   Container,
   LogoWrapper,
@@ -43,23 +43,13 @@ import {
   rocketLeague,
 } from '../../assets/styles/Icons';
 import { SearchBar } from '../../components';
-import { removeToken, selectToken } from '../../store/Auth/reducer';
-import { DecodedUser } from '../../interfaces/decodedUser.interface';
-import { decodeJWT } from '../../services/decode/decodeJwt';
-import { useGetProfileQuery } from '../../services/api/profile.api';
+import { removeToken } from '../../store/Auth/reducer';
+import { UserContext } from '../../contexts/User.context';
 
 const Desktop: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const token = useSelector(selectToken);
-  const [currentUser, setCurrentUser] = useState<DecodedUser>();
-  const { data: userProfile } = useGetProfileQuery(currentUser?._id || '');
-
-  useEffect(() => {
-    if (!token) return navigate('/', { replace: true });
-    const user = decodeJWT<DecodedUser>(token);
-    return setCurrentUser(user);
-  }, [token]);
+  const { id, profilePicture } = useContext(UserContext);
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -81,14 +71,12 @@ const Desktop: React.FC = () => {
           </LogoWrapper>
         </Link>
         <HeaderWrapper>
-          <Link to={`/profile/${currentUser?._id}`}>
+          <Link to={`/profile/${id}`}>
             <AvatarWrapper>
               <ExitWrapper onClick={handleExitClick}>
                 <Exit />
               </ExitWrapper>
-              <Avatar
-                src={userProfile?.profilePicture.split(' ')[0] || emptyImg}
-              />
+              <Avatar src={profilePicture.split(' ')[0] || emptyImg} />
             </AvatarWrapper>
           </Link>
           <IconWrapper>
