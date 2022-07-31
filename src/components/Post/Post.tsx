@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import moment from 'moment';
 import Modal from 'react-modal';
-// import 'moment/locale/pt-br';
 
 import {
   Container,
@@ -35,8 +34,9 @@ import {
   ModalStyle,
 } from './Post.styles';
 import { useGetUserByIdQuery } from '../../services/api/user.api';
+import { configPtBr } from '../../utils/momentjs-pt-br.utils';
 
-// moment.locale('pt-br');
+moment.updateLocale('pt-br', configPtBr);
 
 const Post: React.FC<{ userId: string; image: string; postDate: string }> = ({
   userId,
@@ -59,9 +59,7 @@ const Post: React.FC<{ userId: string; image: string; postDate: string }> = ({
               <PostCategory>COD Mobile</PostCategory>
               <PostType color='#006889'>Imagem</PostType>
             </Wrapper>
-            <PostingTime>
-              {moment(postDate).locale('pt-br').calendar()}
-            </PostingTime>
+            <PostingTime>{moment(postDate).calendar()}</PostingTime>
           </UserInfo>
         </LeftWrapper>
         <RightWrapper>

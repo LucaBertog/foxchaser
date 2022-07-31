@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 
 import { useEffect, useMemo, useState } from 'react';
+import { skipToken } from '@reduxjs/toolkit/dist/query';
 import GlobalStyles from './assets/styles/GlobalStyles';
 import Routes from './routes/Routes';
 import { THEMES, COLORS } from './constants';
@@ -19,7 +20,9 @@ import { decodeJWT } from './services/decode/decodeJwt';
 function App() {
   const token = useSelector(selectToken);
   const [currentUser, setCurrentUser] = useState<DecodedUser>();
-  const { data: user } = useGetUserByIdQuery(currentUser?._id || '');
+  const { data: user } = useGetUserByIdQuery(
+    currentUser?._id ? currentUser?._id : skipToken
+  );
 
   useEffect(() => {
     if (token) {
