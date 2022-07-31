@@ -102,7 +102,6 @@ export const MoreOptions = styled(MoreHorizontalFill)`
 
 export const Content = styled.div`
   width: 100%;
-  padding: 0 0.8rem;
 
   display: flex;
   justify-content: center;
