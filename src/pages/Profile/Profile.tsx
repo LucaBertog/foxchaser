@@ -7,7 +7,6 @@ import { PostSeparator, PostsWrapper } from '../../assets/styles/GlobalStyles';
 import { LogoLoader, Post, ProfileInfo } from '../../components';
 import { ProfileContext } from '../../contexts/Profile.context';
 import { UserContext } from '../../contexts/User.context';
-import { Post as PostInterface } from '../../interfaces/post.interface';
 import { useGetPostsByUserIdQuery } from '../../services/api/post.api';
 import { useGetUserByIdQuery } from '../../services/api/user.api';
 import { Container } from './Profile.styles';
@@ -63,7 +62,7 @@ const Profile: React.FC = () => {
             {isFetching ? (
               <LogoLoader />
             ) : (
-              posts?.posts.map((post: PostInterface) => (
+              posts?.posts.map((post) => (
                 <div key={post._id}>
                   <Post
                     userId={post.userId}

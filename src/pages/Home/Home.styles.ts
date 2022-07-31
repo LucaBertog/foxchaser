@@ -1,16 +1,20 @@
 import styled from 'styled-components';
+import * as fonts from '../../assets/styles/Fonts';
 
 export const Container = styled.div`
-  /* display: flex;
-  flex-direction: column;
   width: 100%;
   @media (min-width: 1100px) {
     width: 70%;
     padding: 0 4.8rem 0 0;
   }
-  position: relative;
 
   height: 100%;
 
-  padding: 2.4rem 1.6rem; */
+  padding: 2.4rem 1.6rem;
+`;
+
+export const Title = styled.h2`
+  ${fonts.Title2}
+  color: ${(props) => props.theme.mode.colors.text};
+  margin-bottom: 1.6rem;
 `;

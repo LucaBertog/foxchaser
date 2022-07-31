@@ -139,30 +139,42 @@ export const Button = styled.div`
 
 export const LikeIcon = styled(Heart)`
   ${iconCSS}
+  margin: 0 0.8rem 0 0;
 `;
 export const CommentIcon = styled(ChatBubble)`
   ${iconCSS}
+  margin: 0 0.8rem 0 2.4rem;
 `;
 export const ShareIcon = styled(ShareBox)`
   ${iconCSS}
+  margin: 0 0.8rem 0 2.4rem;
 `;
 
 export const Like = styled.p`
+  display: none;
+  @media (min-width: 768px) {
+    display: block;
+  }
   ${fonts.Small}
   color: ${(props) => props.theme.mode.colors.text};
-  margin: 0 2.4rem 0 0.8rem;
 `;
 
 export const Comment = styled.p`
+  display: none;
+  @media (min-width: 768px) {
+    display: block;
+  }
   ${fonts.Small}
   color: ${(props) => props.theme.mode.colors.text};
-  margin: 0 2.4rem 0 0.8rem;
 `;
 
 export const Share = styled.p`
+  display: none;
+  @media (min-width: 768px) {
+    display: block;
+  }
   ${fonts.Small}
   color: ${(props) => props.theme.mode.colors.text};
-  margin: 0 2.4rem 0 0.8rem;
 `;
 
 export const Save = styled(Ribbon)`
