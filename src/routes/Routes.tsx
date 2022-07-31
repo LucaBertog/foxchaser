@@ -18,7 +18,6 @@ const Routes: React.FC = () => (
               <Sidebar />
             </GlobalWrapper>
           </Container>
-          <NewPost />
         </>
       }
     />

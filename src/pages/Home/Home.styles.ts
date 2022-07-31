@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  display: flex;
+  /* display: flex;
+  flex-direction: column;
   width: 100%;
   @media (min-width: 1100px) {
     width: 70%;
@@ -11,12 +12,5 @@ export const Container = styled.div`
 
   height: 100%;
 
-  padding: 2.4rem 1.6rem;
-`;
-
-export const Main = styled.div`
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
+  padding: 2.4rem 1.6rem; */
 `;
