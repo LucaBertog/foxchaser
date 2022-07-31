@@ -20,6 +20,7 @@ export const configPtBr: any = {
     LLLL: 'dddd, D [de] MMMM [de] YYYY [às] HH:mm',
   },
   calendar: {
+    day: (): any => {},
     sameDay: '[Hoje às] LT',
     nextDay: '[Amanhã às] LT',
     nextWeek: 'dddd [às] LT',

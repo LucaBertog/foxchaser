@@ -1,115 +1,134 @@
-import React, { useEffect, useState } from 'react';
-import Glide from '@glidejs/glide';
+/* eslint-disable react/no-children-prop */
+import React from 'react';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 import { Container, ArrowLeft, ArrowRight } from './OfferCards.styles';
 import OfferCard from './OfferCard/OfferCard';
 import { steam } from '../../assets/styles/Icons';
 
 const OfferCards: React.FC = () => {
-  const [glide] = useState(
-    new Glide('.glide', {
-      perView: 5,
-      breakpoints: {
-        768: {
-          perView: 3,
-        },
-        1100: {
-          perView: 5,
-        },
-        1400: {
-          perView: 4,
-        },
-        100000: {
-          perView: 5,
-        },
-      },
-      gap: 16,
-      bound: true,
-    })
-  );
-
-  useEffect(() => {
-    glide.mount();
-  }, []);
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1400 },
+      items: 6,
+      partialVisibilityGutter: 0,
+    },
+    tablet: {
+      breakpoint: { max: 1400, min: 768 },
+      items: 4,
+      partialVisibilityGutter: 0,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 4,
+      partialVisibilityGutter: 0,
+    },
+  };
 
   return (
-    <Container className='glide'>
-      <div className='glide__arrows' data-glide-el='controls'>
-        <button
-          type='button'
-          className='glide__arrow glide__arrow--left'
-          data-glide-dir='<'
-        >
-          <ArrowLeft />
-        </button>
-      </div>
-      <div className='glide__track' data-glide-el='track'>
-        <ul className='glide__slides'>
-          <OfferCard
-            accentColor='#121212'
-            gameImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_kBqbIYZaZEfstssFiKSNtQPetyj8rUYI9ONYRuIaBlpe9v4JoR2-Ova6QHIZuGFDORI&usqp=CAU'
-            bgColor='#000'
-            logoEnt={steam}
-            name='Grand Theft Auto V'
-            discount='20%'
-            price='R$ 100'
-          />{' '}
-          <OfferCard
-            accentColor='#121212'
-            gameImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_kBqbIYZaZEfstssFiKSNtQPetyj8rUYI9ONYRuIaBlpe9v4JoR2-Ova6QHIZuGFDORI&usqp=CAU'
-            bgColor='#000'
-            logoEnt={steam}
-            name='Grand Theft Auto V'
-            discount='20%'
-            price='R$ 100'
-          />{' '}
-          <OfferCard
-            accentColor='#121212'
-            gameImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_kBqbIYZaZEfstssFiKSNtQPetyj8rUYI9ONYRuIaBlpe9v4JoR2-Ova6QHIZuGFDORI&usqp=CAU'
-            bgColor='#000'
-            logoEnt={steam}
-            name='Grand Theft Auto V'
-            discount='20%'
-            price='R$ 100'
-          />{' '}
-          <OfferCard
-            accentColor='#121212'
-            gameImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_kBqbIYZaZEfstssFiKSNtQPetyj8rUYI9ONYRuIaBlpe9v4JoR2-Ova6QHIZuGFDORI&usqp=CAU'
-            bgColor='#000'
-            logoEnt={steam}
-            name='Grand Theft Auto V'
-            discount='20%'
-            price='R$ 100'
-          />{' '}
-          <OfferCard
-            accentColor='#121212'
-            gameImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_kBqbIYZaZEfstssFiKSNtQPetyj8rUYI9ONYRuIaBlpe9v4JoR2-Ova6QHIZuGFDORI&usqp=CAU'
-            bgColor='#000'
-            logoEnt={steam}
-            name='Grand Theft Auto V'
-            discount='-20%'
-            price='R$ 100'
-          />{' '}
-          <OfferCard
-            accentColor='#121212'
-            gameImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_kBqbIYZaZEfstssFiKSNtQPetyj8rUYI9ONYRuIaBlpe9v4JoR2-Ova6QHIZuGFDORI&usqp=CAU'
-            bgColor='#000'
-            logoEnt={steam}
-            name='Grand Theft Auto V'
-            discount='20%'
-            price='R$ 100'
-          />
-        </ul>
-      </div>
-      <div className='glide__arrows' data-glide-el='controls'>
-        <button
-          type='button'
-          className='glide__arrow glide__arrow--right'
-          data-glide-dir='>'
-        >
-          <ArrowRight />
-        </button>
-      </div>
+    <Container>
+      <Carousel responsive={responsive} keyBoardControl>
+        <OfferCard
+          accentColor='#121212'
+          gameImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_kBqbIYZaZEfstssFiKSNtQPetyj8rUYI9ONYRuIaBlpe9v4JoR2-Ova6QHIZuGFDORI&usqp=CAU'
+          bgColor='#000'
+          logoEnt={steam}
+          name='Grand Theft Auto V'
+          discount='20%'
+          price='R$ 100'
+        />
+        <OfferCard
+          accentColor='#121212'
+          gameImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_kBqbIYZaZEfstssFiKSNtQPetyj8rUYI9ONYRuIaBlpe9v4JoR2-Ova6QHIZuGFDORI&usqp=CAU'
+          bgColor='#000'
+          logoEnt={steam}
+          name='Grand Theft Auto V'
+          discount='20%'
+          price='R$ 100'
+        />
+        <OfferCard
+          accentColor='#121212'
+          gameImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_kBqbIYZaZEfstssFiKSNtQPetyj8rUYI9ONYRuIaBlpe9v4JoR2-Ova6QHIZuGFDORI&usqp=CAU'
+          bgColor='#000'
+          logoEnt={steam}
+          name='Grand Theft Auto V'
+          discount='20%'
+          price='R$ 100'
+        />
+        <OfferCard
+          accentColor='#121212'
+          gameImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_kBqbIYZaZEfstssFiKSNtQPetyj8rUYI9ONYRuIaBlpe9v4JoR2-Ova6QHIZuGFDORI&usqp=CAU'
+          bgColor='#000'
+          logoEnt={steam}
+          name='Grand Theft Auto V'
+          discount='20%'
+          price='R$ 100'
+        />
+        <OfferCard
+          accentColor='#121212'
+          gameImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_kBqbIYZaZEfstssFiKSNtQPetyj8rUYI9ONYRuIaBlpe9v4JoR2-Ova6QHIZuGFDORI&usqp=CAU'
+          bgColor='#000'
+          logoEnt={steam}
+          name='Grand Theft Auto V'
+          discount='20%'
+          price='R$ 100'
+        />
+        <OfferCard
+          accentColor='#121212'
+          gameImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_kBqbIYZaZEfstssFiKSNtQPetyj8rUYI9ONYRuIaBlpe9v4JoR2-Ova6QHIZuGFDORI&usqp=CAU'
+          bgColor='#000'
+          logoEnt={steam}
+          name='Grand Theft Auto V'
+          discount='20%'
+          price='R$ 100'
+        />
+        <OfferCard
+          accentColor='#121212'
+          gameImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_kBqbIYZaZEfstssFiKSNtQPetyj8rUYI9ONYRuIaBlpe9v4JoR2-Ova6QHIZuGFDORI&usqp=CAU'
+          bgColor='#000'
+          logoEnt={steam}
+          name='Grand Theft Auto V'
+          discount='20%'
+          price='R$ 100'
+        />
+        <OfferCard
+          accentColor='#121212'
+          gameImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_kBqbIYZaZEfstssFiKSNtQPetyj8rUYI9ONYRuIaBlpe9v4JoR2-Ova6QHIZuGFDORI&usqp=CAU'
+          bgColor='#000'
+          logoEnt={steam}
+          name='Grand Theft Auto V'
+          discount='20%'
+          price='R$ 100'
+        />
+        <OfferCard
+          accentColor='#121212'
+          gameImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_kBqbIYZaZEfstssFiKSNtQPetyj8rUYI9ONYRuIaBlpe9v4JoR2-Ova6QHIZuGFDORI&usqp=CAU'
+          bgColor='#000'
+          logoEnt={steam}
+          name='Grand Theft Auto V'
+          discount='20%'
+          price='R$ 100'
+        />
+        <OfferCard
+          accentColor='#121212'
+          gameImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_kBqbIYZaZEfstssFiKSNtQPetyj8rUYI9ONYRuIaBlpe9v4JoR2-Ova6QHIZuGFDORI&usqp=CAU'
+          bgColor='#000'
+          logoEnt={steam}
+          name='Grand Theft Auto V'
+          discount='20%'
+          price='R$ 100'
+        />
+        <OfferCard
+          accentColor='#121212'
+          gameImg='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_kBqbIYZaZEfstssFiKSNtQPetyj8rUYI9ONYRuIaBlpe9v4JoR2-Ova6QHIZuGFDORI&usqp=CAU'
+          bgColor='#000'
+          logoEnt={steam}
+          name='Grand Theft Auto V'
+          discount='20%'
+          price='R$ 100'
+        />
+      </Carousel>
     </Container>
   );
 };

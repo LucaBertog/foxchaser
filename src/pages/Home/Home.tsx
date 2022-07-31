@@ -21,6 +21,7 @@ const Home: React.FC = () => {
         {username}
       </Title>
       <TopNews />
+      {/* <OfferCards /> */}
       <PostsWrapper>
         {isFetching ? (
           <LogoLoader />

@@ -2,13 +2,15 @@ import styled from 'styled-components';
 
 import * as fonts from '../../../assets/styles/Fonts';
 
-export const Container = styled.li.attrs(() => ({
-  className: 'glide__slide',
-}))<{
+export const Container = styled.div<{
   url: string;
   accentColor: string;
 }>`
-  position: relative;
+  width: 6rem;
+  height: 6rem;
+  background-color: green;
+
+  /* position: relative;
 
   display: flex;
   flex-direction: column;
@@ -30,6 +32,8 @@ export const Container = styled.li.attrs(() => ({
   flex-shrink: 0;
 
   cursor: pointer;
+
+  user-select: none; */
 `;
 
 export const WrapperLogo = styled.div`
