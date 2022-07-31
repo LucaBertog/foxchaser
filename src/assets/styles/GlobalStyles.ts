@@ -44,23 +44,31 @@ export default createGlobalStyle`
 `;
 
 export const Container = styled.section`
-  padding: 5.6rem 0;
-  @media (min-width: 768px) {
-    padding: 0 0 0 7.8rem;
-  }
-
-  @media (min-width: 1100px) {
-    padding: 2.4rem 4.8rem 0 calc(7.8rem + 4.8rem);
-  }
-
-  @media (min-width: 1400px) {
-    padding: 2.4rem 10% 0 calc(7.8rem + 10%);
-  }
-
   display: flex;
+  justify-content: center;
   width: 100%;
   min-height: 100%;
   background: ${(props) => props.theme.mode.colors.body};
+`;
+
+export const GlobalWrapper = styled.div`
+  max-width: 120rem;
+  display: flex;
+
+  width: 100%;
+
+  margin: 5.6rem 0;
+  @media (min-width: 768px) {
+    margin: 0 4.8rem 0 calc(7.8rem + 4.8rem);
+  }
+
+  @media (min-width: 1100px) {
+    margin: 2.4rem 4.8rem 0 calc(7.8rem + 4.8rem);
+  }
+
+  @media (min-width: 1400px) {
+    margin: 2.4rem 0 0 7.8rem;
+  }
 `;
 
 export const PostsWrapper = styled.div`

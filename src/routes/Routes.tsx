@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes as Switch } from 'react-router-dom';
 import { NavBar, NewPost, Sidebar } from '../components';
 import { Home, Index, Login, Profile, Register } from '../pages';
-import { Container } from '../assets/styles/GlobalStyles';
+import { Container, GlobalWrapper } from '../assets/styles/GlobalStyles';
 
 const Routes: React.FC = () => (
   <Switch>
@@ -13,8 +13,10 @@ const Routes: React.FC = () => (
         <>
           <NavBar />
           <Container>
-            <Home />
-            <Sidebar />
+            <GlobalWrapper>
+              <Home />
+              <Sidebar />
+            </GlobalWrapper>
           </Container>
           <NewPost />
         </>
@@ -26,8 +28,10 @@ const Routes: React.FC = () => (
         <>
           <NavBar />
           <Container>
-            <Profile />
-            <Sidebar />
+            <GlobalWrapper>
+              <Profile />
+              <Sidebar />
+            </GlobalWrapper>
           </Container>
           <NewPost />
         </>

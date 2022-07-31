@@ -4,6 +4,8 @@ import ModalNewPost from './ModalNewPost/ModalNewPost';
 
 import {
   Container,
+  Wrapper,
+  MenuWrapper,
   Menu,
   Toggle,
   Li,
@@ -27,30 +29,34 @@ const NewPost: React.FC = () => {
 
   return (
     <Container>
-      <Menu ref={menuEl}>
-        <Toggle onClick={() => menuEl.current.classList.toggle('active')}>
-          <Plus />
-        </Toggle>
-        <Li rotate={0} onClick={openNewPostModal}>
-          <Link to='#1'>
-            <ImageIcon />
-          </Link>
-        </Li>
-        <Li rotate={1}>
-          <Link to='#1'>
-            <PencilIcon />
-          </Link>
-        </Li>
-        <Li rotate={2}>
-          <Link to='#1'>
-            <CheckIcon />
-          </Link>
-        </Li>
-      </Menu>
-      <ModalNewPost
-        isOpen={isNewPostModalOpen}
-        onRequestClose={closeNewPostModal}
-      />
+      <Wrapper>
+        <MenuWrapper>
+          <Menu ref={menuEl}>
+            <Toggle onClick={() => menuEl.current.classList.toggle('active')}>
+              <Plus />
+            </Toggle>
+            <Li rotate={0} onClick={openNewPostModal}>
+              <Link to='#1'>
+                <ImageIcon />
+              </Link>
+            </Li>
+            <Li rotate={1}>
+              <Link to='#1'>
+                <PencilIcon />
+              </Link>
+            </Li>
+            <Li rotate={2}>
+              <Link to='#1'>
+                <CheckIcon />
+              </Link>
+            </Li>
+          </Menu>
+          <ModalNewPost
+            isOpen={isNewPostModalOpen}
+            onRequestClose={closeNewPostModal}
+          />
+        </MenuWrapper>
+      </Wrapper>
     </Container>
   );
 };
