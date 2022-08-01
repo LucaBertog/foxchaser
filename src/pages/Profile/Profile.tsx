@@ -66,6 +66,7 @@ const Profile: React.FC = () => {
                 <div key={post._id}>
                   <Post
                     userId={post.userId}
+                    postId={post._id}
                     image={post.image.split(' ')[0]}
                     postDate={post.createdAt}
                   />

@@ -29,6 +29,7 @@ const Home: React.FC = () => {
           posts?.posts.map((post) => (
             <div key={post._id}>
               <Post
+                postId={post._id}
                 userId={post.userId}
                 image={post.image.split(' ')[0]}
                 postDate={post.createdAt}

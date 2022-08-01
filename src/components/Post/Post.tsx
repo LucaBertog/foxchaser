@@ -32,19 +32,32 @@ import {
   ShareIcon,
   Overlay,
   ModalStyle,
+  OptionsWrapper,
+  OptionWrapper,
+  DeleteIcon,
+  EditIcon,
+  Option,
 } from './Post.styles';
 import { useGetUserByIdQuery } from '../../services/api/user.api';
 import { configPtBr } from '../../utils/momentjs-pt-br.utils';
+import ConfirmationModalDeletePost from './ConfirmationModalDeletePost/ConfirmationModalDeletePost';
 
+Modal.setAppElement('#root');
 moment.updateLocale('pt-br', configPtBr);
 
-const Post: React.FC<{ userId: string; image: string; postDate: string }> = ({
-  userId,
-  image,
-  postDate,
-}) => {
+const Post: React.FC<{
+  userId: string;
+  postId: string;
+  image: string;
+  postDate: string;
+}> = ({ userId, postId, image, postDate }) => {
   const { data: user } = useGetUserByIdQuery(userId);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMoreOptionsOpen, setIsMoreOptionsOpen] = useState(false);
+  const [
+    isConfirmationModalDeletePostOpen,
+    setIsConfirmationModalDeletePostOpen,
+  ] = useState(false);
 
   return (
     <Container>
@@ -63,7 +76,24 @@ const Post: React.FC<{ userId: string; image: string; postDate: string }> = ({
           </UserInfo>
         </LeftWrapper>
         <RightWrapper>
-          <MoreOptions />
+          <MoreOptions
+            onClick={() => setIsMoreOptionsOpen(!isMoreOptionsOpen)}
+          />
+          <OptionsWrapper isMoreOptionsOpen={isMoreOptionsOpen}>
+            <OptionWrapper>
+              <DeleteIcon />
+              <Option
+                onClick={() => setIsConfirmationModalDeletePostOpen(true)}
+                isExclude
+              >
+                Excluir postagem
+              </Option>
+            </OptionWrapper>
+            <OptionWrapper>
+              <EditIcon />
+              <Option isExclude={false}>Editar postagem</Option>
+            </OptionWrapper>
+          </OptionsWrapper>
         </RightWrapper>
       </PostHeader>
       <Content>
@@ -102,6 +132,11 @@ const Post: React.FC<{ userId: string; image: string; postDate: string }> = ({
           <Save />
         </RightWrapper>
       </PostFooter>
+      <ConfirmationModalDeletePost
+        isOpen={isConfirmationModalDeletePostOpen}
+        onRequestClose={() => setIsConfirmationModalDeletePostOpen(false)}
+        postId={postId}
+      />
     </Container>
   );
 };

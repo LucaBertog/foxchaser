@@ -1,10 +1,12 @@
 import styled, { css } from 'styled-components';
 import {
   ChatBubble,
+  Edit,
   Heart,
   MoreHorizontalFill,
   Ribbon,
   ShareBox,
+  TrashCan,
 } from 'akar-icons';
 import * as fonts from '../../assets/styles/Fonts';
 
@@ -91,6 +93,7 @@ export const PostingTime = styled.p`
 `;
 
 export const RightWrapper = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -122,6 +125,10 @@ export const Image = styled.img`
   object-fit: cover;
 
   border-radius: 1.6rem;
+
+  user-select: none;
+
+  cursor: pointer;
 `;
 
 export const PostFooter = styled.div`
@@ -199,10 +206,53 @@ export const ModalStyle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  user-select: none;
 
   > img {
     object-fit: contain;
     width: 100%;
     max-height: 100vh;
+
+    user-select: none;
   }
+`;
+
+export const OptionsWrapper = styled.div<{ isMoreOptionsOpen: boolean }>`
+  ${(props) => (props.isMoreOptionsOpen ? `display: block;` : `display: none;`)}
+
+  position: absolute;
+  top: 3rem;
+  right: 0;
+  padding: 1.8rem 1.6rem;
+  background: ${(props) => props.theme.mode.colors.iconDark};
+  border-radius: 1.6rem;
+`;
+
+export const OptionWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  cursor: pointer;
+  &:not(:last-of-type) {
+    margin-bottom: 0.8rem;
+  }
+`;
+
+export const DeleteIcon = styled(TrashCan)`
+  ${iconCSS}
+  color: #FF6C6C;
+`;
+
+export const EditIcon = styled(Edit)`
+  ${iconCSS}
+`;
+
+export const Option = styled.p<{ isExclude: boolean }>`
+  ${fonts.Small}
+  color: ${(props) => props.theme.mode.colors.text};
+  ${(props) => props.isExclude && 'color: #FF6C6C;'}
+
+  margin-left: 0.8rem;
+  white-space: nowrap;
+
+  user-select: none;
 `;

@@ -19,6 +19,12 @@ export const postApi = createApi({
     },
   }),
   endpoints: (builder) => ({
+    deletePost: builder.mutation<any, string>({
+      query: (id) => ({
+        url: id,
+        method: 'DELETE',
+      }),
+    }),
     createPost: builder.mutation({
       query: (post: FormData) => ({
         url: '',
@@ -45,6 +51,7 @@ export const postApi = createApi({
 });
 
 export const {
+  useDeletePostMutation,
   useGetTimelineQuery,
   useCreatePostMutation,
   useGetPostsByUserIdQuery,
