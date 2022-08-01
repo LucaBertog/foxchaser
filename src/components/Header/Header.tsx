@@ -8,11 +8,11 @@ import { SearchBar as Search } from '..';
 import { UserContext } from '../../contexts/User.context';
 
 const Header: React.FC = () => {
-  const { id, profilePicture } = useContext(UserContext);
+  const { username, profilePicture } = useContext(UserContext);
 
   return (
     <Container>
-      <Link to={`/profile/${id}`}>
+      <Link to={`/profile/${username}`}>
         <MenuAvatar src={profilePicture.split(' ')[0] || emptyImg} />
       </Link>
       <Link to='/home/'>

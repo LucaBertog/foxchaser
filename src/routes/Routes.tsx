@@ -23,7 +23,7 @@ const Routes: React.FC = () => (
       }
     />
     <Route
-      path='/profile/:id'
+      path='/profile/:username'
       element={
         <>
           <NavBar />

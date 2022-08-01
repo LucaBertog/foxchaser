@@ -66,12 +66,12 @@ const Post: React.FC<{
     <Container>
       <PostHeader>
         <LeftWrapper>
-          <Link to={`/profile/${userId}`}>
+          <Link to={`/profile/${user?.user.username}`}>
             <UserImage src={user?.user.profilePicture.split(' ')[0]} />
           </Link>
           <UserInfo>
             <Wrapper>
-              <Link to={`/profile/${userId}`}>
+              <Link to={`/profile/${user?.user.username}`}>
                 <Username>{user?.user.name}</Username>
                 <Emblems />
               </Link>

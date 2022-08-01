@@ -21,7 +21,13 @@ export const userApi = createApi({
   endpoints: (builder) => ({
     getUserById: builder.query<{ statusCode: string; user: User }, any>({
       query: (id) => ({
-        url: id,
+        url: `/id/${id}`,
+        method: 'GET',
+      }),
+    }),
+    getUserByUsername: builder.query<{ statusCode: string; user: User }, any>({
+      query: (username) => ({
+        url: username,
         method: 'GET',
       }),
     }),
@@ -48,6 +54,7 @@ export const userApi = createApi({
 
 export const {
   useGetUserByIdQuery,
+  useGetUserByUsernameQuery,
   useFollowUserMutation,
   useUnfollowUserMutation,
 } = userApi;

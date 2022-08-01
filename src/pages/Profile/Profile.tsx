@@ -1,6 +1,5 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-underscore-dangle */
-import { skipToken } from '@reduxjs/toolkit/dist/query';
 import React, { useContext, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { PostSeparator, PostsWrapper } from '../../assets/styles/GlobalStyles';
@@ -8,45 +7,48 @@ import { LogoLoader, Post, ProfileInfo } from '../../components';
 import { ProfileContext } from '../../contexts/Profile.context';
 import { UserContext } from '../../contexts/User.context';
 import { useGetPostsByUserIdQuery } from '../../services/api/post.api';
-import { useGetUserByIdQuery } from '../../services/api/user.api';
+import { useGetUserByUsernameQuery } from '../../services/api/user.api';
 import { Container } from './Profile.styles';
 
 const Profile: React.FC = () => {
-  const { id } = useParams();
+  const { username } = useParams();
   const {
-    id: currentUserId,
+    id,
     name,
-    username,
+    username: currentUserUsername,
     description,
     profilePicture,
     coverPicture,
   } = useContext(UserContext);
 
-  const { data: userProfile, isLoading } = useGetUserByIdQuery(
-    id === currentUserId ? skipToken : id
+  const { data: userProfile, isLoading } = useGetUserByUsernameQuery(
+    username === currentUserUsername ? currentUserUsername : username
   );
-  const { data: posts, isFetching } = useGetPostsByUserIdQuery(id || '');
+
+  const { data: posts, isFetching } = useGetPostsByUserIdQuery(
+    userProfile?.user.id || id
+  );
 
   const profileContext = useMemo(
     () =>
-      id === currentUserId
+      username === currentUserUsername
         ? {
-            id: currentUserId,
+            id,
             name,
-            username,
+            username: currentUserUsername,
             description,
             profilePicture,
             coverPicture,
           }
         : {
-            id: id || '',
+            id: userProfile?.user.id || '',
             name: userProfile?.user.name || '',
             username: userProfile?.user.username || '',
             description: userProfile?.user.description || '',
             profilePicture: userProfile?.user.profilePicture || '',
             coverPicture: userProfile?.user.coverPicture || '',
           },
-    [userProfile, id, currentUserId]
+    [userProfile, id, currentUserUsername]
   );
 
   return (

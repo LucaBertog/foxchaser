@@ -49,7 +49,7 @@ import { UserContext } from '../../contexts/User.context';
 const Desktop: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { id, profilePicture } = useContext(UserContext);
+  const { username, profilePicture } = useContext(UserContext);
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -71,7 +71,7 @@ const Desktop: React.FC = () => {
           </LogoWrapper>
         </Link>
         <HeaderWrapper>
-          <Link to={`/profile/${id}`}>
+          <Link to={`/profile/${username}`}>
             <AvatarWrapper>
               <ExitWrapper onClick={handleExitClick}>
                 <Exit />
