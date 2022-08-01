@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/no-unstable-nested-components */
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import moment from 'moment';
 import Modal from 'react-modal';
 
@@ -41,6 +41,7 @@ import {
 import { useGetUserByIdQuery } from '../../services/api/user.api';
 import { configPtBr } from '../../utils/momentjs-pt-br.utils';
 import ConfirmationModalDeletePost from './ConfirmationModalDeletePost/ConfirmationModalDeletePost';
+import { UserContext } from '../../contexts/User.context';
 
 Modal.setAppElement('#root');
 moment.updateLocale('pt-br', configPtBr);
@@ -51,6 +52,7 @@ const Post: React.FC<{
   image: string;
   postDate: string;
 }> = ({ userId, postId, image, postDate }) => {
+  const { id: currentUserId } = useContext(UserContext);
   const { data: user } = useGetUserByIdQuery(userId);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMoreOptionsOpen, setIsMoreOptionsOpen] = useState(false);
@@ -80,19 +82,38 @@ const Post: React.FC<{
             onClick={() => setIsMoreOptionsOpen(!isMoreOptionsOpen)}
           />
           <OptionsWrapper isMoreOptionsOpen={isMoreOptionsOpen}>
-            <OptionWrapper>
-              <DeleteIcon />
-              <Option
-                onClick={() => setIsConfirmationModalDeletePostOpen(true)}
-                isExclude
-              >
-                Excluir postagem
-              </Option>
-            </OptionWrapper>
-            <OptionWrapper>
-              <EditIcon />
-              <Option isExclude={false}>Editar postagem</Option>
-            </OptionWrapper>
+            {currentUserId === userId ? (
+              <>
+                <OptionWrapper>
+                  <DeleteIcon />
+                  <Option
+                    onClick={() => setIsConfirmationModalDeletePostOpen(true)}
+                    isExclude
+                  >
+                    Excluir postagem
+                  </Option>
+                </OptionWrapper>
+                <OptionWrapper>
+                  <EditIcon />
+                  <Option isExclude={false}>Editar postagem</Option>
+                </OptionWrapper>
+              </>
+            ) : (
+              <>
+                <OptionWrapper>
+                  <EditIcon />
+                  <Option isExclude={false}>Reportar postagem</Option>
+                </OptionWrapper>
+                <OptionWrapper>
+                  <EditIcon />
+                  <Option isExclude={false}>Bloquear</Option>
+                </OptionWrapper>
+                <OptionWrapper>
+                  <EditIcon />
+                  <Option isExclude={false}>Silenciar</Option>
+                </OptionWrapper>
+              </>
+            )}
           </OptionsWrapper>
         </RightWrapper>
       </PostHeader>

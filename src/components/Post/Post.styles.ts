@@ -223,7 +223,7 @@ export const OptionsWrapper = styled.div<{ isMoreOptionsOpen: boolean }>`
   position: absolute;
   top: 3rem;
   right: 0;
-  padding: 1.8rem 1.6rem;
+
   background: ${(props) => props.theme.mode.colors.iconDark};
   border-radius: 1.6rem;
 `;
@@ -232,8 +232,20 @@ export const OptionWrapper = styled.div`
   width: 100%;
   display: flex;
   cursor: pointer;
-  &:not(:last-of-type) {
-    margin-bottom: 0.8rem;
+  padding: 0.8rem 1.6rem;
+
+  &:first-of-type {
+    padding: 1.6rem 1.6rem 0.8rem 1.6rem;
+    border-radius: 1.6rem 1.6rem 0 0;
+  }
+
+  &:last-of-type {
+    padding: 0.8rem 1.6rem 1.6rem 1.6rem;
+    border-radius: 0 0 1.6rem 1.6rem;
+  }
+
+  &:hover {
+    background: ${(props) => props.theme.mode.colors.bgIconDark};
   }
 `;
 
