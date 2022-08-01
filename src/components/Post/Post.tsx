@@ -4,6 +4,7 @@ import React, { useContext, useState } from 'react';
 import moment from 'moment';
 import Modal from 'react-modal';
 
+import { Link } from 'react-router-dom';
 import {
   Container,
   PostHeader,
@@ -65,11 +66,15 @@ const Post: React.FC<{
     <Container>
       <PostHeader>
         <LeftWrapper>
-          <UserImage src={user?.user.profilePicture.split(' ')[0]} />
+          <Link to={`/profile/${userId}`}>
+            <UserImage src={user?.user.profilePicture.split(' ')[0]} />
+          </Link>
           <UserInfo>
             <Wrapper>
-              <Username>{user?.user.name}</Username>
-              <Emblems />
+              <Link to={`/profile/${userId}`}>
+                <Username>{user?.user.name}</Username>
+                <Emblems />
+              </Link>
               <Separator />
               <PostCategory>COD Mobile</PostCategory>
               <PostType color='#006889'>Imagem</PostType>
