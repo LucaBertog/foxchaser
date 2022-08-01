@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react';
 
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import {
   Container,
   Wrapper,
@@ -8,16 +10,24 @@ import {
   Username,
   Emblems,
   EditProfileButton,
+  FollowButton,
 } from './ProfileCard.styles';
 import emptyImg from '../../../assets/imgs/empty.jpg';
 import { ProfileContext } from '../../../contexts/Profile.context';
 import EditProfile from './EditProfile/EditProfile';
 import { UserContext } from '../../../contexts/User.context';
+import {
+  useFollowUserMutation,
+  useUnfollowUserMutation,
+} from '../../../services/api/user.api';
 
 const CardProfile: React.FC = () => {
+  const navigate = useNavigate();
+  const [followUser] = useFollowUserMutation();
+  const [unfollowUser] = useUnfollowUserMutation();
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
   const { id, profilePicture, name, username } = useContext(ProfileContext);
-  const { id: currentUserId } = useContext(UserContext);
+  const { id: currentUserId, followings } = useContext(UserContext);
 
   const openEditProfileModal = () => {
     setIsEditProfileModalOpen(true);
@@ -25,6 +35,38 @@ const CardProfile: React.FC = () => {
 
   const closeEditProfileModal = () => {
     setIsEditProfileModalOpen(false);
+  };
+
+  const handleFollowUser = async () => {
+    try {
+      await followUser(id).unwrap();
+      return navigate(0);
+    } catch (error: any) {
+      if (error?.data.message) return toast.error(error.data.message);
+      return toast.error('Erro desconhecido');
+    }
+  };
+
+  const handleUnfollowUser = async () => {
+    try {
+      await unfollowUser(id).unwrap();
+      return navigate(0);
+    } catch (error: any) {
+      if (error?.data.message) return toast.error(error.data.message);
+      return toast.error('Erro desconhecido');
+    }
+  };
+
+  const checkIfUserAlreadyFollows = () => {
+    if (followings.includes(id)) {
+      return (
+        <FollowButton onClick={handleUnfollowUser}>
+          Parar de seguir
+        </FollowButton>
+      );
+    }
+
+    return <FollowButton onClick={handleFollowUser}>Seguir</FollowButton>;
   };
 
   return (
@@ -39,7 +81,7 @@ const CardProfile: React.FC = () => {
             Editar perfil
           </EditProfileButton>
         ) : (
-          'Oi'
+          checkIfUserAlreadyFollows()
         )}
       </Wrapper>
       <EditProfile

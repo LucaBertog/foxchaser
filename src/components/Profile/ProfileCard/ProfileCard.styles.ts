@@ -1,5 +1,20 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import * as fonts from '../../../assets/styles/Fonts';
+
+const buttonCSS = css`
+  ${fonts.Captar}
+  color: ${(props) => props.theme.mode.colors.text};
+
+  padding: 0.2rem 1.6rem;
+
+  height: 2rem;
+  background: ${(props) => props.theme.mode.colors.iconDark};
+  border-radius: 1.6rem;
+
+  cursor: pointer;
+
+  margin: 1.6rem 0 1.6rem 0;
+`;
 
 export const Container = styled.div`
   position: relative;
@@ -58,16 +73,9 @@ export const Emblems = styled.div`
 `;
 
 export const EditProfileButton = styled.button`
-  ${fonts.Captar}
-  color: ${(props) => props.theme.mode.colors.text};
+  ${buttonCSS}
+`;
 
-  padding: 0.2rem 1.6rem;
-
-  height: 2rem;
-  background: ${(props) => props.theme.mode.colors.iconDark};
-  border-radius: 1.6rem;
-
-  cursor: pointer;
-
-  margin: 1.6rem 0 1.6rem 0;
+export const FollowButton = styled.button`
+  ${buttonCSS}
 `;
