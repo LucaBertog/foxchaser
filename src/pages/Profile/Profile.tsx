@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-underscore-dangle */
-import React, { useContext, useMemo } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useContext, useEffect, useMemo } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { PostSeparator, PostsWrapper } from '../../assets/styles/GlobalStyles';
 import { LogoLoader, Post, ProfileInfo } from '../../components';
 import { ProfileContext } from '../../contexts/Profile.context';
@@ -11,6 +11,7 @@ import { useGetUserByUsernameQuery } from '../../services/api/user.api';
 import { Container } from './Profile.styles';
 
 const Profile: React.FC = () => {
+  const navigate = useNavigate();
   const { username } = useParams();
   const {
     id,
@@ -21,9 +22,17 @@ const Profile: React.FC = () => {
     coverPicture,
   } = useContext(UserContext);
 
-  const { data: userProfile, isLoading } = useGetUserByUsernameQuery(
+  const {
+    data: userProfile,
+    isLoading,
+    error,
+  } = useGetUserByUsernameQuery(
     username === currentUserUsername ? currentUserUsername : username
   );
+
+  useEffect(() => {
+    if ((error as any)?.data.statusCode === 404) navigate('/404');
+  }, [error]);
 
   const { data: posts, isFetching } = useGetPostsByUserIdQuery(
     userProfile?.user.id || id
