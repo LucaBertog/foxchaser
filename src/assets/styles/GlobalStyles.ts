@@ -76,7 +76,7 @@ export const PostsWrapper = styled.div`
   width: 100%;
 
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
 
   background: ${(props) => props.theme.mode.colors.container};
   border-radius: 1.6rem 1.6rem 0 0;
