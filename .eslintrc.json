@@ -33,6 +33,9 @@
         "react/function-component-definition": "off",
         "no-unused-vars": "warn",
         "react/react-in-jsx-scope": "off",
-        "import/extensions": "off"
+        "import/extensions": "off",
+        "react/require-default-props": "off",
+        "react/no-unstable-nested-components": "off",
+        "react/jsx-props-no-spreading": "off"
     }
 }

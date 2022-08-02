@@ -26,17 +26,23 @@ const Home: React.FC = () => {
         {isFetching ? (
           <LogoLoader />
         ) : (
-          posts?.posts.map((post) => (
-            <div key={post._id}>
-              <Post
-                postId={post._id}
-                userId={post.userId}
-                image={post.image.split(' ')[0]}
-                postDate={post.createdAt}
-              />
-              <PostSeparator />
-            </div>
-          ))
+          posts?.posts.map((post) => {
+            const image = post?.image && post.image.split(' ')[0];
+            const text = post.text && post.text;
+
+            return (
+              <div key={post._id}>
+                <Post
+                  userId={post.userId}
+                  postId={post._id}
+                  image={image}
+                  text={text}
+                  postDate={post.createdAt}
+                />
+                <PostSeparator />
+              </div>
+            );
+          })
         )}
       </PostsWrapper>
     </Container>

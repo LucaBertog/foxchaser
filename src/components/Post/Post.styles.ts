@@ -103,34 +103,6 @@ export const MoreOptions = styled(MoreHorizontalFill)`
   ${iconCSS}
 `;
 
-export const Content = styled.div`
-  width: 100%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  > div > img {
-    width: 100%;
-    max-height: 80rem;
-    object-fit: cover;
-
-    border-radius: 1.6rem;
-  }
-`;
-
-export const Image = styled.img`
-  width: 100%;
-  max-height: 80rem;
-  object-fit: cover;
-
-  border-radius: 1.6rem;
-
-  user-select: none;
-
-  cursor: pointer;
-`;
-
 export const PostFooter = styled.div`
   padding: 1.6rem 2.4rem;
 
@@ -186,35 +158,6 @@ export const Share = styled.p`
 
 export const Save = styled(Ribbon)`
   ${iconCSS}
-`;
-
-export const Overlay = styled.div`
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: rgba(6, 9, 17, 0.9);
-  z-index: 999;
-  inset: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const ModalStyle = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  user-select: none;
-
-  > img {
-    object-fit: contain;
-    width: 100%;
-    max-height: 100vh;
-
-    user-select: none;
-  }
 `;
 
 export const OptionsWrapper = styled.div<{ isMoreOptionsOpen: boolean }>`

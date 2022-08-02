@@ -1,9 +1,5 @@
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable react/no-unstable-nested-components */
 import React, { useContext, useState } from 'react';
 import moment from 'moment';
-import Modal from 'react-modal';
-
 import { Link } from 'react-router-dom';
 import {
   Container,
@@ -19,20 +15,16 @@ import {
   PostType,
   RightWrapper,
   MoreOptions,
-  Content,
   PostFooter,
   Like,
   Comment,
   Share,
   Save,
   PostingTime,
-  Image,
   Button,
   LikeIcon,
   CommentIcon,
   ShareIcon,
-  Overlay,
-  ModalStyle,
   OptionsWrapper,
   OptionWrapper,
   DeleteIcon,
@@ -43,19 +35,20 @@ import { useGetUserByIdQuery } from '../../services/api/user.api';
 import { configPtBr } from '../../utils/momentjs-pt-br.utils';
 import ConfirmationModalDeletePost from './ConfirmationModalDeletePost/ConfirmationModalDeletePost';
 import { UserContext } from '../../contexts/User.context';
+import Content from './Content/Content';
 
-Modal.setAppElement('#root');
 moment.updateLocale('pt-br', configPtBr);
 
 const Post: React.FC<{
   userId: string;
   postId: string;
-  image: string;
+  image?: string;
+  text?: string;
   postDate: string;
-}> = ({ userId, postId, image, postDate }) => {
+}> = ({ userId, postId, image, text, postDate }) => {
   const { id: currentUserId } = useContext(UserContext);
   const { data: user } = useGetUserByIdQuery(userId);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [isMoreOptionsOpen, setIsMoreOptionsOpen] = useState(false);
   const [
     isConfirmationModalDeletePostOpen,
@@ -122,23 +115,7 @@ const Post: React.FC<{
           </OptionsWrapper>
         </RightWrapper>
       </PostHeader>
-      <Content>
-        <Image src={image} onClick={() => setIsModalOpen(true)} />
-        <Modal
-          isOpen={isModalOpen}
-          onRequestClose={() => setIsModalOpen(false)}
-          overlayClassName='_'
-          overlayElement={(props, contentElement) => (
-            <Overlay {...props}>{contentElement}</Overlay>
-          )}
-          className='_'
-          contentElement={(props, children) => (
-            <ModalStyle {...props}>{children}</ModalStyle>
-          )}
-        >
-          <img src={image} alt='salve' />
-        </Modal>
-      </Content>
+      <Content image={image} text={text} />
       <PostFooter>
         <LeftWrapper>
           <Button>

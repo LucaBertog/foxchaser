@@ -1,5 +1,6 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-underscore-dangle */
+import { skipToken } from '@reduxjs/toolkit/dist/query';
 import React, { useContext, useEffect, useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { PostSeparator, PostsWrapper } from '../../assets/styles/GlobalStyles';
@@ -35,7 +36,7 @@ const Profile: React.FC = () => {
   }, [error]);
 
   const { data: posts, isFetching } = useGetPostsByUserIdQuery(
-    userProfile?.user.id || id
+    userProfile?.user.id || id || skipToken
   );
 
   const profileContext = useMemo(
@@ -73,17 +74,23 @@ const Profile: React.FC = () => {
             {isFetching ? (
               <LogoLoader />
             ) : (
-              posts?.posts.map((post) => (
-                <div key={post._id}>
-                  <Post
-                    userId={post.userId}
-                    postId={post._id}
-                    image={post.image.split(' ')[0]}
-                    postDate={post.createdAt}
-                  />
-                  <PostSeparator />
-                </div>
-              ))
+              posts?.posts.map((post) => {
+                const image = post?.image && post.image.split(' ')[0];
+                const text = post.text && post.text;
+
+                return (
+                  <div key={post._id}>
+                    <Post
+                      userId={post.userId}
+                      postId={post._id}
+                      image={image}
+                      text={text}
+                      postDate={post.createdAt}
+                    />
+                    <PostSeparator />
+                  </div>
+                );
+              })
             )}
           </PostsWrapper>
         </Container>
