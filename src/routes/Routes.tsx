@@ -41,8 +41,8 @@ const Routes: React.FC = () => (
     />
     <Route path='/login' element={<Login />} />
     <Route path='/register' element={<Register />} />
-    <Route path='/fxcsh' element={<AdministratorRoute />}>
-      <Route path='/fxcsh' element={<Admin />} />
+    <Route path='/fxcsr' element={<AdministratorRoute />}>
+      <Route path='/fxcsr' element={<Admin />} />
     </Route>
     <Route path='*' element={<p>Não encontrado</p>} />
   </Switch>
