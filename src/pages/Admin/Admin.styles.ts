@@ -4,13 +4,17 @@ import * as fonts from '../../assets/styles/Fonts';
 
 export const Container = styled.div`
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   background: ${(props) => props.theme.mode.colors.body};
 
   display: flex;
+
+  overflow-x: hidden;
 `;
 
 export const Sidebar = styled.aside`
+  position: fixed;
+
   padding: 4rem 0;
 
   width: 15%;
@@ -73,15 +77,49 @@ export const Logout = styled(RockOn)``;
 export const LogoutMessage = styled.div``;
 
 export const Main = styled.div`
-  margin: 6.4rem 11.2rem;
+  width: 85%;
+  padding: 6.4rem 11.2rem;
+  margin-left: min(15%, 25rem);
+
+  > div {
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 4.8rem;
+    white-space: nowrap;
+  }
 `;
+
 export const Title = styled.h1`
   ${fonts.Title1}
   color: ${(props) => props.theme.mode.colors.text};
   margin-bottom: 5.6rem;
 `;
+
 export const Subtitle = styled.h3`
   ${fonts.Title3}
   color: ${(props) => props.theme.mode.colors.text};
+  margin-bottom: 2.4rem;
 `;
-export const Table = styled.table``;
+
+export const Table = styled.table`
+  width: 100%;
+  border: 2px solid ${(props) => props.theme.mode.colors.borderImg};
+  border-collapse: collapse;
+  text-align: center;
+
+  th {
+    padding: 0.8rem;
+
+    border: 2px solid ${(props) => props.theme.mode.colors.borderImg};
+    ${fonts.ParagraphN}
+    color: ${(props) => props.theme.mode.colors.text};
+  }
+
+  td {
+    padding: 0.8rem;
+
+    border: 2px solid ${(props) => props.theme.mode.colors.borderImg};
+    ${fonts.Small}
+    color: ${(props) => props.theme.mode.colors.text};
+  }
+`;

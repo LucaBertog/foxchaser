@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 
 export const Container = styled.section`
+  * {
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
   width: 100%;
 
   display: flex;

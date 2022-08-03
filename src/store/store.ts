@@ -7,6 +7,7 @@ import { authApi } from '../services/api/auth.api';
 import { profileApi } from '../services/api/profile.api';
 import { postApi } from '../services/api/post.api';
 import { userApi } from '../services/api/user.api';
+import { adminApi } from '../services/api/admin.api';
 
 const reducersToPersist = combineReducers({
   user: userReducer,
@@ -25,6 +26,7 @@ const reducer = {
   [profileApi.reducerPath]: profileApi.reducer,
   [postApi.reducerPath]: postApi.reducer,
   [userApi.reducerPath]: userApi.reducer,
+  [adminApi.reducerPath]: adminApi.reducer,
 };
 
 const store = configureStore({
@@ -36,7 +38,8 @@ const store = configureStore({
       .concat(authApi.middleware)
       .concat(profileApi.middleware)
       .concat(postApi.middleware)
-      .concat(userApi.middleware),
+      .concat(userApi.middleware)
+      .concat(adminApi.middleware),
 });
 const persistor = persistStore(store);
 
