@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Door, Ribbon, Flag, Gear } from 'akar-icons';
+import { Ribbon, Flag, Gear, SignOut } from 'akar-icons';
 
 import {
   IconWrapper as IconWrapperOld,
@@ -106,7 +106,7 @@ export const ExitWrapper = styled.div`
 
   cursor: pointer;
 `;
-export const Exit = styled(Door)`
+export const Exit = styled(SignOut)`
   ${iconCSS}
   width: 1.4rem;
   height: 1.4rem;

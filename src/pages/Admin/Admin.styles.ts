@@ -1,4 +1,4 @@
-import { File, RockOn } from 'akar-icons';
+import { CircleCheckFill, File, SignOut } from 'akar-icons';
 import styled from 'styled-components';
 import * as fonts from '../../assets/styles/Fonts';
 
@@ -10,12 +10,16 @@ export const Container = styled.div`
   display: flex;
 
   overflow-x: hidden;
+
+  a {
+    width: 100%;
+  }
 `;
 
 export const Sidebar = styled.aside`
   position: fixed;
 
-  padding: 4rem 0;
+  padding: 4rem 1.6rem;
 
   width: 15%;
   max-width: 25rem;
@@ -24,12 +28,11 @@ export const Sidebar = styled.aside`
 
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
 `;
 
 export const RecordsNav = styled.div`
-  width: 90%;
+  width: 100%;
   border-radius: 1.6rem;
   background: ${(props) => props.theme.mode.colors.iconDark};
 
@@ -44,10 +47,9 @@ export const Wrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
 `;
 export const Logo = styled.img`
-  width: 90%;
+  width: 100%;
 
   margin-bottom: 4.8rem;
 `;
@@ -69,12 +71,56 @@ export const RecordNavMessage = styled.p`
   margin-left: 1.6rem;
 `;
 
-export const UserWrapper = styled.div``;
-export const Avatar = styled.img``;
-export const Name = styled.p``;
-export const LogoutWrapper = styled.div``;
-export const Logout = styled(RockOn)``;
-export const LogoutMessage = styled.div``;
+export const UserWrapper = styled.div`
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 2.4rem;
+`;
+
+export const Avatar = styled.img`
+  width: 5.6rem;
+  height: 5.6rem;
+
+  border-radius: 100%;
+  border: 2px solid #ffeb35;
+`;
+
+export const Name = styled.p`
+  ${fonts.Title4}
+  color: ${(props) => props.theme.mode.colors.text};
+
+  margin: 0 0.8rem 0 1.6rem;
+`;
+
+export const Approved = styled(CircleCheckFill)`
+  width: 1.6rem;
+  height: 1.6rem;
+  color: ${(props) => props.theme.mode.colors.iconLight};
+`;
+
+export const LogoutWrapper = styled.div`
+  width: 100%;
+  border-radius: 1.6rem;
+  background: ${(props) => props.theme.mode.colors.iconDark};
+
+  display: flex;
+  align-items: center;
+
+  padding: 0.8rem 2.4rem;
+  cursor: pointer;
+`;
+
+export const Logout = styled(SignOut)`
+  min-width: 2.4rem;
+  min-height: 2.4rem;
+  color: ${(props) => props.theme.mode.colors.iconLight};
+`;
+export const LogoutMessage = styled.div`
+  ${fonts.Paragraph}
+  color: ${(props) => props.theme.mode.colors.text};
+  margin-left: 1.6rem;
+`;
 
 export const Main = styled.div`
   width: 85%;

@@ -1,6 +1,8 @@
 /* eslint-disable no-underscore-dangle */
-import React from 'react';
+import React, { useContext } from 'react';
 
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import {
   Container,
   Sidebar,
@@ -20,6 +22,7 @@ import {
   Title,
   Subtitle,
   Table,
+  Approved,
 } from './Admin.styles';
 import { largeLogoFoxChaser } from '../../assets/styles/Icons';
 import {
@@ -27,31 +30,47 @@ import {
   useGetAllUsersQuery,
 } from '../../services/api/admin.api';
 import { LogoLoader } from '../../components';
+import { UserContext } from '../../contexts/User.context';
+import { removeToken } from '../../store/Auth/reducer';
 
 const Admin: React.FC = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { name, profilePicture } = useContext(UserContext);
   const { data: users, isLoading: loadingUsers } = useGetAllUsersQuery('');
   const { data: posts, isLoading: loadingPosts } = useGetAllPostsQuery('');
+
+  const handleExitClick = () => {
+    dispatch(removeToken());
+    navigate('/');
+  };
 
   return (
     <Container>
       <Sidebar>
         <Wrapper>
-          <Logo src={largeLogoFoxChaser} />
+          <Link to='/home'>
+            <Logo src={largeLogoFoxChaser} />
+          </Link>
           <Nav>
-            <RecordsNav>
-              <RecordNavIcon />
-              <RecordNavMessage>Registros</RecordNavMessage>
-            </RecordsNav>
+            <Link to='/fxcsr'>
+              <RecordsNav>
+                <RecordNavIcon />
+                <RecordNavMessage>Registros</RecordNavMessage>
+              </RecordsNav>
+            </Link>
           </Nav>
         </Wrapper>
         <Wrapper>
           <UserWrapper>
-            <Avatar />
-            <Name>Teste</Name>
+            <Avatar src={profilePicture.split(' ')[0]} />
+            <Name>{name}</Name>
+            <Approved />
           </UserWrapper>
-          <LogoutWrapper>
+          <LogoutWrapper onClick={handleExitClick}>
             <Logout />
-            <LogoutMessage>Cair fora</LogoutMessage>
+            <LogoutMessage>Deslogar</LogoutMessage>
           </LogoutWrapper>
         </Wrapper>
       </Sidebar>
