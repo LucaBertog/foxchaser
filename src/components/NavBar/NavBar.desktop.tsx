@@ -71,14 +71,14 @@ const Desktop: React.FC = () => {
           </LogoWrapper>
         </Link>
         <HeaderWrapper>
-          <Link to={`/profile/${username}`}>
-            <AvatarWrapper>
-              <ExitWrapper onClick={handleExitClick}>
-                <Exit />
-              </ExitWrapper>
+          <AvatarWrapper>
+            <ExitWrapper onClick={handleExitClick}>
+              <Exit />
+            </ExitWrapper>
+            <Link to={`/profile/${username}`}>
               <Avatar src={profilePicture.split(' ')[0] || emptyImg} />
-            </AvatarWrapper>
-          </Link>
+            </Link>
+          </AvatarWrapper>
           <IconWrapper>
             <Home />
           </IconWrapper>

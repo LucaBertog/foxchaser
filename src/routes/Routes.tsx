@@ -3,6 +3,8 @@ import { Route, Routes as Switch } from 'react-router-dom';
 import { NavBar, NewPost, Sidebar } from '../components';
 import { Home, Index, Login, Profile, Register } from '../pages';
 import { Container, GlobalWrapper } from '../assets/styles/GlobalStyles';
+import Admin from '../pages/Admin/Admin';
+import AdministratorRoute from './AdministratorRoute';
 
 const Routes: React.FC = () => (
   <Switch>
@@ -39,6 +41,9 @@ const Routes: React.FC = () => (
     />
     <Route path='/login' element={<Login />} />
     <Route path='/register' element={<Register />} />
+    <Route path='/fxcsh' element={<AdministratorRoute />}>
+      <Route path='/fxcsh' element={<Admin />} />
+    </Route>
     <Route path='*' element={<p>Não encontrado</p>} />
   </Switch>
 );
