@@ -5,6 +5,7 @@ import { Home, Index, Login, Profile, Register } from '../pages';
 import { Container, GlobalWrapper } from '../assets/styles/GlobalStyles';
 import Admin from '../pages/Admin/Admin';
 import AdministratorRoute from './AdministratorRoute';
+import NotFound from '../pages/NotFound/NotFound';
 
 const Routes: React.FC = () => (
   <Switch>
@@ -44,7 +45,17 @@ const Routes: React.FC = () => (
     <Route path='/fxcsr' element={<AdministratorRoute />}>
       <Route path='/fxcsr' element={<Admin />} />
     </Route>
-    <Route path='*' element={<p>Não encontrado</p>} />
+    <Route
+      path='*'
+      element={
+        <>
+          <NavBar />
+          <Container>
+            <NotFound />
+          </Container>
+        </>
+      }
+    />
   </Switch>
 );
 
