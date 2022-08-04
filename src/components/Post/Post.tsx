@@ -82,14 +82,11 @@ const Post: React.FC<{
           <OptionsWrapper isMoreOptionsOpen={isMoreOptionsOpen}>
             {currentUserId === userId ? (
               <>
-                <OptionWrapper>
+                <OptionWrapper
+                  onClick={() => setIsConfirmationModalDeletePostOpen(true)}
+                >
                   <DeleteIcon />
-                  <Option
-                    onClick={() => setIsConfirmationModalDeletePostOpen(true)}
-                    isExclude
-                  >
-                    Excluir postagem
-                  </Option>
+                  <Option isExclude>Excluir postagem</Option>
                 </OptionWrapper>
                 <OptionWrapper>
                   <EditIcon />
