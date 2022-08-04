@@ -17,8 +17,8 @@ export const Container = styled.div`
   z-index: 2;
 
   position: fixed;
-  left: 0;
-  bottom: 5.6rem;
+  left: -4rem;
+  bottom: calc(5.6rem + 4rem);
 
   display: flex;
   justify-content: center;
@@ -56,6 +56,7 @@ export const MenuWrapper = styled.div`
     justify-content: flex-end;
 
     width: 100%;
+    transform: translateX(5%);
 
     position: relative;
   }
@@ -66,6 +67,7 @@ export const MenuWrapper = styled.div`
 
     width: 70%;
     padding-right: 4.8rem;
+    transform: translateX(5%);
   }
 
   @media (min-width: 1400px) {
@@ -118,9 +120,6 @@ export const Menu = styled.ul`
     transform: translateX(50%);
   }
 
-  width: 20rem;
-  height: 20rem;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -129,8 +128,8 @@ export const Menu = styled.ul`
     position: absolute;
     list-style: none;
 
-    left: 1rem;
-    bottom: 7rem;
+    left: -8.5rem;
+    bottom: -3rem;
     transform-origin: 9.5rem;
     transition: 0.5s;
     transition-delay: calc(0.1s * var(--i));
@@ -138,6 +137,7 @@ export const Menu = styled.ul`
 
     @media (min-width: 768px) {
       bottom: auto;
+      left: -9.5rem;
       transform-origin: 9rem;
       transform: rotate(0) translateX(6rem);
     }
