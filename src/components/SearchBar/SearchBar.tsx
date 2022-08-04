@@ -22,8 +22,6 @@ import {
   Avatar,
   Name,
   Username,
-  FollowIcon,
-  MoreOptions,
   Title,
 } from './SearchBar.styles';
 import NoPPImg from '../../assets/imgs/NoPP.png';
@@ -53,17 +51,17 @@ const SearchBar: React.FC<{ isMobile?: true | undefined }> = ({ isMobile }) => {
         <Title>Usuários</Title>
         {usersExistsQuery
           ? results?.usersResult.map((user) => (
-              <User key={user.id}>
-                <Link to={`/profile/${user.username}`} onClick={closeModal}>
+              <Link
+                to={`/profile/${user.username}`}
+                onClick={closeModal}
+                key={user.id}
+              >
+                <User>
                   <Avatar src={user.profilePicture.split(' ')[0] || NoPPImg} />
                   <Name>{user.name}</Name>
                   <Username>@{user.username}</Username>
-                </Link>
-                <div>
-                  <FollowIcon />
-                  <MoreOptions />
-                </div>
-              </User>
+                </User>
+              </Link>
             ))
           : ''}
       </Results>

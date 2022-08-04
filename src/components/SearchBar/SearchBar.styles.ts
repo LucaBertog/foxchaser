@@ -1,18 +1,7 @@
 import styled, { css } from 'styled-components';
 
-import {
-  Cross,
-  MoreHorizontalFill,
-  PersonAdd,
-  Search as SearchIcon,
-} from 'akar-icons';
+import { Cross, Search as SearchIcon } from 'akar-icons';
 import * as fonts from '../../assets/styles/Fonts';
-
-const iconCSS = css`
-  width: 2rem;
-  height: 2rem;
-  color: ${(props) => props.theme.mode.colors.iconLight};
-`;
 
 const mobileCSS = css`
   display: flex;
@@ -189,29 +178,16 @@ export const Title = styled.h3`
 
 export const User = styled.div`
   width: 100%;
-  max-width: 50rem;
+  max-width: 30rem;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
 
   background: ${(props) => props.theme.mode.colors.container};
-  padding: 0.8rem 2.4rem;
+  padding: 0.8rem 1.6rem;
   border-radius: 1.6rem;
 
   margin-bottom: 0.8rem;
-
-  > a {
-    display: flex;
-    align-items: center;
-
-    cursor: pointer;
-  }
-
-  > div {
-    display: flex;
-    align-items: center;
-  }
 `;
 
 export const Avatar = styled.img`
@@ -226,17 +202,16 @@ export const Name = styled.p`
   color: ${(props) => props.theme.mode.colors.text};
 
   margin: 0 0.8rem 0 1.6rem;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
 
 export const Username = styled.p`
   ${fonts.ParagraphN}
   color: ${(props) => props.theme.mode.colors.weakText};
-`;
-
-export const FollowIcon = styled(PersonAdd)`
-  ${iconCSS}
-  margin-right: 1.6rem;
-`;
-export const MoreOptions = styled(MoreHorizontalFill)`
-  ${iconCSS}
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
