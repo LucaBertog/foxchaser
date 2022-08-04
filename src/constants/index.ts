@@ -27,6 +27,7 @@ export interface Theme {
     bgIconDark: string;
     iconLight: string;
     bgIconLight: string;
+    bgToast: string;
     button1: string;
     bgIconGame: string;
     bgGamesWrapper: string;
@@ -53,6 +54,7 @@ export const THEMES: { [key: string]: Theme } = {
       bgIconDark: COLORS.blue1,
       iconLight: COLORS.white,
       bgIconLight: COLORS.blue2,
+      bgToast: 'linear-gradient(90deg, #434E6A 0%, #2C3243 100%);',
       button1: COLORS.button1,
       bgIconGame: COLORS.blue0,
       bgGamesWrapper: COLORS.blue2,

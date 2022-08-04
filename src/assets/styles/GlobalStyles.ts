@@ -1,5 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import 'react-toastify/dist/ReactToastify.min.css';
+import * as fonts from './Fonts';
 
 export default createGlobalStyle`
   * {
@@ -38,6 +39,30 @@ export default createGlobalStyle`
     width: 100%;
     height: 100%;
   }
+
+  .Toastify__toast {
+    background: ${(props) => props.theme.mode.colors.bgToast};
+    border-radius: 1.6rem;
+    padding: 1.6rem;
+
+    .Toastify__toast-body {
+      ${fonts.Captar}
+      color: ${(props) => props.theme.mode.colors.text};
+      opacity: 0.8;
+      padding: 0 0.8rem;
+    }
+
+    svg {
+        width: 1.6rem;
+        height: 1.6rem;
+        color: ${(props) => props.theme.mode.colors.iconLight};
+    }
+  }
+
+  .Toastify__close-button--light {
+    opacity: 0.8;
+  }
+
 
 `;
 

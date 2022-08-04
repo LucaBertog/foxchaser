@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify';
 
 import { useEffect, useMemo, useState } from 'react';
 import { skipToken } from '@reduxjs/toolkit/dist/query';
+import { Cross } from 'akar-icons';
 import GlobalStyles from './assets/styles/GlobalStyles';
 import Routes from './routes/Routes';
 import { THEMES, COLORS } from './constants';
@@ -46,6 +47,8 @@ function App() {
     [user]
   );
 
+  const CloseButton = ({ closeToast }: any) => <Cross onClick={closeToast} />;
+
   return (
     <ThemeProvider theme={{ mode: THEMES.dark, colors: COLORS }}>
       <BrowserRouter>
@@ -53,7 +56,18 @@ function App() {
           <Routes />
         </UserContext.Provider>
         <GlobalStyles />
-        <ToastContainer />
+        <ToastContainer
+          position='top-center'
+          autoClose={3000}
+          hideProgressBar
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          closeButton={CloseButton}
+        />
       </BrowserRouter>
     </ThemeProvider>
   );
