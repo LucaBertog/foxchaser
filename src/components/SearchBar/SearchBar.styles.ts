@@ -1,7 +1,18 @@
 import styled, { css } from 'styled-components';
 
-import { Cross, Search as SearchIcon } from 'akar-icons';
+import {
+  Cross,
+  MoreHorizontalFill,
+  PersonAdd,
+  Search as SearchIcon,
+} from 'akar-icons';
 import * as fonts from '../../assets/styles/Fonts';
+
+const iconCSS = css`
+  width: 2rem;
+  height: 2rem;
+  color: ${(props) => props.theme.mode.colors.iconLight};
+`;
 
 const mobileCSS = css`
   display: flex;
@@ -161,4 +172,71 @@ export const CloseButton = styled(Cross)`
   width: 9rem;
   height: 100%;
   color: ${(props) => props.theme.mode.colors.iconLight};
+`;
+
+export const Results = styled.div`
+  height: 90%;
+  color: white;
+  overflow-y: auto;
+`;
+
+export const Title = styled.h3`
+  ${fonts.Title3}
+  color: ${(props) => props.theme.mode.colors.text};
+
+  margin-bottom: 1.6rem;
+`;
+
+export const User = styled.div`
+  width: 100%;
+  max-width: 50rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: ${(props) => props.theme.mode.colors.container};
+  padding: 0.8rem 2.4rem;
+  border-radius: 1.6rem;
+
+  margin-bottom: 0.8rem;
+
+  > a {
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+  }
+
+  > div {
+    display: flex;
+    align-items: center;
+  }
+`;
+
+export const Avatar = styled.img`
+  width: 4.8rem;
+  height: 4.8rem;
+  border-radius: 100%;
+  border: 2px solid ${(props) => props.theme.mode.colors.iconLight};
+`;
+
+export const Name = styled.p`
+  ${fonts.ParagraphN}
+  color: ${(props) => props.theme.mode.colors.text};
+
+  margin: 0 0.8rem 0 1.6rem;
+`;
+
+export const Username = styled.p`
+  ${fonts.ParagraphN}
+  color: ${(props) => props.theme.mode.colors.weakText};
+`;
+
+export const FollowIcon = styled(PersonAdd)`
+  ${iconCSS}
+  margin-right: 1.6rem;
+`;
+export const MoreOptions = styled(MoreHorizontalFill)`
+  ${iconCSS}
 `;
