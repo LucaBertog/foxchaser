@@ -24,7 +24,8 @@ import {
 } from './EditProfile.styles';
 import { useEditProfileMutation } from '../../../../services/api/profile.api';
 import LogoLoader from '../../../LogoLoader/LogoLoader';
-import emptyImg from '../../../../assets/imgs/empty.jpg';
+import NoPP from '../../../../assets/imgs/NoPP.png';
+import NoCP from '../../../../assets/imgs/NoCP.png';
 import { FILE_SIZE, SUPPORTED_FORMATS } from '../../../../constants';
 import { ProfileContext } from '../../../../contexts/Profile.context';
 
@@ -175,9 +176,7 @@ const EditProfile: React.FC<{
             />
             <ProfilePicture
               htmlFor='profilePicture'
-              url={
-                profilePictureUrl || profilePicture.split(' ')[0] || emptyImg
-              }
+              url={profilePictureUrl || profilePicture.split(' ')[0] || NoPP}
             >
               <div />
             </ProfilePicture>
@@ -199,7 +198,7 @@ const EditProfile: React.FC<{
               />
               <CoverPicture
                 htmlFor='coverPicture'
-                url={coverPictureUrl || coverPicture.split(' ')[0] || emptyImg}
+                url={coverPictureUrl || coverPicture.split(' ')[0] || NoCP}
               >
                 <div />
               </CoverPicture>

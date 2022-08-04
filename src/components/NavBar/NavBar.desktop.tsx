@@ -33,7 +33,7 @@ import {
   Notifications,
   Chat,
 } from '../../assets/styles/IconsNavBar';
-import emptyImg from '../../assets/imgs/empty.jpg';
+import NoPP from '../../assets/imgs/NoPP.png';
 import {
   logoFoxChaser,
   playstation,
@@ -76,7 +76,7 @@ const Desktop: React.FC = () => {
               <Exit />
             </ExitWrapper>
             <Link to={`/profile/${username}`}>
-              <Avatar src={profilePicture.split(' ')[0] || emptyImg} />
+              <Avatar src={profilePicture.split(' ')[0] || NoPP} />
             </Link>
           </AvatarWrapper>
           <IconWrapper>

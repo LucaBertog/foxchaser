@@ -12,7 +12,7 @@ import {
   EditProfileButton,
   FollowButton,
 } from './ProfileCard.styles';
-import emptyImg from '../../../assets/imgs/empty.jpg';
+import NoPP from '../../../assets/imgs/NoPP.png';
 import { ProfileContext } from '../../../contexts/Profile.context';
 import EditProfile from './EditProfile/EditProfile';
 import { UserContext } from '../../../contexts/User.context';
@@ -72,7 +72,7 @@ const CardProfile: React.FC = () => {
   return (
     <Container>
       <Wrapper>
-        <ProfilePic src={profilePicture.split(' ')[0] || emptyImg} />
+        <ProfilePic src={profilePicture.split(' ')[0] || NoPP} />
         <Name>{name}</Name>
         <Username>@{username}</Username>
         <Emblems />

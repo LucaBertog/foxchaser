@@ -4,14 +4,14 @@ import ProfileLevel from '../ProfileLevel/ProfileLevel';
 import NavProfile from '../ProfileNav/ProfileNav';
 
 import { Container, Wrapper } from './ProfileInfo.styles';
-import emptyImg from '../../../assets/imgs/empty.jpg';
+import NoPP from '../../../assets/imgs/NoPP.png';
 import { ProfileContext } from '../../../contexts/Profile.context';
 
 const ProfileInfo: React.FC = () => {
   const { coverPicture } = useContext(ProfileContext);
 
   return (
-    <Container url={coverPicture.split(' ')[0] || emptyImg}>
+    <Container url={coverPicture.split(' ')[0] || NoPP}>
       <CardProfile />
       <Wrapper>
         <ProfileLevel />
