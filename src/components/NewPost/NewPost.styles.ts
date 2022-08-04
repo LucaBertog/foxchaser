@@ -28,7 +28,7 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
 
-    top: 70%;
+    top: 80%;
     bottom: auto;
     padding: 0 calc(4.8rem + 1.6rem) 0 calc(7.8rem + 4.8rem);
   }
