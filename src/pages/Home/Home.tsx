@@ -1,7 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useContext } from 'react';
 import moment from 'moment';
-import { toast } from 'react-toastify';
 import { Container, Title } from './Home.styles';
 import { LogoLoader, Post, TopNews } from '../../components';
 import { PostSeparator, PostsWrapper } from '../../assets/styles/GlobalStyles';
@@ -15,7 +14,7 @@ const Home: React.FC = () => {
 
   return (
     <Container>
-      <Title onClick={() => toast('cu')}>
+      <Title>
         {(moment().format('HH') <= '12' && 'Bom dia,') ||
           (moment().format('HH') >= '12' && 'Boa tarde,') ||
           (moment().format('HH') >= '18' && 'Boa noite,')}{' '}
