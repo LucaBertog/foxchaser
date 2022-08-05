@@ -33,26 +33,6 @@ export const Container = styled.div<{ isMobile: true | undefined }>`
 
   padding: 1.6rem 2.4rem;
 
-  .ReactModal__Overlay {
-    position: absolute;
-    top: 40px;
-    left: 40px;
-    right: 40px;
-    bottom: 40px;
-    background-color: papayawhip;
-
-    z-index: 999;
-  }
-
-  .Overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rebeccapurple;
-  }
-
   ${(props) => props.isMobile && mobileCSS}
 `;
 
@@ -174,44 +154,4 @@ export const Title = styled.h3`
   color: ${(props) => props.theme.mode.colors.text};
 
   margin-bottom: 1.6rem;
-`;
-
-export const User = styled.div`
-  width: 100%;
-  max-width: 30rem;
-
-  display: flex;
-  align-items: center;
-
-  background: ${(props) => props.theme.mode.colors.container};
-  padding: 0.8rem 1.6rem;
-  border-radius: 1.6rem;
-
-  margin-bottom: 0.8rem;
-`;
-
-export const Avatar = styled.img`
-  width: 4.8rem;
-  height: 4.8rem;
-  border-radius: 100%;
-  border: 2px solid ${(props) => props.theme.mode.colors.iconLight};
-`;
-
-export const Name = styled.p`
-  ${fonts.ParagraphN}
-  color: ${(props) => props.theme.mode.colors.text};
-
-  margin: 0 0.8rem 0 1.6rem;
-
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-`;
-
-export const Username = styled.p`
-  ${fonts.ParagraphN}
-  color: ${(props) => props.theme.mode.colors.weakText};
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
 `;

@@ -21,9 +21,17 @@ import { decodeJWT } from './services/decode/decodeJwt';
 function App() {
   const token = useSelector(selectToken);
   const [currentUser, setCurrentUser] = useState<DecodedUser>();
-  const { data: user } = useGetUserByIdQuery(
+  const { data: user, refetch } = useGetUserByIdQuery(
     currentUser?._id ? currentUser?._id : skipToken
   );
+  const [isRender, setIsRender] = useState(true);
+
+  useEffect(() => {
+    if (!isRender) {
+      refetch();
+      setIsRender(true);
+    }
+  }, [isRender]);
 
   useEffect(() => {
     if (token) {
@@ -43,6 +51,7 @@ function App() {
       followers: user?.user.followers || [],
       followings: user?.user.followings || [],
       emblems: user?.user.emblems || [],
+      setIsRender,
     }),
     [user]
   );

@@ -1,4 +1,5 @@
-import { createContext } from 'react';
+/* eslint-disable no-unused-vars */
+import React, { createContext } from 'react';
 
 export const UserContext = createContext<{
   id: string;
@@ -10,6 +11,7 @@ export const UserContext = createContext<{
   followers: string[];
   followings: string[];
   emblems: string[];
+  setIsRender: React.Dispatch<React.SetStateAction<boolean>>;
 }>({
   id: '',
   name: '',
@@ -20,4 +22,5 @@ export const UserContext = createContext<{
   followers: [],
   followings: [],
   emblems: [],
+  setIsRender: () => {},
 });
