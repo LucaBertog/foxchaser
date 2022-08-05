@@ -84,6 +84,8 @@ const EditProfile: React.FC<{
   const { profilePicture, coverPicture, name } = useContext(ProfileContext);
   const [profilePictureUrl, setProfilePictureUrl] = useState('');
   const [coverPictureUrl, setCoverPictureUrl] = useState('');
+  const [profilePictureData, setProfilePictureData] = useState('');
+  const [coverPictureData, setCoverPictureData] = useState('');
   const [editProfile, { isLoading: isUpdating }] = useEditProfileMutation();
 
   const resetImages = () => {
@@ -109,10 +111,8 @@ const EditProfile: React.FC<{
     try {
       const formData = new FormData();
 
-      if (data?.profilePicture[0])
-        formData.append('picture', data?.profilePicture[0]);
-      if (data?.coverPicture[0])
-        formData.append('cover', data?.coverPicture[0]);
+      if (profilePictureData) formData.append('picture', profilePictureData);
+      if (coverPictureData) formData.append('cover', coverPictureData);
       if (data?.name) formData.append('name', data?.name);
 
       await editProfile(formData).unwrap();
@@ -130,6 +130,7 @@ const EditProfile: React.FC<{
 
   const handleChangeProfilePicture = (e: any) => {
     if (e.target.files[0]) {
+      setProfilePictureData(e.target.files[0]);
       URL.revokeObjectURL(profilePictureUrl);
       const file = e.target.files[0];
       const url = URL.createObjectURL(file);
@@ -139,6 +140,7 @@ const EditProfile: React.FC<{
 
   const handleChangeCoverPicture = (e: any) => {
     if (e.target.files[0]) {
+      setCoverPictureData(e.target.files[0]);
       URL.revokeObjectURL(coverPictureUrl);
       const file = e.target.files[0];
       const url = URL.createObjectURL(file);
@@ -172,6 +174,7 @@ const EditProfile: React.FC<{
               type='file'
               {...register('profilePicture')}
               id='profilePicture'
+              accept='image/*'
               onChange={handleChangeProfilePicture}
             />
             <ProfilePicture
@@ -179,8 +182,8 @@ const EditProfile: React.FC<{
               url={profilePictureUrl || profilePicture.split(' ')[0] || NoPP}
             >
               <div />
+              <CameraIcon />
             </ProfilePicture>
-            <CameraIcon />
           </ImageWrapper>
           <p>{profilePictureError?.message}</p>
           <FinishButtonsWrapper>
@@ -194,6 +197,7 @@ const EditProfile: React.FC<{
                 {...register('coverPicture')}
                 id='coverPicture'
                 type='file'
+                accept='image/*'
                 onChange={handleChangeCoverPicture}
               />
               <CoverPicture
@@ -201,8 +205,8 @@ const EditProfile: React.FC<{
                 url={coverPictureUrl || coverPicture.split(' ')[0] || NoCP}
               >
                 <div />
+                <CameraIcon />
               </CoverPicture>
-              <CameraIcon />
             </ImageWrapper>
             <p>{coverPictureError?.message}</p>
             <Title>Nome</Title>

@@ -63,6 +63,7 @@ export const CameraIcon = styled(Camera)`
 export const ProfilePicture = styled.label<{ url: string }>`
   width: 11.2rem;
   height: 11.2rem;
+  cursor: pointer;
 
   > div {
     position: relative;
@@ -79,8 +80,6 @@ export const ProfilePicture = styled.label<{ url: string }>`
     background-position: center center;
     background-size: cover;
   }
-
-  opacity: 0.6;
 `;
 
 export const FinishButtonsWrapper = styled.div`
@@ -118,6 +117,8 @@ export const RestWrapper = styled.div`
   flex-direction: column;
 `;
 export const CoverPicture = styled.label<{ url: string }>`
+  cursor: pointer;
+
   > div {
     width: 100%;
     height: 13rem;
@@ -128,7 +129,6 @@ export const CoverPicture = styled.label<{ url: string }>`
 
     border-radius: 1.6rem;
   }
-  opacity: 0.6;
 `;
 
 export const Title = styled.h4`

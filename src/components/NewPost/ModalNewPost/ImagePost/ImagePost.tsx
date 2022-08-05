@@ -48,6 +48,7 @@ const ImagePost: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
     resolver: yupResolver(schema),
   });
   const [imgUrl, setImgUrl] = useState('');
+  const [imgData, setImgData] = useState('');
   const [createPost, { isLoading: isCreating }] = useCreatePostMutation();
 
   const resetImages = () => {
@@ -70,7 +71,7 @@ const ImagePost: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
     try {
       const formData = new FormData();
       formData.append('title', data.title);
-      formData.append('image', data?.image[0]);
+      formData.append('image', imgData);
 
       await createPost(formData).unwrap();
       toast.success('Post criado');
@@ -82,10 +83,15 @@ const ImagePost: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
 
   const handleChangeImg = (e: any) => {
     if (e.target.files[0]) {
+      setImgData(e.target.files[0]);
       URL.revokeObjectURL(imgUrl);
       const file = e.target.files[0];
       const url = URL.createObjectURL(file);
       setImgUrl(url);
+    } else {
+      const dataTF = new DataTransfer();
+      dataTF.items.add(imgData as any);
+      e.target.files = dataTF.files;
     }
   };
 
