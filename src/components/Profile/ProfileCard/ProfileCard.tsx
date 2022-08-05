@@ -1,7 +1,5 @@
 import React, { useContext, useState } from 'react';
-
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
 import {
   Container,
   Wrapper,
@@ -22,12 +20,15 @@ import {
 } from '../../../services/api/user.api';
 
 const CardProfile: React.FC = () => {
-  const navigate = useNavigate();
   const [followUser] = useFollowUserMutation();
   const [unfollowUser] = useUnfollowUserMutation();
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
   const { id, profilePicture, name, username } = useContext(ProfileContext);
-  const { id: currentUserId, followings } = useContext(UserContext);
+  const {
+    id: currentUserId,
+    followings,
+    setIsRender,
+  } = useContext(UserContext);
 
   const openEditProfileModal = () => {
     setIsEditProfileModalOpen(true);
@@ -40,7 +41,8 @@ const CardProfile: React.FC = () => {
   const handleFollowUser = async () => {
     try {
       await followUser(id).unwrap();
-      return navigate(0);
+      toast.success('Usuário foi seguido');
+      return setIsRender(false);
     } catch (error: any) {
       if (error?.data.message) return toast.error(error.data.message);
       return toast.error('Erro desconhecido');
@@ -50,7 +52,8 @@ const CardProfile: React.FC = () => {
   const handleUnfollowUser = async () => {
     try {
       await unfollowUser(id).unwrap();
-      return navigate(0);
+      toast.success('Você parou de seguir esse usuário');
+      return setIsRender(false);
     } catch (error: any) {
       if (error?.data.message) return toast.error(error.data.message);
       return toast.error('Erro desconhecido');
