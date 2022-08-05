@@ -9,11 +9,9 @@ export const Container = styled.div`
 
   .item {
     width: 100%;
-    overflow: visible;
     stroke: #fff;
-    stroke-width: 0.5;
+    stroke-width: 0.8;
     stroke-linejoin: round;
     stroke-linecap: round;
-    fill: rgba(255, 122, 0, 1);
   }
 `;
