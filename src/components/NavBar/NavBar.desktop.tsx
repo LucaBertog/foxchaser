@@ -114,9 +114,11 @@ const Desktop: React.FC = () => {
           <IconWrapper>
             <News />
           </IconWrapper>
-          <IconWrapper>
-            <Chat />
-          </IconWrapper>
+          <Link to='/messages/'>
+            <IconWrapper>
+              <Chat />
+            </IconWrapper>
+          </Link>
           <IconWrapper>
             <Bookmark />
           </IconWrapper>

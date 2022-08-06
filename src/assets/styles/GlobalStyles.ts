@@ -74,8 +74,8 @@ export const Container = styled.section`
   background: ${(props) => props.theme.mode.colors.body};
 `;
 
-export const GlobalWrapper = styled.div`
-  max-width: 120rem;
+export const GlobalWrapper = styled.div<{ full?: boolean }>`
+  ${(props) => (props.full ? '' : 'max-width: 120rem;')}
   display: flex;
 
   width: 100%;

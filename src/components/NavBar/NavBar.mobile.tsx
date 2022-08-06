@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
 import { Container } from './NavBar.mobile.styles';
 import {
   Home,
@@ -24,9 +25,11 @@ const Mobile: React.FC = () => (
     <IconWrapper>
       <Notifications />
     </IconWrapper>
-    <IconWrapper>
-      <Chat />
-    </IconWrapper>
+    <Link to='/messages/'>
+      <IconWrapper>
+        <Chat />
+      </IconWrapper>
+    </Link>
   </Container>
 );
 

@@ -1,11 +1,18 @@
 import React from 'react';
 import { Route, Routes as Switch } from 'react-router-dom';
 import { NavBar, NewPost, Sidebar } from '../components';
-import { Home, Index, Login, Profile, Register } from '../pages';
+import {
+  Chat,
+  Home,
+  Index,
+  Login,
+  Profile,
+  Register,
+  Admin,
+  NotFound,
+} from '../pages';
 import { Container, GlobalWrapper } from '../assets/styles/GlobalStyles';
-import Admin from '../pages/Admin/Admin';
 import AdministratorRoute from './AdministratorRoute';
-import NotFound from '../pages/NotFound/NotFound';
 
 const Routes: React.FC = () => (
   <Switch>
@@ -37,6 +44,19 @@ const Routes: React.FC = () => (
             </GlobalWrapper>
           </Container>
           <NewPost />
+        </>
+      }
+    />
+    <Route
+      path='/messages/'
+      element={
+        <>
+          <NavBar />
+          <Container>
+            <GlobalWrapper full>
+              <Chat />
+            </GlobalWrapper>
+          </Container>
         </>
       }
     />
