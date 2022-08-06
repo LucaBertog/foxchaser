@@ -1,8 +1,8 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-
 import userReducer from './Auth/reducer';
+import chatReducer from './Chat/reducer';
 import { authApi } from '../services/api/auth.api';
 import { profileApi } from '../services/api/profile.api';
 import { postApi } from '../services/api/post.api';
@@ -23,6 +23,7 @@ const persistedReducer = persistReducer(persistConfig, reducersToPersist);
 
 const reducer = {
   reducer: persistedReducer,
+  chat: chatReducer,
   [authApi.reducerPath]: authApi.reducer,
   [profileApi.reducerPath]: profileApi.reducer,
   [postApi.reducerPath]: postApi.reducer,

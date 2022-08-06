@@ -6,4 +6,7 @@ export interface State {
       token: string;
     };
   };
+  chat: {
+    selectedUser: string;
+  };
 }

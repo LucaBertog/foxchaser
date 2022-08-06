@@ -49,6 +49,15 @@ export const userApi = createApi({
         method: 'PUT',
       }),
     }),
+    getAllFriends: builder.query<
+      { statusCode: string; friends: User[] },
+      string
+    >({
+      query: (id) => ({
+        url: `${id}/friends`,
+        method: 'GET',
+      }),
+    }),
   }),
 });
 
@@ -57,4 +66,5 @@ export const {
   useGetUserByUsernameQuery,
   useFollowUserMutation,
   useUnfollowUserMutation,
+  useGetAllFriendsQuery,
 } = userApi;
