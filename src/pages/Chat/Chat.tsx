@@ -26,19 +26,6 @@ const Chat: React.FC = () => {
 
   useEffect(() => {
     if (id) socket.emit('newUser', { userId: id, username });
-
-    // socket.emit('newPrivateMessage', {
-    //   receiver: 'id de quem recebe',
-    //   sender: id,
-    //   text: 'a mensagem enviada',
-    // });
-    // socket.on('reloadedMessages', ({ newMessages }) =>
-    //   console.log(newMessages)
-    // );
-    // socket.emit('reloadPrivateMessages', {
-    //   userId: 'id de quem recebe',
-    //   friendId: id,
-    // });
   }, [id]);
 
   useEffect(() => {
