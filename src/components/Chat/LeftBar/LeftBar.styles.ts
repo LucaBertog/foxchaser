@@ -9,7 +9,7 @@ export const Container = styled.div`
     }
   }
 
-  width: 20%;
+  flex: 1;
   height: 100%;
   background: ${(props) => props.theme.mode.colors.container};
 
