@@ -74,6 +74,7 @@ const SearchBar: React.FC<{ isMobile?: true | undefined }> = ({ isMobile }) => {
             name='search'
             placeholder='Escreva sua pesquisa...'
             onChange={(e) => setQuery(e.target.value)}
+            autoComplete='off'
           />
           <WrapperButton>
             <CloseButton onClick={closeModal} />

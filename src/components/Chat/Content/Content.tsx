@@ -74,7 +74,7 @@ const Content: React.FC = () => {
           <Messages />
           <NewMessageWrapper>
             <AttachIcon />
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
               <NewMessage
                 {...register('message')}
                 id='message'

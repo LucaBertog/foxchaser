@@ -81,6 +81,10 @@ export const NewMessageWrapper = styled.div`
   border-radius: 1.6rem;
   padding: 1.6rem;
   background: ${(props) => props.theme.mode.colors.bgGamesWrapper};
+
+  > form {
+    width: 100%;
+  }
 `;
 
 export const AttachIcon = styled(Attach)`
