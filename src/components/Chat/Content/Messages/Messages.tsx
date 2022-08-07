@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import { skipToken } from '@reduxjs/toolkit/dist/query';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { ChatContext } from '../../../../contexts/Chat.context';
 import { UserContext } from '../../../../contexts/User.context';
@@ -21,9 +21,14 @@ const Messages: React.FC = () => {
     useGetUserByIdQuery(id || skipToken);
   const { data: userSelectedData, isLoading: isLoadingUserSelected } =
     useGetUserByIdQuery(userSelected || skipToken);
+  const scrollRef = useRef(null);
 
   useEffect(() => {
     if (socket) {
+      socket.on('newMessage', ({ messages: messagesUpdated }) =>
+        console.log('Nova mensagem recebida', messagesUpdated)
+      );
+
       socket.on('reloadedMessages', ({ messages: messagesUpdated }) => {
         setMessages(messagesUpdated);
       });
@@ -35,7 +40,14 @@ const Messages: React.FC = () => {
     }
   }, [socket, userSelected]);
 
-  useEffect(() => console.log(messages), [messages]);
+  useEffect(() => {
+    if (scrollRef) {
+      (scrollRef as any).current.scrollTop = (
+        scrollRef as any
+      ).current.scrollHeight;
+    }
+    // scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
 
   const messagesElement = () => {
     if (messages) {
@@ -59,7 +71,7 @@ const Messages: React.FC = () => {
     return '';
   };
   return (
-    <Container>
+    <Container ref={scrollRef}>
       {isLoadingCurrentUser || isLoadingUserSelected ? (
         <LogoLoader />
       ) : (
