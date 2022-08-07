@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { skipToken } from '@reduxjs/toolkit/dist/query';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -41,7 +41,7 @@ const Content: React.FC = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    // formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -60,7 +60,7 @@ const Content: React.FC = () => {
 
   return (
     <Container>
-      {isLoading ? (
+      {isLoading || !userSelected ? (
         <LogoLoader />
       ) : (
         <>

@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import * as fonts from '../../../../../assets/styles/Fonts';
 
 export const Container = styled.div<{ isSelected?: boolean }>`
+  user-select: none;
+
   width: 100%;
 
   display: flex;
@@ -29,9 +31,21 @@ export const Image = styled.img`
 
 export const Name = styled.p`
   ${fonts.Small}
+  line-height: 2rem;
   color: ${(props) => props.theme.mode.colors.text};
 
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+export const Status = styled.p`
+  ${fonts.Small}
+  line-height: 2rem;
+  color: ${(props) => props.theme.mode.colors.weakText};
 `;

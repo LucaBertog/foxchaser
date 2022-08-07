@@ -25,13 +25,21 @@ const Messages: React.FC = () => {
 
   useEffect(() => {
     if (socket) {
-      socket.on('newMessage', ({ messages: messagesUpdated }) =>
-        console.log('Nova mensagem recebida', messagesUpdated)
-      );
+      socket
+        .off('newMessage')
+        .on('newMessage', ({ messages: messagesUpdated, sender }) => {
+          if (sender === userSelected) {
+            setMessages(messagesUpdated);
+          } else {
+            console.log('Nova mensagem recebida', messagesUpdated);
+          }
+        });
 
-      socket.on('reloadedMessages', ({ messages: messagesUpdated }) => {
-        setMessages(messagesUpdated);
-      });
+      socket
+        .off('reloadedMessages')
+        .on('reloadedMessages', ({ messages: messagesUpdated }) => {
+          setMessages(messagesUpdated);
+        });
 
       socket.emit('reloadPrivateMessages', {
         userId: id,
@@ -46,7 +54,6 @@ const Messages: React.FC = () => {
         scrollRef as any
       ).current.scrollHeight;
     }
-    // scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
   const messagesElement = () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Image, Name } from './Channel.styles';
+import { Container, Image, Name, Wrapper, Status } from './Channel.styles';
 import NoPP from '../../../../../assets/imgs/NoPP.png';
 
 const Channel: React.FC<{
@@ -7,10 +7,14 @@ const Channel: React.FC<{
   isSelected: boolean;
   image: string;
   name: string;
-}> = ({ onClick, isSelected, image, name }) => (
+  isOnline: boolean;
+}> = ({ onClick, isSelected, image, name, isOnline }) => (
   <Container onClick={onClick} isSelected={isSelected}>
     <Image src={image?.split(' ')[0] || NoPP} />
-    <Name>{name}</Name>
+    <Wrapper>
+      <Name>{name}</Name>
+      <Status>{isOnline ? 'Online' : 'Offline'}</Status>
+    </Wrapper>
   </Container>
 );
 

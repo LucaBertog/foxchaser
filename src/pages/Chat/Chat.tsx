@@ -19,10 +19,8 @@ const Chat: React.FC = () => {
       socket,
       onlineUsers,
     }),
-    [socket]
+    [socket, onlineUsers]
   );
-
-  console.log(onlineUsers);
 
   useEffect(() => {
     if (id) socket.emit('newUser', { userId: id, username });
