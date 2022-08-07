@@ -1,17 +1,13 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react';
-import { io } from 'socket.io-client';
+import React, { useEffect, useMemo, useState } from 'react';
 import Content from '../../components/Chat/Content/Content';
 import LeftBar from '../../components/Chat/LeftBar/LeftBar';
 import RightBar from '../../components/Chat/RightBar/RightBar';
 import { ChatContext } from '../../contexts/Chat.context';
-import { UserContext } from '../../contexts/User.context';
 import { UserSocket } from '../../interfaces/userSocket.interface';
 import { Container } from './Chat.styles';
-
-const socket = io(import.meta.env.VITE_BACKEND_URL);
+import { socket } from '../../App';
 
 const Chat: React.FC = () => {
-  const { id, username } = useContext(UserContext);
   const [onlineUsers, setOnlineUsers] = useState<UserSocket[]>([]);
 
   const chatContext = useMemo(
@@ -21,10 +17,6 @@ const Chat: React.FC = () => {
     }),
     [socket, onlineUsers]
   );
-
-  useEffect(() => {
-    if (id) socket.emit('newUser', { userId: id, username });
-  }, [id]);
 
   useEffect(() => {
     socket.on('onlineUsers', (users: UserSocket[]) => {

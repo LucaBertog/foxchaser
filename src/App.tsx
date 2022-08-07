@@ -1,22 +1,22 @@
 /* eslint-disable no-underscore-dangle */
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-
 import { useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
-
 import { useEffect, useMemo, useState } from 'react';
 import { skipToken } from '@reduxjs/toolkit/dist/query';
 import { Cross } from 'akar-icons';
+import { io } from 'socket.io-client';
 import GlobalStyles from './assets/styles/GlobalStyles';
 import Routes from './routes/Routes';
 import { THEMES, COLORS } from './constants';
-
 import { UserContext } from './contexts/User.context';
 import { selectToken } from './store/Auth/reducer';
 import { DecodedUser } from './interfaces/decodedUser.interface';
 import { useGetUserByIdQuery } from './services/api/user.api';
 import { decodeJWT } from './services/decode/decodeJwt';
+
+export const socket = io(import.meta.env.VITE_BACKEND_URL);
 
 function App() {
   const token = useSelector(selectToken);
@@ -25,6 +25,12 @@ function App() {
     currentUser?._id ? currentUser?._id : skipToken
   );
   const [isRender, setIsRender] = useState(true);
+
+  if (user?.user.id)
+    socket.emit('newUser', {
+      userId: user?.user.id,
+      username: user?.user.username,
+    });
 
   useEffect(() => {
     if (!isRender) {
