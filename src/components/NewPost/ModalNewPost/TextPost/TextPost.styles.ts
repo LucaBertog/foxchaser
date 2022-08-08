@@ -9,9 +9,16 @@ export const Container = styled.div`
   font-size: 1.6rem;
   color: red;
 
-  /* .rdw-block-wrapper,
-  .rdw-fontsize-wrapper,
-  .rdw-fontfamily-wrapper {
+  .codex-editor:first-of-type {
     display: none;
-  } */
+  }
+
+  .codex-editor {
+    background-color: green;
+  }
+
+  button {
+    padding: 2rem;
+    background: red;
+  }
 `;

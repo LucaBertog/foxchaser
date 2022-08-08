@@ -8,9 +8,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@editorjs/editorjs": "^2.25.0",
+    "@editorjs/header": "^2.6.2",
+    "@editorjs/list": "^1.7.0",
+    "@editorjs/paragraph": "^2.8.0",
     "@hookform/resolvers": "^2.9.3",
     "@reduxjs/toolkit": "^1.8.3",
     "akar-icons": "^1.9.17",
+    "editorjs-html": "^3.4.2",
     "framer-motion": "^6.5.1",
     "moment": "^2.29.4",
     "polished": "^4.2.2",
@@ -30,6 +35,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@types/editorjs__header": "^2.6.0",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@types/react-modal": "^3.13.1",
