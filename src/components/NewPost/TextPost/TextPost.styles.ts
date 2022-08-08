@@ -17,10 +17,6 @@ export const Container = styled.div`
   font-size: 1.6rem;
   color: red;
 
-  .codex-editor:first-of-type {
-    display: none;
-  }
-
   #editorJS {
     padding: 0.8rem 1.6rem;
     border-radius: 1.6rem;
