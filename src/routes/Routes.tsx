@@ -15,7 +15,8 @@ import AdministratorRoute from './AdministratorRoute';
 import PrivateRoute from './PrivateRoute';
 import Main from '../layout/Main/Main';
 import NavBar from '../layout/NavBar/NavBar';
-import TextPost from '../components/NewPost/ModalNewPost/TextPost/TextPost';
+import TextPost from '../components/NewPost/TextPost/TextPost';
+import ImagePost from '../components/NewPost/ImagePost/ImagePost';
 
 const Routes: React.FC = () => (
   <Switch>
@@ -25,8 +26,8 @@ const Routes: React.FC = () => (
       path='/profile/:username'
       element={<Main children={<Profile />} />}
     />
-    <Route path='/messages/' element={<PrivateRoute />}>
-      <Route path='/messages/' element={<NavBar children={<Chat />} />} />
+    <Route path='/messages' element={<PrivateRoute />}>
+      <Route path='/messages' element={<NavBar children={<Chat />} />} />
     </Route>
     <Route path='/login' element={<Login />} />
     <Route path='/register' element={<Register />} />
@@ -34,7 +35,11 @@ const Routes: React.FC = () => (
       <Route path='/fxcsr' element={<Admin />} />
     </Route>
     <Route path='*' element={<NavBar children={<NotFound />} />} />
-    <Route path='/textpost/' element={<TextPost />} />
+    <Route
+      path='/submit/wysiwyg'
+      element={<NavBar children={<TextPost />} />}
+    />
+    <Route path='/submit/image' element={<NavBar children={<ImagePost />} />} />
   </Switch>
 );
 

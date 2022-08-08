@@ -1,6 +1,5 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import ModalNewPost from './ModalNewPost/ModalNewPost';
 import {
   Container,
   Wrapper,
@@ -15,17 +14,7 @@ import {
 } from './NewPost.styles';
 
 const NewPost: React.FC = () => {
-  const [isNewPostModalOpen, setIsNewPostModalOpen] = useState(false);
-  const [postType, setPostType] = useState<'image' | 'text'>('text');
   const menuEl = useRef<any>();
-
-  const openNewPostModal = () => {
-    setIsNewPostModalOpen(true);
-  };
-
-  const closeNewPostModal = () => {
-    setIsNewPostModalOpen(false);
-  };
 
   return (
     <Container>
@@ -35,39 +24,28 @@ const NewPost: React.FC = () => {
             <Toggle onClick={() => menuEl.current.classList.toggle('active')}>
               <Plus />
             </Toggle>
-            <Li
-              rotate={0}
-              onClick={() => {
-                openNewPostModal();
-                setPostType('image');
-              }}
-            >
-              <Link to='#1'>
-                <ImageIcon />
-              </Link>
-            </Li>
-            <Li
-              rotate={1}
-              onClick={() => {
-                openNewPostModal();
-                setPostType('text');
-              }}
-            >
-              <Link to='#1'>
-                <PencilIcon />
-              </Link>
-            </Li>
-            <Li rotate={2}>
-              <Link to='#1'>
-                <CheckIcon />
-              </Link>
-            </Li>
+            <Link to='/submit/image'>
+              <Li rotate={0}>
+                <div>
+                  <ImageIcon />
+                </div>
+              </Li>
+            </Link>
+            <Link to='/submit/wysiwyg'>
+              <Li rotate={1}>
+                <div>
+                  <PencilIcon />
+                </div>
+              </Li>
+            </Link>
+            <Link to='#1'>
+              <Li rotate={2}>
+                <div>
+                  <CheckIcon />
+                </div>
+              </Li>
+            </Link>
           </Menu>
-          <ModalNewPost
-            isOpen={isNewPostModalOpen}
-            onRequestClose={closeNewPostModal}
-            postType={postType}
-          />
         </MenuWrapper>
       </Wrapper>
     </Container>

@@ -136,13 +136,13 @@ export const Menu = styled.ul`
     transform: rotate(0) translateX(10rem);
 
     @media (min-width: 768px) {
-      bottom: auto;
-      left: -9.5rem;
+      bottom: -2rem;
+      left: -9rem;
       transform-origin: 9rem;
       transform: rotate(0) translateX(6rem);
     }
 
-    > a {
+    div {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -164,7 +164,7 @@ export const Menu = styled.ul`
     }
   }
 
-  &.active ${Toggle} > svg {
+  &.active ${Toggle} svg {
     transform: rotate(315deg);
   }
 `;

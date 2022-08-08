@@ -7,9 +7,9 @@ import * as yup from 'yup';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { Container, Img } from './ImagePost.styles';
-import LogoLoader from '../../../LogoLoader/LogoLoader';
-import { useCreatePostMutation } from '../../../../services/api/post.api';
-import { FILE_SIZE, SUPPORTED_FORMATS } from '../../../../constants';
+import LogoLoader from '../../LogoLoader/LogoLoader';
+import { useCreatePostMutation } from '../../../services/api/post.api';
+import { FILE_SIZE, SUPPORTED_FORMATS } from '../../../constants';
 
 const schema = yup
   .object()
@@ -37,7 +37,7 @@ const schema = yup
   })
   .required();
 
-const ImagePost: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
+const ImagePost: React.FC = () => {
   const navigate = useNavigate();
   const {
     register,
@@ -56,12 +56,6 @@ const ImagePost: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
     reset();
   };
 
-  useEffect(() => {
-    if (!isOpen) {
-      resetImages();
-    }
-  }, [isOpen]);
-
   const onSubmit = async (e: any) => {
     const data: {
       title: string;
@@ -75,7 +69,7 @@ const ImagePost: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
 
       await createPost(formData).unwrap();
       toast.success('Post criado');
-      return navigate(0);
+      return navigate('/home');
     } catch (error) {
       return toast.error('Erro desconhecido');
     }

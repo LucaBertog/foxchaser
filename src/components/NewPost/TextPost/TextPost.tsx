@@ -10,13 +10,11 @@ import React, { useEffect, useState } from 'react';
 // import { toast } from 'react-toastify';
 // import { useNavigate } from 'react-router-dom';
 import EditorJS from '@editorjs/editorjs';
-// @ts-ignore
-import edjsHTML from 'editorjs-html';
 import Header from '@editorjs/header';
-import { Container } from './TextPost.styles';
-// import LogoLoader from '../../../LogoLoader/LogoLoader';
-// import { useCreatePostMutation } from '../../../../services/api/post.api';
-import { EDITOR_JS_TOOLS } from '../../../../constants/editorjs.constants';
+import { Container, Editor, Publish, SendIcon } from './TextPost.styles';
+import { LogoLoader } from '../../../components';
+import { useCreatePostMutation } from '../../../services/api/post.api';
+import { EDITOR_JS_TOOLS } from '../../../constants/editorjs.constants';
 
 // const schema = yup
 //   .object()
@@ -27,7 +25,6 @@ import { EDITOR_JS_TOOLS } from '../../../../constants/editorjs.constants';
 //   .required();
 
 const TextPost: React.FC = () => {
-  const edjsParser = edjsHTML();
   // const navigate = useNavigate();
   // const {
   //   register,
@@ -37,24 +34,26 @@ const TextPost: React.FC = () => {
   // } = useForm({
   //   resolver: yupResolver(schema),
   // });
-  // const [createPost, { isLoading: isCreating }] = useCreatePostMutation();
+  const [createPost, { isLoading: isCreating }] = useCreatePostMutation();
   const [editor, setEditor] = useState<EditorJS>();
 
   useEffect(() => {
-    const _editor = new EditorJS({
-      holder: 'editorJS',
-      tools: {
-        header: {
-          // @ts-ignore
-          class: Header,
-          shortcut: 'CMD+SHIFT+H',
-          inlineToolbar: true,
+    if (!editor) {
+      const _editor = new EditorJS({
+        holder: 'editorJS',
+        tools: {
+          header: {
+            // @ts-ignore
+            class: Header,
+            shortcut: 'CMD+SHIFT+H',
+            inlineToolbar: true,
+          },
         },
-      },
-      onReady: () => console.log('EditorJS está prontinho da silva'),
-      placeholder: 'Vamos escrever alguma coisa legal ai',
-    });
-    setEditor(_editor);
+        onReady: () => console.log('EditorJS está prontinho da silva'),
+        placeholder: 'Vamos escrever alguma coisa legal ai',
+      });
+      setEditor(_editor);
+    }
   }, []);
 
   const onSave = () => {
@@ -62,7 +61,7 @@ const TextPost: React.FC = () => {
       editor
         .save()
         .then((outputData: any) => {
-          console.log(edjsParser.parse(outputData));
+          console.log(outputData);
         })
         .catch((error: any) => {
           console.log(error);
@@ -84,14 +83,17 @@ const TextPost: React.FC = () => {
 
   return (
     <Container>
-      {/* {isCreating ? (
+      {isCreating ? (
         <LogoLoader />
-      ) : ( */}
-      <div id='editorJS' />
-      <button type='submit' onClick={onSave}>
-        Salvar
-      </button>
-      {/* )} */}
+      ) : (
+        <Editor>
+          <div id='editorJS' />
+          <Publish type='submit' onClick={onSave}>
+            <SendIcon />
+            Publicar
+          </Publish>
+        </Editor>
+      )}
     </Container>
   );
 };
