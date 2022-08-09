@@ -15,8 +15,6 @@ import AdministratorRoute from './AdministratorRoute';
 import PrivateRoute from './PrivateRoute';
 import Main from '../layout/Main/Main';
 import NavBar from '../layout/NavBar/NavBar';
-import TextPost from '../components/NewPost/ModalNewPost/TextPost/TextPost';
-import ImagePost from '../components/NewPost/ModalNewPost/ImagePost/ImagePost';
 
 const Routes: React.FC = () => (
   <Switch>
@@ -35,11 +33,6 @@ const Routes: React.FC = () => (
       <Route path='/fxcsr' element={<Admin />} />
     </Route>
     <Route path='*' element={<NavBar children={<NotFound />} />} />
-    <Route
-      path='/submit/wysiwyg'
-      element={<NavBar children={<TextPost />} />}
-    />
-    <Route path='/submit/image' element={<NavBar children={<ImagePost />} />} />
   </Switch>
 );
 
