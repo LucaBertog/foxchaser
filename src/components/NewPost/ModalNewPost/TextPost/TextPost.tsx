@@ -1,8 +1,4 @@
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-use-before-define */
 import React, { useEffect, useState } from 'react';
 import { PathString, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -45,7 +41,7 @@ const TextPost: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
 
   useEffect(() => {
     if (!editor) {
-      const _editor = new EditorJS({
+      const editor1 = new EditorJS({
         holder: 'editorJS',
         tools: {
           header: {
@@ -55,10 +51,10 @@ const TextPost: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
             inlineToolbar: true,
           },
         },
-        onReady: () => console.log('EditorJS está prontinho da silva'),
         placeholder: 'Vamos escrever alguma coisa legal ai',
+        minHeight: 0,
       });
-      setEditor(_editor);
+      setEditor(editor1);
     }
   }, []);
 

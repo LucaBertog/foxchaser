@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import * as fonts from '../../../../assets/styles/Fonts';
 
 export const Container = styled.div`
-  width: 100%;
-
+  width: 100vw;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -21,6 +20,9 @@ export const Container = styled.div`
     padding: 0.8rem 1.6rem;
     border-radius: 1.6rem;
     border: 2px solid ${(props) => props.theme.mode.colors.bgIconDark};
+
+    max-height: 50vh;
+    overflow-y: auto;
   }
 
   .ce-block__content,

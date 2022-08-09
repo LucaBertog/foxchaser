@@ -14,8 +14,13 @@ export const Overlay = styled.div`
 
 export const ModalStyle = styled.div`
   position: relative;
-  width: 50%;
+  width: 100%;
   background: none;
   border-radius: 1.6rem;
-  padding: 3.2rem 5.6rem;
+
+  * {
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
 `;
