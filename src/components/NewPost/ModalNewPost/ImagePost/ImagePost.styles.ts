@@ -33,7 +33,9 @@ export const Form = styled.form`
   }
 
   #image {
-    display: none;
+    position: absolute;
+    display: hidden;
+    opacity: 0;
   }
 `;
 
