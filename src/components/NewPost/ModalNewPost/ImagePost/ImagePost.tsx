@@ -25,10 +25,11 @@ const schema = yup
     title: yup.string().max(200).required('Titulo é obrigatório'),
     image: yup
       .mixed()
-      .test('isRequired', 'Imagem é obrigatória', (value: FileList) => {
-        console.log(value);
-        return value.length !== 0;
-      })
+      .test(
+        'isRequired',
+        'Imagem é obrigatória',
+        (value: FileList) => value.length !== 0
+      )
       .test(
         'fileSize',
         'O arquivo é grande demais',
@@ -99,8 +100,6 @@ const ImagePost: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
       const dataTF = new DataTransfer();
       dataTF.items.add(imgData as any);
       e.target.files = dataTF.files;
-      console.log(e.target.files);
-      console.log(dataTF.files);
     }
   };
 
