@@ -12,9 +12,9 @@ import React, { useEffect, useState } from 'react';
 import EditorJS from '@editorjs/editorjs';
 import Header from '@editorjs/header';
 import { Container, Editor, Publish, SendIcon } from './TextPost.styles';
-import { LogoLoader } from '../../../components';
-import { useCreatePostMutation } from '../../../services/api/post.api';
-import { EDITOR_JS_TOOLS } from '../../../constants/editorjs.constants';
+import { LogoLoader } from '../../..';
+import { useCreatePostMutation } from '../../../../services/api/post.api';
+import { EDITOR_JS_TOOLS } from '../../../../constants/editorjs.constants';
 
 // const schema = yup
 //   .object()
@@ -24,7 +24,7 @@ import { EDITOR_JS_TOOLS } from '../../../constants/editorjs.constants';
 //   })
 //   .required();
 
-const TextPost: React.FC = () => {
+const TextPost: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
   // const navigate = useNavigate();
   // const {
   //   register,

@@ -15,8 +15,8 @@ import AdministratorRoute from './AdministratorRoute';
 import PrivateRoute from './PrivateRoute';
 import Main from '../layout/Main/Main';
 import NavBar from '../layout/NavBar/NavBar';
-import TextPost from '../components/NewPost/TextPost/TextPost';
-import ImagePost from '../components/NewPost/ImagePost/ImagePost';
+import TextPost from '../components/NewPost/ModalNewPost/TextPost/TextPost';
+import ImagePost from '../components/NewPost/ModalNewPost/ImagePost/ImagePost';
 
 const Routes: React.FC = () => (
   <Switch>

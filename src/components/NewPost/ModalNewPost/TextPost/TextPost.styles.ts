@@ -1,6 +1,6 @@
 import { Send } from 'akar-icons';
 import styled from 'styled-components';
-import * as fonts from '../../../assets/styles/Fonts';
+import * as fonts from '../../../../assets/styles/Fonts';
 
 export const Container = styled.div`
   width: 100%;
@@ -23,7 +23,15 @@ export const Container = styled.div`
     border: 2px solid ${(props) => props.theme.mode.colors.bgIconDark};
   }
 
+  .ce-block__content,
+  .ce-toolbar__content {
+    min-width: 52vw;
+    max-width: 102rem;
+  }
+
   .codex-editor {
+    /* width: 80%;
+    max-width: 80rem; */
     background: none;
 
     .codex-editor__redactor {

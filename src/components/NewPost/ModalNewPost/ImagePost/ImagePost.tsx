@@ -3,13 +3,21 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import { Container, Img } from './ImagePost.styles';
-import LogoLoader from '../../LogoLoader/LogoLoader';
-import { useCreatePostMutation } from '../../../services/api/post.api';
-import { FILE_SIZE, SUPPORTED_FORMATS } from '../../../constants';
+import {
+  Container,
+  Form,
+  Img,
+  ImgMessage,
+  UploadButton,
+  TitleInput,
+  Publish,
+  SendIcon,
+} from './ImagePost.styles';
+import LogoLoader from '../../../LogoLoader/LogoLoader';
+import { useCreatePostMutation } from '../../../../services/api/post.api';
+import { FILE_SIZE, SUPPORTED_FORMATS } from '../../../../constants';
 
 const schema = yup
   .object()
@@ -37,7 +45,7 @@ const schema = yup
   })
   .required();
 
-const ImagePost: React.FC = () => {
+const ImagePost: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
   const navigate = useNavigate();
   const {
     register,
@@ -56,6 +64,12 @@ const ImagePost: React.FC = () => {
     reset();
   };
 
+  useEffect(() => {
+    if (!isOpen) {
+      resetImages();
+    }
+  }, [isOpen]);
+
   const onSubmit = async (e: any) => {
     const data: {
       title: string;
@@ -69,7 +83,7 @@ const ImagePost: React.FC = () => {
 
       await createPost(formData).unwrap();
       toast.success('Post criado');
-      return navigate('/home');
+      return navigate(0);
     } catch (error) {
       return toast.error('Erro desconhecido');
     }
@@ -97,21 +111,29 @@ const ImagePost: React.FC = () => {
       {isCreating ? (
         <LogoLoader />
       ) : (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <Form onSubmit={handleSubmit(onSubmit)}>
           <p>{titleError?.message}</p>
-          <input {...register('title')} id='title' />
+          <TitleInput {...register('title')} id='title' placeholder='Título' />
           <input
             type='file'
             {...register('image')}
             id='image'
+            accept='image/*'
             onChange={handleChangeImg}
           />
-          <Img htmlFor='image' url={imgUrl}>
-            <div />
+          <Img htmlFor='image'>
+            <ImgMessage url={imgUrl}>
+              <span>
+                Arraste e solte imagens ou <UploadButton>Upload</UploadButton>
+              </span>
+            </ImgMessage>
           </Img>
           <p>{imageError?.message}</p>
-          <input type='submit' value='enviar' />
-        </form>
+          <Publish type='submit'>
+            <SendIcon />
+            Publicar
+          </Publish>
+        </Form>
       )}
     </Container>
   );

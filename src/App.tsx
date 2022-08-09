@@ -26,11 +26,13 @@ function App() {
   );
   const [isRender, setIsRender] = useState(true);
 
-  if (user?.user.id)
-    socket.emit('newUser', {
-      userId: user?.user.id,
-      username: user?.user.username,
-    });
+  useEffect(() => {
+    if (user?.user.id)
+      socket.emit('newUser', {
+        userId: user?.user.id,
+        username: user?.user.username,
+      });
+  }, [socket]);
 
   useEffect(() => {
     if (!isRender) {
