@@ -30,22 +30,20 @@ export const Container = styled.div`
   }
 
   .codex-editor {
-    /* width: 80%;
-    max-width: 80rem; */
     background: none;
 
-    .codex-editor__redactor {
+    .ce-paragraph {
       ${fonts.Paragraph}
       color: ${(props) => props.theme.mode.colors.text};
+    }
+
+    .ce-paragraph[data-placeholder]:empty::before {
+      color: ${(props) => props.theme.mode.colors.weakText};
     }
 
     .icon {
       color: ${(props) => props.theme.mode.colors.text};
     }
-
-    /* .ce-toolbar__actions {
-      margin-right: 1.6rem;
-    } */
 
     .ce-settings {
       background: ${(props) => props.theme.mode.colors.bgIconDark};
@@ -53,9 +51,11 @@ export const Container = styled.div`
   }
 `;
 
-export const Editor = styled.div`
-  background: ${(props) => props.theme.mode.colors.container};
+export const Form = styled.form`
+  min-width: 60vw;
+  max-width: 110rem;
 
+  background: ${(props) => props.theme.mode.colors.container};
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -63,6 +63,38 @@ export const Editor = styled.div`
 
   padding: 1.6rem 3.2rem;
   border-radius: 1.6rem;
+
+  > p {
+    font-size: 1.6rem;
+    color: red;
+
+    &:empty {
+      display: none;
+    }
+  }
+`;
+
+export const TitleInput = styled.input`
+  ${fonts.Paragraph}
+  color: ${(props) => props.theme.mode.colors.text};
+
+  width: 100%;
+
+  background: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 1.6rem;
+  border: 2px solid ${(props) => props.theme.mode.colors.bgIconDark};
+
+  &::placeholder {
+    color: ${(props) => props.theme.mode.colors.weakText};
+  }
+`;
+
+export const Editor = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.6rem;
 `;
 
 export const Publish = styled.button`
